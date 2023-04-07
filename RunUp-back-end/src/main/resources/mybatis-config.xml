@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+          PUBLIC "-//mybatis.org/DTD Config 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+	
+	<!-- MyBatis에 대한 기본 세팅정보 -->
+	 <settings>
+	 	<!-- Data가 없을경우 NULL로 처리 -->
+	 	<setting name="jdbcTypeForNull" value="NULL"/>
+	 	<!-- Log4J와 MyBatis 연동해서 Query문과 실행결과를 log로 출력 -->
+	 	<setting name="logImpl" value="LOG4J2"/>
+	 </settings>
+	 
+	 <typeAliases>
+	 	<typeAlias type="team.spring.runup.user.vo.User" alias="User"/>
+	 	
+
+	 </typeAliases>
+
+
+</configuration>
