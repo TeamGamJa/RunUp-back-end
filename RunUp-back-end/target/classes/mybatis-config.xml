@@ -15,7 +15,6 @@
 	 
 	 <typeAliases>
 	 	<typeAlias type="team.spring.runup.user.vo.User" alias="User"/>
-	 	
 
 	 </typeAliases>
 
