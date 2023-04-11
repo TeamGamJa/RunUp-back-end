@@ -19,4 +19,10 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 
+	@Override
+	public User getUserById(String userId) {
+		User user = session.selectOne("user.getUserByUserId", userId);
+		return user;
+	}
+
 }

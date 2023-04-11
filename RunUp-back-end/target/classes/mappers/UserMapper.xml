@@ -6,9 +6,12 @@
 
 <mapper namespace="user">
    
-   <!-- 예시입니다 보고 참고해서 작성하세요 -->
    <select id="getUserByUserVo" parameterType="User" resultType="User">
       select * from user where userId=#{userId} and userPw=#{userPw}
+   </select>
+   
+   <select id="getUserByUserId" parameterType="String" resultType="User">
+      select * from user where userId=#{userId}
    </select>
 
 </mapper>

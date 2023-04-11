@@ -25,17 +25,26 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@GetMapping
-	public User Login(@RequestParam(value="userId", 
+	public User login(@RequestParam(value="userId", 
 			required=false) String userId, @RequestParam(value="userPw", 
 			required=false) String userPw) throws JsonProcessingException {
 		
-		log.debug(userId);
-		log.debug(userPw);
 		User insertUser = new User();
 		insertUser.setUserId(userId);
 		insertUser.setUserPw(userPw);
-		User user = loginService.checkUser(insertUser);
+		User user = loginService.getUser(insertUser);
+		
+		return user;
+	}
+	
+	@GetMapping(value="kakao")
+	public User kaKaoLogin (@RequestParam(value="userId", 
+			required=false) String userId, @RequestParam(value="userNickname", 
+			required=false) String userNickName) throws JsonProcessingException {
+		
+		User user = loginService.getUserById(userId);
 		log.debug(user);
 		return user;
+	
 	}
 }

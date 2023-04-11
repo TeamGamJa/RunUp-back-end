@@ -12,9 +12,14 @@ public class LoginService {
 	@Autowired
 	private UserDao dao;
 
-	public User checkUser(User insertUser) {
+	public User getUser(User insertUser) {
 		
 		User user = dao.getUser(insertUser);
+		return user;
+	}
+
+	public User getUserById(String userId) {
+		User user = dao.getUserById(userId);
 		return user;
 	}
 
