@@ -7,7 +7,7 @@ import team.spring.runup.user.dao.UserDao;
 import team.spring.runup.user.vo.User;
 
 @Service
-public class LoginService {
+public class UserService {
 	
 	@Autowired
 	private UserDao dao;
