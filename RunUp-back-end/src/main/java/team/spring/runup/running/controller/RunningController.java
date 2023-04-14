@@ -40,7 +40,7 @@ Logger log = LogManager.getLogger("case3");
 		
 		List<CategoryBig> biglist = runningservice.selectCategoryBigAll();
 		List<CategoryMedium> mediumlist = runningservice.selectCategoryMediumAll();
-		log.debug(biglist);
+		
 		log.debug(mediumlist);
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		hashmap.put("biglist", biglist);
