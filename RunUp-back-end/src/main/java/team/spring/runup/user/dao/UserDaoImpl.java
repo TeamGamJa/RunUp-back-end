@@ -14,7 +14,6 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public User getUser(User insertUser) {
-		
 		User user = session.selectOne("user.getUserByUserVo", insertUser);
 		return user;
 	}
@@ -23,6 +22,24 @@ public class UserDaoImpl implements UserDao{
 	public User getUserById(String userId) {
 		User user = session.selectOne("user.getUserByUserId", userId);
 		return user;
+	}
+
+	@Override
+	public int registUser(User user) {
+		int result = session.insert("user.registUser", user);
+		return result;
+	}
+
+	@Override
+	public int updateUser(User user) {
+		int result = session.update("user.updateUser", user);
+		return result;
+	}
+
+	@Override
+	public int deleteUser(String userId) {
+		int result = session.update("user.deleteUser", userId);
+		return result;
 	}
 
 }

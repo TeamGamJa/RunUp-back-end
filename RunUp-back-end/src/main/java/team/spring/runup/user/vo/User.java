@@ -17,7 +17,6 @@ public class User {
 	private String userAddr;
 	private String userPhone;
 	private String userInfo;
-	private Boolean userPrivacy;
 	private String userCategoryUp;
 	private String userCategoryLow;
 	private int userPoint;
@@ -26,5 +25,7 @@ public class User {
 	private String userUrl;
 	private int userLuxColor;
 	private int userReportCnt;
+	private int userMentorCnt;
+	private int userMenteeCnt;
 	
 }
