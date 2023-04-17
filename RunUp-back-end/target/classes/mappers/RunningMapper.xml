@@ -17,5 +17,40 @@
       select * from categorymedium
    ]]>     
    </select>
-
+   
+   <select id="selectRunningList" parameterType = "Running" resultType="Running">
+   <![CDATA[
+   	  select RunningNum, RunningTitle, RunningContent, RunningCategoryBig, RunningCategoryMedium, Salt 
+   	  from running where userNum = #{userNum}
+   ]]>
+   </select>
+   
+   <select id="selectRunningByKeyword" parameterType="String" resultType="Running">
+   <![CDATA[
+      select RunningNum, RunningTitle, RunningContent, RunningCategoryBig, RunningCategoryMedium, Salt
+      from running where RunningTitle Like CONCAT('%', #{keyword},'%')
+   ]]>
+   </select>
+   
+   <insert id="createRunning" parameterType="Running">
+   <![CDATA[
+     insert into running(RunningTitle,RunningContent,RunningCategoryBig,
+     RunningCategoryMedium) values (#{RunningTitle}, #{RunningContent}, #{RunningCategoryBig},
+     #{RunningCategoryMedium})
+   ]]>
+   </insert>
+   
+   <delete id="deleteRunning" parameterType="Running">
+   <![CDATA[
+     delete from running where userNum=#{userNum}
+   ]]>
+   </delete>
+   
+   <update id="updateRunning" parameterType="Running" >
+   <![CDATA[
+     update running set RunningTitle=#{RunningTitle},RunningContent=#{RunningContent}, RunningCategoryBig=#{RunningCategoryBig},
+     RunningCategoryMedium=#{RunningCategoryMedium} where userNum = #{userNum}
+   ]]>
+   </update>
+   
 </mapper>

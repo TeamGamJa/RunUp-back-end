@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import team.spring.runup.running.dao.RunningDao;
 import team.spring.runup.running.vo.CategoryBig;
 import team.spring.runup.running.vo.CategoryMedium;
+import team.spring.runup.running.vo.Running;
 
 @Service
 public class RunningService {
@@ -25,4 +26,28 @@ public class RunningService {
 		return list;
 	}
 	
+	public List<Running> selectRunningList(Running run) {
+		List<Running> list = dao.selectRunningList(run);
+		return list;
+	}
+	
+	public List<Running> selectRunningByKeyword(String keyword) {
+		List<Running> list = dao.selectRunningByKeyword(keyword);
+		return list;
+	}
+	
+	public int createRunning(Running run) {
+		int result = dao.createRunning(run);
+		return result;
+	}
+	
+	public int deleteRunning(Running run) {
+		int result = dao.deleteRunning(run);
+		return result;
+	}
+	
+	public int updateRunning(Running run) {
+		int result = dao.updateRunning(run);
+		return result;
+	}
 }
