@@ -49,4 +49,6 @@ Logger log = LogManager.getLogger("case3");
 		return hashmap;
 	}
 	
+	
+	
 }
