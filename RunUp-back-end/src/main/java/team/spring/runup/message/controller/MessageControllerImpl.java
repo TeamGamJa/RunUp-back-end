@@ -31,6 +31,7 @@ public class MessageControllerImpl implements MessageController {
 	@PostMapping(produces = "application/json; charset=UTF-8")
 	public ResponseEntity<String> sendMessage(Message message) {
 		// TODO Auto-generated method stub
+		int i = 0;
 		return null;
 	}
 
