@@ -8,25 +8,25 @@ import team.spring.runup.message.vo.Message;
 
 public interface MessageController {
 
-	// ÂÊÁö Àü¼Û
-	ResponseEntity<String> sendMessage(Message message);
-	
-	// ÂÊÁö »èÁ¦
-	ResponseEntity<String> deleteMessage(String messageId) throws Exception;
-	
-	// ¹ŞÀº ÂÊÁöÇÔ
-	List<String> receiveMessageList(String messageReceiver);
-	
-	// º¸³½ ÂÊÁöÇÔ
-	List<String> sendMessageList(String messageSender);
-	
-	// ¹ŞÀº ÂÊÁö »ó¼¼
-	Message receiveMessageDetail(String messageId);
-	
-	// º¸³½ ÂÊÁö »ó¼¼
-	Message sendMessageDetail(String messageId);
-	
-	// ÂÊÁö ½Å°í
-	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//	ResponseEntity<String> sendMessage(Message message);
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//	ResponseEntity<String> deleteMessage(String messageId) throws Exception;
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	List<String> receiveMessageList(String messageReceiver);
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	List<String> sendMessageList(String messageSender);
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+//	Message receiveMessageDetail(String messageId);
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+//	Message sendMessageDetail(String messageId);
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½
+//	
 	
 }
