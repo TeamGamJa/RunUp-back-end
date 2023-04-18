@@ -20,63 +20,63 @@ import team.spring.runup.message.vo.Message;
 @CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 public class MessageControllerImpl implements MessageController {
 
-	Logger log = LogManager.getLogger("case3");
-	
-	@Autowired
-	private MessageServiceImpl service;
-	
-	
-	// ÂÊÁö Àü¼Û
-	@Override
-	@PostMapping(produces = "application/json; charset=UTF-8")
-	public ResponseEntity<String> sendMessage(Message message) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	// ÂÊÁö »èÁ¦
-	@Override
-	@PostMapping
-	public ResponseEntity<String> deleteMessage(String messageId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	// ¹ÞÀº ÂÊÁöÇÔ
-	@Override
-	@GetMapping(value="message/inbox/{messageReceiver}")
-	public List<String> receiveMessageList(String messageReceiver) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	// º¸³½ ÂÊÁöÇÔ
-	@Override
-	@GetMapping(value="message/sentbox/{messageSender}")
-	public List<String> sendMessageList(String messageSender) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	// ¹ÞÀº ÂÊÁö »ó¼¼
-	@Override
-	@GetMapping(value="message/inbox/{messageId}")
-	public Message receiveMessageDetail(String messageId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	// º¸³½ ÂÊÁö »ó¼¼
-	@Override
-	@GetMapping(value="message/sentbox/{messageId}")
-	public Message sendMessageDetail(String messageId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	Logger log = LogManager.getLogger("case3");
+//	
+//	@Autowired
+//	private MessageServiceImpl service;
+//	
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//	@Override
+//	@PostMapping(produces = "application/json; charset=UTF-8")
+//	public ResponseEntity<String> sendMessage(Message message) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//	@Override
+//	@PostMapping
+//	public ResponseEntity<String> deleteMessage(String messageId) throws Exception {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	@Override
+//	@GetMapping(value="message/inbox/{messageReceiver}")
+//	public List<String> receiveMessageList(String messageReceiver) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	@Override
+//	@GetMapping(value="message/sentbox/{messageSender}")
+//	public List<String> sendMessageList(String messageSender) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+//	@Override
+//	@GetMapping(value="message/inbox/{messageId}")
+//	public Message receiveMessageDetail(String messageId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	
+//	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+//	@Override
+//	@GetMapping(value="message/sentbox/{messageId}")
+//	public Message sendMessageDetail(String messageId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

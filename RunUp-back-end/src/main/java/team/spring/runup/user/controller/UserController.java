@@ -26,7 +26,7 @@ import team.spring.runup.user.vo.User;
 @CrossOrigin(origins = "http://127.0.0.1:8081", allowedHeaders = "*")
 public class UserController {
 
-Logger log = LogManager.getLogger("case3");
+	Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	private UserService userService;
