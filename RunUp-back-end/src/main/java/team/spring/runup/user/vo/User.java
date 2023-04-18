@@ -17,15 +17,17 @@ public class User {
 	private String userAddr;
 	private String userPhone;
 	private String userInfo;
-	private String userCategoryUp;
-	private String userCategoryLow;
+	private String userCategoryBig;
+	private String userCategoryMedium;
+	private int userAbility;
 	private int userPoint;
-	private Boolean AdminBoolean;
 	private Boolean isOut;
 	private String userUrl;
 	private int userLuxColor;
 	private int userReportCnt;
+	private Boolean AdminBoolean;
 	private int userMentorCnt;
 	private int userMenteeCnt;
+	private String userWant;
 	
 }

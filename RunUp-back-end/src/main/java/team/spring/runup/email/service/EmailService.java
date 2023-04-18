@@ -21,7 +21,7 @@ public class EmailService {
 	@Autowired
 	private JavaMailSender mailSender;
 
-	public boolean sendMail(Email email) throws Exception {
+	public int sendMail(Email email) throws Exception {
 		
 		MimeMessage msg = mailSender.createMimeMessage();
 		
@@ -35,10 +35,10 @@ public class EmailService {
 			
 			mailSender.send(msg);
 			
-			return true;
+			return 1;
 		} catch (AddressException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return 0;
 	}
 }

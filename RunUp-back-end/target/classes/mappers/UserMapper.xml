@@ -19,17 +19,26 @@
    </insert>
 
 	<update id="updateUser" parameterType="User">
-   	  update user set userPw=#{userPw}, userName=#{userName}, userNickname=#{userNickname},
-   	  		 userAddr=#{userAddr}, userPhone=#{userPhone}, userInfo=#{userInfo}, userCategoryUp=#{userCategoryUp},
-   	  		 userCategoryLow=#{userCategoryLow}, userUrl=#{userUrl}
+   	  update user set userName=#{userName}, userNickname=#{userNickname},
+   	  		 userAddr=#{userAddr}, userPhone=#{userPhone}, userInfo=#{userInfo}, userCategoryBig=#{userCategoryBig},
+   	  		 userCategoryMedium=#{userCategoryMedium}, userAbility=#{userAbility}, userUrl=#{userUrl}, user=#[userWant]
    	  where userId=#{userId}
    </update>
    
    <update id="deleteUser" parameterType="String">
-   	  update user set isOut='Y',userPw="탈퇴회원", userName="탈퇴회원", userNickname=#{userNickname},
+   	  update user set isOut='Y',userPw="탈퇴회원", userName="탈퇴회원", userNickname="탈퇴회원",
    	  		 userAddr="탈퇴회원", userPhone="탈퇴회원", userInfo="탈퇴회원", 
-   	  		 userCategoryUp="탈퇴회원", userCategoryLow="탈퇴회원", userPoint=0, AdminBoolean=0,
-   	  		 userUrl=#{userUrl}, userLuxColor=0, userReportCnt=0
+   	  		 userCategoryBig="탈퇴회원", userCategoryMedium="탈퇴회원", userAbility=0, userPoint=0, 
+   	  		 AdminBoolean=0, userLuxColor=0, userReportCnt=0, userMentorCnt=0, userMenteeCnt=0.
+   	  		 userWant="탈퇴회원"
    	  where userId=#{userId}
+   </update>
+   
+   <select id="getUserByIdPhone" parameterType="User" resultType="User">
+      select * from user where userId=#{userId} and userPhone=#{userPhone}
+   </select>
+   
+   <update id="changePw" parameterType="User">
+   	  update user set userPw=#{userPw} where userId=#{userId}
    </update>
 </mapper>
