@@ -14,5 +14,9 @@ public interface UserDao {
 
 	int deleteUser(String userId);
 
+	User getUserByIdPhone(User user);
+
+	int changePw(User user);
+
 
 }

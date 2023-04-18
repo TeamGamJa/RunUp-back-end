@@ -1,5 +1,7 @@
 package team.spring.runup.user.service;
 
+import java.security.SecureRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,39 @@ public class UserService {
 	public int deleteUser(String userId) {
 		int result = dao.deleteUser(userId);
 		return result;
+	}
+
+	public String makeNewPw() {
+		
+		StringBuilder sb = new StringBuilder();
+		String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		
+		SecureRandom random = new SecureRandom();
+		for (int i = 0; i < 10; i++) {
+			int idx = random.nextInt(chars.length());
+			sb.append(chars.charAt(idx));
+		}
+		return sb.toString();
+	}
+
+	public int matchUserIdPhone(User user) {
+		
+		user = dao.getUserByIdPhone(user);
+		
+		if(user.equals(null)) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+
+	public int changePw(User user) {
+		int result = dao.changePw(user);
+		if(result == 0) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 
 }
