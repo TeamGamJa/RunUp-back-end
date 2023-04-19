@@ -18,6 +18,7 @@
 	 	<typeAlias type="team.spring.runup.running.vo.Running" alias="Running"/>
 	 	<typeAlias type="team.spring.runup.running.vo.CategoryBig" alias="CategoryBig"/>
 	 	<typeAlias type="team.spring.runup.running.vo.CategoryMedium" alias="CategoryMedium"/>
+	 	<typeAlias type="team.spring.runup.message.vo.Message" alias="Message"/>
 
 	 </typeAliases>
 
