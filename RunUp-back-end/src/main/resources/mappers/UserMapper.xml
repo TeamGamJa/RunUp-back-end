@@ -13,6 +13,10 @@
    <select id="getUserByUserId" parameterType="String" resultType="User">
       select * from user where userId=#{userId}
    </select>
+   
+   <select id="getUserByNickname" parameterType="String" resultType="User">
+      select * from user where userNickname Like CONCAT('%', #{userNickname},'%')
+   </select>
 
 	<insert id="registUser" parameterType="User">
       INSERT INTO user(userEmail,userName,userProfile) VALUES(#{userEmail},#{userName},#{userProfile})

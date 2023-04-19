@@ -13,11 +13,15 @@ public class Running {
 	private String RunningContent;
 	private String RunningCategoryBig;
 	private String RunningCategoryMedium;
-	private String RunningStart;
-	private String RunningAble;
+	private int RunningStartBig;
+	private int RunningStartSmall;
+	private int RunningEndBig;
+	private int RunningEndSmall;
+	private boolean RunningKeep;
+	private boolean RunningShow;
+	private boolean RunningAble;
 	private String RunningDate;
-	private String RunningViewNum;
-	private String Salt;
-	private String RunningPick;
-	private String UserNum;
+	private int RunningViewNum;
+	private int RunningScore;
+	private int UserNum;
 }

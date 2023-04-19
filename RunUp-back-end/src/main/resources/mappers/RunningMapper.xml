@@ -6,28 +6,28 @@
 
 <mapper namespace="running">
    
-   <select id="selectCategoryBigList" resultType="CategoryBig">
+   <select id="selectCategoryBigList" resultType="Category">
     <![CDATA[
-      select * from categorybig
+      select distinct CategoryBig from category
     ]]>  
    </select>
    
-   <select id="selectCategoryMediumList" resultType="CategoryMedium">
+   <select id="selectCategoryMediumList" parameterType = "Category" resultType="Category">
    <![CDATA[
-      select * from categorymedium
+      select * from category where CategoryBig = #{CategoryBig}
    ]]>     
    </select>
    
    <select id="selectRunningList" parameterType = "Running" resultType="Running">
    <![CDATA[
-   	  select RunningNum, RunningTitle, RunningContent, RunningCategoryBig, RunningCategoryMedium, Salt 
+   	  select * 
    	  from running where userNum = #{userNum}
    ]]>
    </select>
    
    <select id="selectRunningByKeyword" parameterType="String" resultType="Running">
    <![CDATA[
-      select RunningNum, RunningTitle, RunningContent, RunningCategoryBig, RunningCategoryMedium, Salt
+      select *
       from running where RunningTitle Like CONCAT('%', #{keyword},'%')
    ]]>
    </select>

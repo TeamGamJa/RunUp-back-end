@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import team.spring.runup.running.dao.RunningDao;
-import team.spring.runup.running.vo.CategoryBig;
-import team.spring.runup.running.vo.CategoryMedium;
+import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Running;
 
 @Service
@@ -16,13 +15,13 @@ public class RunningService {
 	@Autowired
 	private RunningDao dao;
 	
-	public List<CategoryBig> selectCategoryBigAll() {
-		List<CategoryBig> list = dao.selectCategoryBigAll();
+	public List<Category> selectCategoryBigAll() {
+		List<Category> list = dao.selectCategoryBigAll();
 		return list;
 	}
 	
-	public List<CategoryMedium> selectCategoryMediumAll() {
-		List<CategoryMedium> list = dao.selectCategoryMediumAll();
+	public List<Category> selectCategoryMediumAll(Category category) {
+		List<Category> list = dao.selectCategoryMediumAll(category);
 		return list;
 	}
 	
