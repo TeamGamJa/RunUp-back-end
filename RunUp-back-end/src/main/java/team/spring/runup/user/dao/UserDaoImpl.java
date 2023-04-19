@@ -42,4 +42,16 @@ public class UserDaoImpl implements UserDao{
 		return result;
 	}
 
+	@Override
+	public User getUserByIdPhone(User insertUser) {
+		User user = session.selectOne("user.getUserByIdPhone", insertUser);
+		return user;
+	}
+
+	@Override
+	public int changePw(User user) {
+		int result = session.update("user.changePw", user);
+		return result;
+	}
+
 }

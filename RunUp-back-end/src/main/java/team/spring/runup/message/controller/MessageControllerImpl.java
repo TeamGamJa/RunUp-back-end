@@ -24,7 +24,7 @@ import team.spring.runup.message.vo.Message;
 @CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 public class MessageControllerImpl implements MessageController {
 
-	// ·Î±× Ãß°¡
+	// ï¿½Î±ï¿½ ï¿½ß°ï¿½
 	Logger log = LogManager.getLogger("case3");
 	
 //	@Autowired
@@ -34,31 +34,31 @@ public class MessageControllerImpl implements MessageController {
 	private MessageServiceImpl service;
 	
 	
-	// ÂÊÁö Àü¼Û(»ý¼º)
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(ï¿½ï¿½)
 	@Override
 	@PostMapping(value="send", produces = "application/json; charset=UTF-8")
 	public int sendMessage(@RequestBody Message message) {
 		log.debug("test");
 		
-		log.debug("sendMessage ½ÇÇà={}", message);
+		log.debug("sendMessage ï¿½ï¿½ï¿½ï¿½={}", message);
 		
 		int result = service.sendMessage(message);
 		
 		if (result ==1) {
-			log.debug("ÂÊÁö »ý¼º ¼º°ø");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} else {
-			log.debug("ÀÌ»óÀÌ ÀÖ¾î¿ä");
+			log.debug("ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½");
 		}
-		log.debug("°á°ú={}", result);
+		log.debug("ï¿½ï¿½ï¿½={}", result);
 		
-//		String jsonResult = gson.toJson("ÂÊÁö »ý¼º ¿Ï·á");
+//		String jsonResult = gson.toJson("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï·ï¿½");
 		
 //		return new ResponseEntity<String>(jsonResult, HttpStatus.OK);
 		return result;
 	}
 
 	
-	// ÂÊÁö »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@Override
 	@PostMapping
 	public ResponseEntity<String> deleteMessage(String messageId) throws Exception {
@@ -67,7 +67,7 @@ public class MessageControllerImpl implements MessageController {
 	}
 
 	
-	// ¹ÞÀº ÂÊÁöÇÔ
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	@GetMapping(value="message/inbox/{messageReceiver}")
 	public List<String> receiveMessageList(String messageReceiver) {
@@ -76,7 +76,7 @@ public class MessageControllerImpl implements MessageController {
 	}
 
 	
-	// º¸³½ ÂÊÁöÇÔ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	@GetMapping(value="message/sentbox/{messageSender}")
 	public List<String> sendMessageList(String messageSender) {
@@ -85,7 +85,7 @@ public class MessageControllerImpl implements MessageController {
 	}
 
 	
-	// ¹ÞÀº ÂÊÁö »ó¼¼
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@Override
 	@GetMapping(value="message/inbox/{messageId}")
 	public Message receiveMessageDetail(String messageId) {
@@ -94,7 +94,7 @@ public class MessageControllerImpl implements MessageController {
 	}
 
 	
-	// º¸³½ ÂÊÁö »ó¼¼
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@Override
 	@GetMapping(value="message/sentbox/{messageId}")
 	public Message sendMessageDetail(String messageId) {

@@ -8,25 +8,25 @@ import team.spring.runup.message.vo.Message;
 
 public interface MessageController {
 
-	// ÂÊÁö Àü¼Û
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	int sendMessage(Message message);
 	
-	// ÂÊÁö »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	ResponseEntity<String> deleteMessage(String messageId) throws Exception;
 	
-	// ¹ŞÀº ÂÊÁöÇÔ
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	List<String> receiveMessageList(String messageReceiver);
 	
-	// º¸³½ ÂÊÁöÇÔ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	List<String> sendMessageList(String messageSender);
 	
-	// ¹ŞÀº ÂÊÁö »ó¼¼
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	Message receiveMessageDetail(String messageId);
 	
-	// º¸³½ ÂÊÁö »ó¼¼
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	Message sendMessageDetail(String messageId);
 	
-	// ÂÊÁö Â÷´Ü
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	
 	
 }
