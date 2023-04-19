@@ -5,12 +5,16 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
 
 import team.spring.runup.message.service.MessageServiceImpl;
 import team.spring.runup.message.vo.Message;
@@ -20,18 +24,37 @@ import team.spring.runup.message.vo.Message;
 @CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 public class MessageControllerImpl implements MessageController {
 
+	// 로그 추가
 	Logger log = LogManager.getLogger("case3");
+	
+//	@Autowired
+//	private Gson gson;
 	
 	@Autowired
 	private MessageServiceImpl service;
 	
 	
-	// 쪽지 전송
+	// 쪽지 전송(생성)
 	@Override
-	@PostMapping(produces = "application/json; charset=UTF-8")
-	public ResponseEntity<String> sendMessage(Message message) {
-		// TODO Auto-generated method stub
-		return null;
+	@PostMapping(value="send", produces = "application/json; charset=UTF-8")
+	public int sendMessage(@RequestBody Message message) {
+		log.debug("test");
+		
+		log.debug("sendMessage 실행={}", message);
+		
+		int result = service.sendMessage(message);
+		
+		if (result ==1) {
+			log.debug("쪽지 생성 성공");
+		} else {
+			log.debug("이상이 있어요");
+		}
+		log.debug("결과={}", result);
+		
+//		String jsonResult = gson.toJson("쪽지 생성 완료");
+		
+//		return new ResponseEntity<String>(jsonResult, HttpStatus.OK);
+		return result;
 	}
 
 	

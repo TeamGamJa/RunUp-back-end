@@ -9,7 +9,7 @@ import team.spring.runup.message.vo.Message;
 public interface MessageController {
 
 	// 쪽지 전송
-	ResponseEntity<String> sendMessage(Message message);
+	int sendMessage(Message message);
 	
 	// 쪽지 삭제
 	ResponseEntity<String> deleteMessage(String messageId) throws Exception;
@@ -26,7 +26,7 @@ public interface MessageController {
 	// 보낸 쪽지 상세
 	Message sendMessageDetail(String messageId);
 	
-	// 쪽지 신고
+	// 쪽지 차단
 	
 	
 }
