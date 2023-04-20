@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryBig {
+public class Category {
 	private int BigNum;
 	private String CategoryBig;
+	private String CategoryMedium;
 }

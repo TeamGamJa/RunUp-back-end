@@ -6,8 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import team.spring.runup.running.vo.CategoryBig;
-import team.spring.runup.running.vo.CategoryMedium;
+import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Running;
 
 @Repository
@@ -17,14 +16,14 @@ public class RunningDaoImpl implements RunningDao {
 	private SqlSession session;
 	
 	@Override
-	public List<CategoryBig> selectCategoryBigAll() {
-		List<CategoryBig> list = session.selectList("running.selectCategoryBigList");
+	public List<Category> selectCategoryBigAll() {
+		List<Category> list = session.selectList("running.selectCategoryBigList");
 		return list;
 	}
 	
 	@Override
-	public List<CategoryMedium> selectCategoryMediumAll() {
-		List<CategoryMedium> list = session.selectList("running.selectCategoryMediumList");
+	public List<Category> selectCategoryMediumAll(Category category) {
+		List<Category> list = session.selectList("running.selectCategoryMediumList",category);
 		return list;
 	}
 	

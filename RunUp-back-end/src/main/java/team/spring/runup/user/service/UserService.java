@@ -1,6 +1,7 @@
 package team.spring.runup.user.service;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,11 @@ public class UserService {
 	public User getUserById(String userId) {
 		User user = dao.getUserById(userId);
 		return user;
+	}
+	
+	public List<User> getUserByNickname(String userNickname) {
+		List<User> list = dao.getUserByNickname(userNickname);
+		return list;
 	}
 
 	public int checkUserId(String userId) {
