@@ -9,7 +9,7 @@ public interface RunningDao {
 
 	List<String> selectCategoryBigAll();
 	
-	List<String> selectCategoryMediumAll();
+	List<String> selectCategoryMediumAll(String categoryBig);
 	
 //	List<Category> selectCategoryMediumAll(Category category);
 	
