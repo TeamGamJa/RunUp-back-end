@@ -33,7 +33,7 @@ public class EmailController {
 		email.setTitle("test");
 		email.setContent("test");
 		
-		boolean result = service.sendMail(email);
+		int result = service.sendMail(email);
 		log.debug("Test4444444444" + result);
 		
 		return null;

@@ -32,4 +32,12 @@
    	  		 userUrl=#{userUrl}, userLuxColor=0, userReportCnt=0
    	  where userId=#{userId}
    </update>
+   
+   <select id="getUserByIdPhone" parameterType="User" resultType="String">
+      select userId from user where userId=#{userId} and userPhone=#{userPhone}
+   </select>
+   
+   <update id="changePw" parameterType="User">
+   	  update user set userPw=#{userPw} where userId=#{userId}
+   </update>
 </mapper>

@@ -18,6 +18,8 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import team.spring.runup.email.service.EmailService;
+import team.spring.runup.email.vo.Email;
 import team.spring.runup.user.service.UserService;
 import team.spring.runup.user.vo.User;
 
@@ -31,6 +33,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private EmailService emailService;
 	
 	@GetMapping(value="login")
 	public User login(@RequestParam(value="userId", 
@@ -97,6 +101,38 @@ public class UserController {
 		
 		int result = 0;
 		result = userService.deleteUser(userId);
+		
+		return result;
+	}
+	
+	@GetMapping(value="password")
+	public int findPw(@RequestParam(value="userId", 
+			required=false) String userId, @RequestParam(value="userPw", 
+			required=false) String userPhone) throws JsonProcessingException {
+		
+		String newPw = userService.makeNewPw();
+		Email email = new Email();
+		int result = 0;
+		User user = new User();
+		
+		user.setUserId(userId);
+		user.setUserPhone(userPhone);
+		result = userService.matchUserIdPhone(user);
+		log.debug(result);
+		if (result == 1) {
+			email.setReceiver(userId);
+			email.setTitle(userId + " 님의 비밀번호 찾기 결과");
+			email.setContent(userId + "님의 임시 비밀번호는 : " + newPw + "입니다.\n로그인후 비밀번호를 변경해주세요!");
+			
+			try {
+				result = emailService.sendMail(email);
+				user.setUserPw(newPw);
+				result = userService.changePw(user);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		return result;
 	}

@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:beans="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	
@@ -43,6 +45,7 @@
       <constructor-arg ref="sqlSessionFactory" />
    </bean>
    
+   
    <beans:bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
 	    <beans:property name="host" value="smtp.gmail.com" />
 	    <beans:property name="port" value="25" />
@@ -59,4 +62,9 @@
 	    </beans:property>
 	</beans:bean>
 
+	<!-- <websocket:handlers>
+		<websocket:mapping handler="chattingHandler" path="/chatting"/>
+		<websocket:sockjs></websocket:sockjs>
+	</websocket:handlers>
+	<beans:bean id="chattingHandler" class="org.practice.handler.ChattingHandler"/> -->
 </beans>
