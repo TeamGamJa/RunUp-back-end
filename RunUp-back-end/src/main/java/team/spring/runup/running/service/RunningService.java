@@ -20,8 +20,8 @@ public class RunningService {
 		return list;
 	}
 	
-	public List<String> selectCategoryMediumAll() {
-		List<String> list = dao.selectCategoryMediumAll();
+	public List<String> selectCategoryMediumAll(String categoryBig) {
+		List<String> list = dao.selectCategoryMediumAll(categoryBig);
 		return list;
 	}
 	

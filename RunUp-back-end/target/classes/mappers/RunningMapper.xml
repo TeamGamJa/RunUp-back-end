@@ -14,7 +14,7 @@
    
    <select id="selectCategoryMediumList" resultType="String">
     <![CDATA[
-      select distinct categoryMedium from category
+      select distinct categoryMedium from category where categoryBig = #{categoryBig}
     ]]>  
    </select>
    
@@ -50,8 +50,9 @@
    <update id="updateRunning" parameterType="Running" >
    <![CDATA[
      update running set runningTitle = #{runningTitle}, runningContent = #{runningContent}, 
-     runningCategorybig=#{runningCategorybig}, runningCategorymedium=#{runningCategorymedium},
-     runningStartbig 
+     runningCategorybig = #{runningCategorybig}, runningCategorymedium = #{runningCategorymedium},
+     runningStartbig = #{runningStartbig}, runningStartsmall = #{runningStartsmall}, 
+     runningEndbig = #{running 
      where userNum = #{userNum} and runningNum = #{runningNum}
    ]]>
    </update>

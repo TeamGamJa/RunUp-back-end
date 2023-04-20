@@ -45,35 +45,34 @@ Logger log = LogManager.getLogger("case3");
 	@Autowired
 	private QuestionService questionservice;
 	
-	@GetMapping(value="category")
+	@GetMapping(value="categorybig")
 	public HashMap<Object, Object> searchCategoryBig() throws JsonProcessingException {
 		
 		List<String> categoryBig = runningservice.selectCategoryBigAll();
-		List<String> categoryMedium = runningservice.selectCategoryMediumAll();
+		
 		
 		log.debug(categoryBig);
-		log.debug(categoryMedium);
+		
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
 		hashmap.put("categoryBig", categoryBig);
-		hashmap.put("categoryMedium", categoryMedium);
+		
 		
 		return hashmap;
 	}
 	
-//	@GetMapping(value="categorymedium")
-//	public HashMap<Object, Object> searchCategoryMedium(@RequestParam(value="big", 
-//			required=false) String big) throws JsonProcessingException {
-//		
-//		Category category = new Category();
-//		category.setCategoryBig(big);
-//		List<Category> mediumlist = runningservice.selectCategoryMediumAll(category);
-//		
-//		log.debug(mediumlist);
-//		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-//	    hashmap.put("mediumlist", mediumlist);
-//		
-//		return hashmap;
-//	}
+	@GetMapping(value="categorymedium")
+	public HashMap<Object, Object> searchCategoryMedium(@RequestParam(value="categoryBig", 
+			required=false) String categoryBig) throws JsonProcessingException {
+		
+		
+		List<String> categoryMedium = runningservice.selectCategoryMediumAll(categoryBig);
+		
+		log.debug(categoryMedium);
+		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
+		hashmap.put("categoryMedium", categoryMedium);
+		
+		return hashmap;
+	}
 	
 	@GetMapping(value="bar")
 	public HashMap<Object, Object> barSearch(@RequestParam(value="keyword", required=false) String keyword) throws JsonProcessingException {

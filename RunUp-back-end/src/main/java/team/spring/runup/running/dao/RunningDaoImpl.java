@@ -22,8 +22,8 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public List<String> selectCategoryMediumAll() {
-		List<String> list = session.selectList("running.selectCategoryMediumList");
+	public List<String> selectCategoryMediumAll(String categoryBig) {
+		List<String> list = session.selectList("running.selectCategoryMediumList", categoryBig);
 		return list;
 	}
 	
