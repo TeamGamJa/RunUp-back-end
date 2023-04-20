@@ -25,7 +25,7 @@ import team.spring.runup.user.vo.User;
 
 @RestController
 @RequestMapping(value="user",produces="application/json")
-@CrossOrigin(origins = "http://127.0.0.1:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 public class UserController {
 
 	Logger log = LogManager.getLogger("case3");
@@ -118,7 +118,7 @@ public class UserController {
 		user.setUserId(userId);
 		user.setUserPhone(userPhone);
 		result = userService.matchUserIdPhone(user);
-		log.debug(result);
+
 		if (result == 1) {
 			email.setReceiver(userId);
 			email.setTitle(userId + " 님의 비밀번호 찾기 결과");

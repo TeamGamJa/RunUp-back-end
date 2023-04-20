@@ -16,27 +16,25 @@ import team.spring.runup.email.vo.Email;
 @RequestMapping(value="mail")
 public class EmailController {
 	
-	Logger log = LogManager.getLogger("case3");
-	
-	@Autowired
-	protected EmailService service;
-	
-	@GetMapping
-	public String sendMail(@RequestParam(value="userId", 
-			required=false) String userId) throws Exception {
-		
-		log.debug("들어왔는지 확인");
-		Email email = new Email();
-		
-		log.debug(userId);
-		email.setReceiver(userId);
-		email.setTitle("test");
-		email.setContent("test");
-		
-		int result = service.sendMail(email);
-		log.debug("Test4444444444" + result);
-		
-		return null;
-	}
+//	Logger log = LogManager.getLogger("case3");
+//	
+//	@Autowired
+//	protected EmailService service;
+//	
+//	@GetMapping
+//	public String sendMail(@RequestParam(value="userId", 
+//			required=false) String userId) throws Exception {
+//		
+//		Email email = new Email();
+//		
+//		log.debug(userId);
+//		email.setReceiver(userId);
+//		email.setTitle("test");
+//		email.setContent("test");
+//		
+//		boolean result = service.sendMail(email);
+//		
+//		return null;
+//	}
 
 }

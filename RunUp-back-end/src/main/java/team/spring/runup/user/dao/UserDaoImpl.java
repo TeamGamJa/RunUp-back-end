@@ -1,5 +1,7 @@
 package team.spring.runup.user.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +25,13 @@ public class UserDaoImpl implements UserDao{
 		User user = session.selectOne("user.getUserByUserId", userId);
 		return user;
 	}
-
+	
+	@Override
+	public List<User> getUserByNickname(String userNickname) {
+		List<User> user = session.selectList("user.getUserByNickname", userNickname);
+		return user;
+	}
+	
 	@Override
 	public int registUser(User user) {
 		int result = session.insert("user.registUser", user);

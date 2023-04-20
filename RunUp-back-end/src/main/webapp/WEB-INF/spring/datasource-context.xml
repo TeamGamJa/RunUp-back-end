@@ -35,6 +35,8 @@
             <!-- <value>classpath:mappers/SurveyMapper.xml</value> -->
             <value>classpath:mappers/UserMapper.xml</value>
             <value>classpath:mappers/RunningMapper.xml</value>
+            <value>classpath:mappers/MessageMapper.xml</value>
+            <value>classpath:mappers/QuestionMapper.xml</value>
          </list>
       </property>
    </bean>

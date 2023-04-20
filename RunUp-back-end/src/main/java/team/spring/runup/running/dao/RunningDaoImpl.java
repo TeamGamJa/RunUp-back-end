@@ -6,8 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import team.spring.runup.running.vo.CategoryBig;
-import team.spring.runup.running.vo.CategoryMedium;
+import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Running;
 
 @Repository
@@ -17,20 +16,26 @@ public class RunningDaoImpl implements RunningDao {
 	private SqlSession session;
 	
 	@Override
-	public List<CategoryBig> selectCategoryBigAll() {
-		List<CategoryBig> list = session.selectList("running.selectCategoryBigList");
+	public List<String> selectCategoryBigAll() {
+		List<String> list = session.selectList("running.selectCategoryBigList");
 		return list;
 	}
 	
 	@Override
-	public List<CategoryMedium> selectCategoryMediumAll() {
-		List<CategoryMedium> list = session.selectList("running.selectCategoryMediumList");
+	public List<String> selectCategoryMediumAll() {
+		List<String> list = session.selectList("running.selectCategoryMediumList");
 		return list;
 	}
 	
 	@Override
-	public List<Running> selectRunningList(Running run) {
-		List<Running> list = session.selectList("running.selectRunningList",run);
+	public List<String> selectCategoryMediumList(String categoryBig) {
+		List<String> list = session.selectList("running.selectCategoryMediumListByCategoryBig", categoryBig);
+		return list;
+	}
+	
+	@Override
+	public List<Running> selectRunningList() {
+		List<Running> list = session.selectList("running.selectRunningList");
 		return list;
 	}
 	
@@ -54,7 +59,7 @@ public class RunningDaoImpl implements RunningDao {
 	
 	@Override
 	public int updateRunning(Running run) {
-		int result = session.insert("running.updateRunning",run);
+		int result = session.update("running.updateRunning",run);
 		return result;
 	}
 }
