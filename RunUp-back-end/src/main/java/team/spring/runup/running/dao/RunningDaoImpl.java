@@ -28,8 +28,8 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public List<Running> selectRunningList(Running run) {
-		List<Running> list = session.selectList("running.selectRunningList",run);
+	public List<Running> selectRunningList() {
+		List<Running> list = session.selectList("running.selectRunningList");
 		return list;
 	}
 	
@@ -53,7 +53,7 @@ public class RunningDaoImpl implements RunningDao {
 	
 	@Override
 	public int updateRunning(Running run) {
-		int result = session.insert("running.updateRunning",run);
+		int result = session.update("running.updateRunning",run);
 		return result;
 	}
 }

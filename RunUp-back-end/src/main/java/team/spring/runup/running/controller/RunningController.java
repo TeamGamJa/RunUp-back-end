@@ -72,18 +72,6 @@ Logger log = LogManager.getLogger("case3");
 		return hashmap;
 	}
 	
-	@GetMapping(value="search")
-	public HashMap<Object, Object> searchRunningAll(@RequestParam(value="usernum", required=false) int usernum) throws JsonProcessingException {
-		
-		Running run = new Running();
-		run.setUserNum(usernum);
-		List<Running> runninglistall = runningservice.selectRunningList(run); 
-		log.debug(runninglistall);
-		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-		hashmap.put("runninglistall", runninglistall);
-		return hashmap;
-	}
-	
 	@GetMapping(value="bar")
 	public HashMap<Object, Object> barSearch(@RequestParam(value="keyword", required=false) String keyword) throws JsonProcessingException {
 		
@@ -101,20 +89,41 @@ Logger log = LogManager.getLogger("case3");
 		return hashmap;
 	}
 	
+	@GetMapping(value="s")
+	public HashMap<Object, Object> searchRunning(@RequestParam(value="num", required=false) int num) throws JsonProcessingException {
+		
+		List<Running> runninglistall = runningservice.selectRunningList(); 
+		log.debug(runninglistall);
+		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
+		hashmap.put("runninglistall", runninglistall);
+		return hashmap;
+	}
+	
 	@PostMapping(value="i")
 	public HashMap<Object, Object> createRunning(@RequestParam(value="title", required=false) String title, 
-			@RequestParam(value="content",required=false) String content, @RequestParam(value="RunningCategoryBig",required=false) String RunningCategoryBig,
+			@RequestParam(value="content",required=false) String content, 
+			@RequestParam(value="categorybig",required=false) String categorybig,
 			@RequestParam(value="categorymedium",required=false) String categorymedium,
+			@RequestParam(value="startbig",required=false) int startbig,
+			@RequestParam(value="startsmall",required=false) int startsmall,
+			@RequestParam(value="endbig",required=false) int endbig,
+			@RequestParam(value="endsmall",required=false) int endsmall,
+			@RequestParam(value="keep",required=false) boolean keep,
 			@RequestParam(value="usernum",required=false) int usernum) throws JsonProcessingException {
-		log.debug(RunningCategoryBig);
+		
+		log.debug(keep);
 		Running run = new Running();
 		run.setRunningTitle(title);
 		run.setRunningContent(content);
-		run.setRunningCategoryBig(RunningCategoryBig);
+		run.setRunningCategoryBig(categorybig);
 		run.setRunningCategoryMedium(categorymedium);
+		run.setRunningStartBig(startbig);
+		run.setRunningStartSmall(startsmall);
+		run.setRunningEndBig(endbig);
+		run.setRunningEndSmall(endsmall);
+		run.setRunningKeep(keep);
 		run.setUserNum(usernum);
 		log.debug(run);
-		log.debug(RunningCategoryBig);
 		
 		int result = runningservice.createRunning(run);
 		log.debug(result);

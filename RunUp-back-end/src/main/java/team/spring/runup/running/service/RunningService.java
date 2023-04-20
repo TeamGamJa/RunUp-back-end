@@ -25,8 +25,8 @@ public class RunningService {
 		return list;
 	}
 	
-	public List<Running> selectRunningList(Running run) {
-		List<Running> list = dao.selectRunningList(run);
+	public List<Running> selectRunningList() {
+		List<Running> list = dao.selectRunningList();
 		return list;
 	}
 	
