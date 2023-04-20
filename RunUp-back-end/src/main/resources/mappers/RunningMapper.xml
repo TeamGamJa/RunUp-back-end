@@ -6,50 +6,53 @@
 
 <mapper namespace="running">
    
-   <select id="selectCategoryBigList" resultType="Category">
+   <select id="selectCategoryBigList" resultType="String">
     <![CDATA[
-      select distinct CategoryBig from category
+      select distinct categoryBig from category
     ]]>  
    </select>
    
-   <select id="selectCategoryMediumList" parameterType = "Category" resultType="Category">
-   <![CDATA[
-      select * from category where CategoryBig = #{CategoryBig}
-   ]]>     
+   <select id="selectCategoryMediumList" resultType="String">
+    <![CDATA[
+      select distinct categoryMedium from category
+    ]]>  
    </select>
    
    <select id="selectRunningList" parameterType = "Running" resultType="Running">
    <![CDATA[
    	  select * 
-   	  from running where RunningShow = 1
+   	  from running where runningShow = 1
    ]]>
    </select>
    
    <select id="selectRunningByKeyword" parameterType="String" resultType="Running">
    <![CDATA[
       select *
-      from running where RunningShow = 1 and RunningTitle Like CONCAT('%', #{keyword},'%')
+      from running where runningShow = 1 and runningTitle Like CONCAT('%', #{keyword},'%')
    ]]>
    </select>
    
    <insert id="createRunning" parameterType="Running">
    <![CDATA[
-     insert into running(RunningTitle,RunningContent,RunningCategoryBig,
-     RunningCategoryMedium) values (#{RunningTitle}, #{RunningContent}, #{RunningCategoryBig},
-     #{RunningCategoryMedium})
+     insert into running(runningTitle,runningContent,runningCategorybig,
+     runningCategorymedium, runningStartbig, runningStartsmall, runnihgEndbig, runningEndsmall,runningKeep,userNum) 
+     values (#{runningTitle}, #{runningContent}, #{runningCategorybig}, #{runningCategorymedium}, #{runningStartbig}, 
+     #{runningStartsmall}, #{runningEndbig}, #{runningEndsmall}, #{runningKeep}, #{userNum})
    ]]>
    </insert>
    
    <delete id="deleteRunning" parameterType="Running">
    <![CDATA[
-     delete from running where userNum=#{userNum}
+     delete from running where userNum = #{userNum} and runningNum = #{runningNum}
    ]]>
    </delete>
    
    <update id="updateRunning" parameterType="Running" >
    <![CDATA[
-     update running set RunningTitle=#{RunningTitle},RunningContent=#{RunningContent}, RunningCategoryBig=#{RunningCategoryBig},
-     RunningCategoryMedium=#{RunningCategoryMedium} where userNum = #{userNum}
+     update running set runningTitle = #{runningTitle}, runningContent = #{runningContent}, 
+     runningCategorybig=#{runningCategorybig}, runningCategorymedium=#{runningCategorymedium},
+     runningStartbig 
+     where userNum = #{userNum} and runningNum = #{runningNum}
    ]]>
    </update>
    

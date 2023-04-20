@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Running {
-	private String RunningNum;
+	private int RunningNum;
 	private String RunningTitle;
 	private String RunningContent;
 	private String RunningCategoryBig;
