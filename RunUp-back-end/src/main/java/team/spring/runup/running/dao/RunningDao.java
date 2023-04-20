@@ -7,9 +7,11 @@ import team.spring.runup.running.vo.Running;
 
 public interface RunningDao {
 
-	List<Category> selectCategoryBigAll();
+	List<String> selectCategoryBigAll();
 	
-	List<Category> selectCategoryMediumAll(Category category);
+	List<String> selectCategoryMediumAll();
+	
+//	List<Category> selectCategoryMediumAll(Category category);
 	
 	List<Running> selectRunningList();
 	

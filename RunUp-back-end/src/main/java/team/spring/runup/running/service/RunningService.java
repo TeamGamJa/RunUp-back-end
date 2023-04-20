@@ -15,13 +15,13 @@ public class RunningService {
 	@Autowired
 	private RunningDao dao;
 	
-	public List<Category> selectCategoryBigAll() {
-		List<Category> list = dao.selectCategoryBigAll();
+	public List<String> selectCategoryBigAll() {
+		List<String> list = dao.selectCategoryBigAll();
 		return list;
 	}
 	
-	public List<Category> selectCategoryMediumAll(Category category) {
-		List<Category> list = dao.selectCategoryMediumAll(category);
+	public List<String> selectCategoryMediumAll() {
+		List<String> list = dao.selectCategoryMediumAll();
 		return list;
 	}
 	

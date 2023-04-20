@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,33 +45,35 @@ Logger log = LogManager.getLogger("case3");
 	@Autowired
 	private QuestionService questionservice;
 	
-	@GetMapping(value="categorybig")
-	public HashMap<Object, Object> searchCategoryBig(@RequestParam(value="hello", 
-			required=false) String hello) throws JsonProcessingException {
+	@GetMapping(value="category")
+	public HashMap<Object, Object> searchCategoryBig() throws JsonProcessingException {
 		
-		List<Category> biglist = runningservice.selectCategoryBigAll();
+		List<String> categoryBig = runningservice.selectCategoryBigAll();
+		List<String> categoryMedium = runningservice.selectCategoryMediumAll();
 		
-		log.debug(biglist);
+		log.debug(categoryBig);
+		log.debug(categoryMedium);
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-		hashmap.put("biglist", biglist);
+		hashmap.put("categoryBig", categoryBig);
+		hashmap.put("categoryMedium", categoryMedium);
 		
 		return hashmap;
 	}
 	
-	@GetMapping(value="categorymedium")
-	public HashMap<Object, Object> searchCategoryMedium(@RequestParam(value="big", 
-			required=false) String big) throws JsonProcessingException {
-		
-		Category category = new Category();
-		category.setCategoryBig(big);
-		List<Category> mediumlist = runningservice.selectCategoryMediumAll(category);
-		
-		log.debug(mediumlist);
-		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-	    hashmap.put("mediumlist", mediumlist);
-		
-		return hashmap;
-	}
+//	@GetMapping(value="categorymedium")
+//	public HashMap<Object, Object> searchCategoryMedium(@RequestParam(value="big", 
+//			required=false) String big) throws JsonProcessingException {
+//		
+//		Category category = new Category();
+//		category.setCategoryBig(big);
+//		List<Category> mediumlist = runningservice.selectCategoryMediumAll(category);
+//		
+//		log.debug(mediumlist);
+//		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
+//	    hashmap.put("mediumlist", mediumlist);
+//		
+//		return hashmap;
+//	}
 	
 	@GetMapping(value="bar")
 	public HashMap<Object, Object> barSearch(@RequestParam(value="keyword", required=false) String keyword) throws JsonProcessingException {
@@ -90,13 +93,11 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@GetMapping(value="s")
-	public HashMap<Object, Object> searchRunning(@RequestParam(value="num", required=false) int num) throws JsonProcessingException {
+	public ResponseEntity<List<Running>> searchRunning() throws JsonProcessingException {
 		
 		List<Running> runninglistall = runningservice.selectRunningList(); 
 		log.debug(runninglistall);
-		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-		hashmap.put("runninglistall", runninglistall);
-		return hashmap;
+		return ResponseEntity.ok(runninglistall);
 	}
 	
 	@PostMapping(value="i")
@@ -135,26 +136,28 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@DeleteMapping(value="d") 
-	public HashMap<Object, Object> deleteRunning(@RequestParam(value="usernum", required=false) int usernum) throws JsonProcessingException {
-		log.debug(usernum);
+	public ResponseEntity<Integer> deleteRunning(@RequestParam int usernum, 
+			@RequestParam int runningnum) {
+		
 		Running run = new Running();
 		run.setUserNum(usernum);
+		run.setRunningNum(runningnum);
 		log.debug(run);
 		
 		int result = runningservice.deleteRunning(run);
 		log.debug(result);
 		
-		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-		hashmap.put("result", result);
-		return hashmap;
+
+		return ResponseEntity.ok(result);
 		
 	}
 	
 	@PutMapping(value="u") 
-	public HashMap<Object, Object> updateRunning(@RequestParam(value="title", required=false) String title, 
-			@RequestParam(value="content",required=false) String content, @RequestParam(value="categorybig",required=false) String categorybig,
+	public int updateRunning(@RequestBody String title, 
+			@RequestBody String content, @RequestBody String categorybig,
 			@RequestParam(value="categorymedium",required=false) String categorymedium,
 			@RequestParam(value="usernum",required=false) int usernum) throws JsonProcessingException {
+		
 		log.debug(usernum);
 		Running run = new Running();
 		run.setRunningTitle(title);
@@ -167,9 +170,7 @@ Logger log = LogManager.getLogger("case3");
 		int result = runningservice.updateRunning(run);
 		log.debug(result);
 		
-		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-		hashmap.put("result", result);
-		return hashmap;
 		
+		return result;
 	}
 }

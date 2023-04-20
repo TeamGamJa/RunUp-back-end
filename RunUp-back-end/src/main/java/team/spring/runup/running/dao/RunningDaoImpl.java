@@ -16,14 +16,14 @@ public class RunningDaoImpl implements RunningDao {
 	private SqlSession session;
 	
 	@Override
-	public List<Category> selectCategoryBigAll() {
-		List<Category> list = session.selectList("running.selectCategoryBigList");
+	public List<String> selectCategoryBigAll() {
+		List<String> list = session.selectList("running.selectCategoryBigList");
 		return list;
 	}
 	
 	@Override
-	public List<Category> selectCategoryMediumAll(Category category) {
-		List<Category> list = session.selectList("running.selectCategoryMediumList",category);
+	public List<String> selectCategoryMediumAll() {
+		List<String> list = session.selectList("running.selectCategoryMediumList");
 		return list;
 	}
 	
