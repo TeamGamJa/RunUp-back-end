@@ -9,9 +9,9 @@ public interface RunningDao {
 
 	List<String> selectCategoryBigAll();
 	
-	List<String> selectCategoryMediumAll(String categoryBig);
+	List<String> selectCategoryMediumAll();
 	
-//	List<Category> selectCategoryMediumAll(Category category);
+	List<String> selectCategoryMediumList(String categoryBig);
 	
 	List<Running> selectRunningList();
 	

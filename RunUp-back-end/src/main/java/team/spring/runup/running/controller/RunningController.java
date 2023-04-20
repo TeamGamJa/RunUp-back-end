@@ -45,6 +45,23 @@ Logger log = LogManager.getLogger("case3");
 	@Autowired
 	private QuestionService questionservice;
 	
+	@GetMapping(value="category")
+	public HashMap<Object, Object> searchCategoryAll() throws JsonProcessingException {
+		
+		List<String> categoryBig = runningservice.selectCategoryBigAll();
+		List<String> categoryMedium = runningservice.selectCategoryMediumAll();
+		
+		log.debug(categoryBig);
+		log.debug(categoryMedium);
+		
+		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
+		hashmap.put("categoryBig", categoryBig);
+		hashmap.put("categoryMedium", categoryMedium);
+		
+		
+		return hashmap;
+	}
+	
 	@GetMapping(value="categorybig")
 	public HashMap<Object, Object> searchCategoryBig() throws JsonProcessingException {
 		
@@ -65,7 +82,7 @@ Logger log = LogManager.getLogger("case3");
 			required=false) String categoryBig) throws JsonProcessingException {
 		
 		
-		List<String> categoryMedium = runningservice.selectCategoryMediumAll(categoryBig);
+		List<String> categoryMedium = runningservice.selectCategoryMediumList(categoryBig);
 		
 		log.debug(categoryMedium);
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
