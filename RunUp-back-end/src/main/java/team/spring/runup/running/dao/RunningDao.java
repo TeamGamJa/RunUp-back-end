@@ -11,7 +11,7 @@ public interface RunningDao {
 	
 	List<Category> selectCategoryMediumAll(Category category);
 	
-	List<Running> selectRunningList(Running run);
+	List<Running> selectRunningList();
 	
 	List<Running> selectRunningByKeyword(String keyword);
 	

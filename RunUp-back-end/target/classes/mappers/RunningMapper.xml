@@ -21,14 +21,14 @@
    <select id="selectRunningList" parameterType = "Running" resultType="Running">
    <![CDATA[
    	  select * 
-   	  from running where userNum = #{userNum}
+   	  from running where RunningShow = 1
    ]]>
    </select>
    
    <select id="selectRunningByKeyword" parameterType="String" resultType="Running">
    <![CDATA[
       select *
-      from running where RunningTitle Like CONCAT('%', #{keyword},'%')
+      from running where RunningShow = 1 and RunningTitle Like CONCAT('%', #{keyword},'%')
    ]]>
    </select>
    
