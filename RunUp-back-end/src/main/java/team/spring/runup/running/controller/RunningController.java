@@ -116,6 +116,22 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(runninglistall);
 	}
 	
+	@GetMapping(value="s1")
+	public ResponseEntity<List<Running>> searchRunningBycategoryBig(@RequestParam(value="categoryBig", required=false) String categoryBig) throws JsonProcessingException {
+		
+		List<Running> runninglistall = runningservice.selectRunningBycategoryBig(categoryBig); 
+		log.debug(runninglistall);
+		return ResponseEntity.ok(runninglistall);
+	}
+	
+	@GetMapping(value="s2")
+	public ResponseEntity<List<Running>> searchRunningBycategoryMedium(@RequestParam(value="categoryMedium", required=false) String categoryMedium) throws JsonProcessingException {
+		
+		List<Running> runninglistall = runningservice.selectRunningBycategoryMedium(categoryMedium); 
+		log.debug(runninglistall);
+		return ResponseEntity.ok(runninglistall);
+	}
+	
 	@PostMapping(value="i")
 	public HashMap<Object, Object> createRunning(@RequestParam(value="title", required=false) String title, 
 			@RequestParam(value="content",required=false) String content, 

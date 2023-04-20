@@ -35,6 +35,16 @@ public class RunningService {
 		return list;
 	}
 	
+	public List<Running> selectRunningBycategoryBig(String categoryBig) {
+		List<Running> list = dao.selectRunningBycategoryBig(categoryBig);
+		return list;
+	}
+	
+	public List<Running> selectRunningBycategoryMedium(String categoryMedium) {
+		List<Running> list = dao.selectRunningBycategoryMedium(categoryMedium);
+		return list;
+	}
+	
 	public List<Running> selectRunningByKeyword(String keyword) {
 		List<Running> list = dao.selectRunningByKeyword(keyword);
 		return list;

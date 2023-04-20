@@ -15,6 +15,10 @@ public interface RunningDao {
 	
 	List<Running> selectRunningList();
 	
+	List<Running> selectRunningBycategoryBig(String categoryBig);
+	
+	List<Running> selectRunningBycategoryMedium(String categoryMedium);
+	
 	List<Running> selectRunningByKeyword(String keyword);
 	
 	int createRunning(Running run);
