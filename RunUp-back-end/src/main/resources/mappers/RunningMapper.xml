@@ -24,10 +24,24 @@
     ]]>  
    </select>
    
-   <select id="selectRunningList" parameterType = "Running" resultType="Running">
+   <select id="selectRunningList" resultType="Running">
    <![CDATA[
    	  select * 
    	  from running where runningShow = 1
+   ]]>
+   </select>
+   
+   <select id="selectRunningBycategorybig" parameterType = "String" resultType="Running">
+   <![CDATA[
+   	  select * 
+   	  from running where runningShow = 1 and RunningCategoryBig = #{RunningCategoryBig}
+   ]]>
+   </select>
+   
+   <select id="selectRunningBycategorymedium" parameterType = "String" resultType="Running">
+   <![CDATA[
+   	  select * 
+   	  from running where runningShow = 1 and RunningCategoryMedium = #{RunningCategoryMedium}
    ]]>
    </select>
    
