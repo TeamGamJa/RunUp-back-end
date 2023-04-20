@@ -14,6 +14,12 @@
    
    <select id="selectCategoryMediumList" resultType="String">
     <![CDATA[
+      select distinct categoryMedium from category
+    ]]>  
+   </select>
+   
+   <select id="selectCategoryMediumListByCategoryBig" resultType="String">
+    <![CDATA[
       select distinct categoryMedium from category where categoryBig = #{categoryBig}
     ]]>  
    </select>
