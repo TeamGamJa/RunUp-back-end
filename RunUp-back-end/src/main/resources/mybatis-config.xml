@@ -16,6 +16,7 @@
 	 <typeAliases>
 	 	<typeAlias type="team.spring.runup.user.vo.User" alias="User"/>
 	 	<typeAlias type="team.spring.runup.running.vo.Running" alias="Running"/>
+	 	<typeAlias type="team.spring.runup.running.vo.Runup" alias="Runup"/>
 	 	<typeAlias type="team.spring.runup.message.vo.Message" alias="Message"/>
 	 	<typeAlias type="team.spring.runup.running.vo.Category" alias="Category"/>
 		<typeAlias type="team.spring.runup.question.vo.Question" alias="Question"/>

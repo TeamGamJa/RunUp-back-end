@@ -52,7 +52,7 @@
    ]]>
    </select>
    
-   <select id="selectRunning" resultType="Running">
+   <select id="selectRunning" parameterType="Running" resultType="Running">
    <![CDATA[
    	  select * 
    	  from running where runningNum = #{runningNum}

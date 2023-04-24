@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.Runup;
 
 @Repository
 public class RunningDaoImpl implements RunningDao {

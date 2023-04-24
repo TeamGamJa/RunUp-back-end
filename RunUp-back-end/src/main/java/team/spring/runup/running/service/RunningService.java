@@ -1,5 +1,6 @@
 package team.spring.runup.running.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,18 @@ import org.springframework.stereotype.Service;
 import team.spring.runup.running.dao.RunningDao;
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.Runup;
+import team.spring.runup.user.dao.UserDao;
+import team.spring.runup.user.vo.User;
 
 @Service
 public class RunningService {
 	
 	@Autowired
 	private RunningDao dao;
+	
+	@Autowired
+	private UserDao udao;
 	
 	public List<String> selectCategoryBigAll() {
 		List<String> list = dao.selectCategoryBigAll();
@@ -30,9 +37,26 @@ public class RunningService {
 		return list;
 	}
 	
-	public List<Running> selectRunningList() {
+	public List<Runup> selectRunningList() {
+		int i=0 ;
 		List<Running> list = dao.selectRunningList();
-		return list;
+		List<Runup> resultList = new ArrayList<>();
+		while (i<list.size()) {
+			Running running = list.get(i);
+			User user = udao.getUserByNum(running.getUserNum());
+			Runup runup = new Runup();
+			runup.setRunningNum(running.getRunningNum());
+			runup.setRunningTitle(running.getRunningTitle());
+			runup.setUserNickname(user.getUserNickname());
+			runup.setRunningCategoryMedium(running.getRunningCategoryMedium());
+			runup.setUserLuxColor(user.getUserLuxColor());
+			runup.setUserMentorCnt(user.getUserMentorCnt());
+			runup.setRunningDate(running.getRunningDate());
+			runup.setRunningAble(running.isRunningAble());
+			resultList.add(runup);
+			i++;
+		}
+		return resultList;
 	}
 	
 	public Running selectRunning(Running run) {

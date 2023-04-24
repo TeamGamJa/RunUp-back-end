@@ -33,6 +33,12 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
+	public User getUserByNum(int userNum) {
+		User user = session.selectOne("user.getUserByNum", userNum);
+		return user;
+	}
+	
+	@Override
 	public int registUser(User user) {
 		int result = session.insert("user.registUser", user);
 		return result;
