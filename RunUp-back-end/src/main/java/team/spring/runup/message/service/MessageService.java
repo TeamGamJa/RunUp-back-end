@@ -6,10 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import team.spring.runup.message.dao.MessageDaoImpl;
 import team.spring.runup.message.vo.Message;
@@ -37,7 +34,7 @@ public class MessageService {
 				throw new Exception("error");
 			}
 		} catch (Exception e) {
-			log.debug("service => 뭔가 이상해요 사유={}", e);
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
 			throw new RuntimeException("쪽지 생성 중 오류가 발생하였습니다.", e);
 		}
 		return result;
@@ -51,12 +48,13 @@ public class MessageService {
 			result = dao.inboxList(receiverNum);
 			log.debug("service => 잘실행되었어요");
 		} catch (Exception e) {
-			log.debug("service => 이상해요 사유={}", e);
+			log.debug("service => 이상해요 사유 = {}", e);
 			throw new RuntimeException("받은 쪽지 목록 조회 중 오류가 발생하였습니다.", e);
 		}
 		return result;
 	}
 
+	// 보낸 쪽지함
 	public List<Message> sentboxList(int senderNum) {
 		List<Message> result = null;
 		
@@ -64,8 +62,22 @@ public class MessageService {
 			result = dao.sentboxList(senderNum);
 			log.debug("service => 잘실행되었어요");
 		} catch (Exception e) {
-			log.debug("service => 이상해요 사유={}", e);
+			log.debug("service => 이상해요 사유 = {}", e);
 			throw new RuntimeException("보낸 쪽지 목록 조회 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	// 쪽지 상세
+	public Message openMessage(int messageNum) {
+		Message result = null;
+		
+		try {
+			result = dao.openMessage(messageNum); 
+			log.debug("service => 잘실행되었어요");
+		} catch (Exception e) {
+			log.debug("service => 이상해요 사유 = {}", e);
+			throw new RuntimeException("쪽지 상세 조회 중 오류가 발생하였습니다.", e);
 		}
 		return result;
 	}
