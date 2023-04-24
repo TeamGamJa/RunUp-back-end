@@ -35,6 +35,11 @@ public class RunningService {
 		return list;
 	}
 	
+	public Running selectRunning(Running run) {
+		Running running = dao.selectRunning(run);
+		return running;
+	}
+	
 	public List<Running> selectRunningBycategoryBig(String categoryBig) {
 		List<Running> list = dao.selectRunningBycategoryBig(categoryBig);
 		return list;
@@ -62,6 +67,11 @@ public class RunningService {
 	
 	public int updateRunning(Running run) {
 		int result = dao.updateRunning(run);
+		return result;
+	}
+	
+	public int updateViewNum(Running run) {
+		int result = dao.updateRunningView(run);
 		return result;
 	}
 }

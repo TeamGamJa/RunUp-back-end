@@ -58,6 +58,12 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
+	public Running selectRunning(Running run) {
+		Running runningone = session.selectOne("running.selectRunning",run);
+		return runningone;
+	}
+	
+	@Override
 	public int createRunning(Running run) {
 		int result = session.insert("running.createRunning",run);
 		return result;
@@ -72,6 +78,12 @@ public class RunningDaoImpl implements RunningDao {
 	@Override
 	public int updateRunning(Running run) {
 		int result = session.update("running.updateRunning",run);
+		return result;
+	}
+	
+	@Override
+	public int updateRunningView(Running run) {
+		int result = session.update("running.updateViewNum",run);
 		return result;
 	}
 }

@@ -8,20 +8,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Running {
-	private int RunningNum;
-	private String RunningTitle;
-	private String RunningContent;
-	private String RunningCategoryBig;
-	private String RunningCategoryMedium;
-	private int RunningStartBig;
-	private int RunningStartSmall;
-	private int RunningEndBig;
-	private int RunningEndSmall;
-	private boolean RunningKeep;
-	private boolean RunningShow;
-	private boolean RunningAble;
-	private String RunningDate;
-	private int RunningViewNum;
-	private int RunningScore;
-	private int UserNum;
+	private int runningNum;
+	private String runningTitle;
+	private String runningContent;
+	private String runningCategoryBig;
+	private String runningCategoryMedium;
+	private int runningStartBig;
+	private int runningStartSmall;
+	private int runningEndBig;
+	private int runningEndSmall;
+	private boolean runningKeep;
+	private boolean runningShow;
+	private boolean runningAble;
+	private String runningDate;
+	private int runningViewNum;
+	private int userNum;
 }

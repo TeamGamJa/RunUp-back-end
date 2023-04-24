@@ -2,6 +2,7 @@ package team.spring.runup.running.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -108,101 +109,69 @@ Logger log = LogManager.getLogger("case3");
 		return hashmap;
 	}
 	
-	@GetMapping(value="s")
-	public ResponseEntity<List<Running>> searchRunning() throws JsonProcessingException {
-		
-		List<Running> runninglistall = runningservice.selectRunningList(); 
-		log.debug(runninglistall);
-		return ResponseEntity.ok(runninglistall);
-	}
-	
-	@GetMapping(value="s1")
-	public ResponseEntity<List<Running>> searchRunningBycategoryBig(@RequestParam(value="categoryBig", required=false) String categoryBig) throws JsonProcessingException {
+	@GetMapping(value="bycategorybig")
+	public ResponseEntity<List<Running>> searchRunningByCategoryBig(@RequestParam(value="categoryBig", required=false) String categoryBig) throws JsonProcessingException {
 		
 		List<Running> runninglistall = runningservice.selectRunningBycategoryBig(categoryBig); 
 		log.debug(runninglistall);
 		return ResponseEntity.ok(runninglistall);
 	}
 	
-	@GetMapping(value="s2")
-	public ResponseEntity<List<Running>> searchRunningBycategoryMedium(@RequestParam(value="categoryMedium", required=false) String categoryMedium) throws JsonProcessingException {
+	@GetMapping(value="bycategorymedium")
+	public ResponseEntity<List<Running>> searchRunningByCategoryMedium(@RequestParam(value="categoryMedium", required=false) String categoryMedium) throws JsonProcessingException {
 		
 		List<Running> runninglistall = runningservice.selectRunningBycategoryMedium(categoryMedium); 
 		log.debug(runninglistall);
 		return ResponseEntity.ok(runninglistall);
 	}
 	
-	@PostMapping(value="i")
-	public HashMap<Object, Object> createRunning(@RequestParam(value="title", required=false) String title, 
-			@RequestParam(value="content",required=false) String content, 
-			@RequestParam(value="categorybig",required=false) String categorybig,
-			@RequestParam(value="categorymedium",required=false) String categorymedium,
-			@RequestParam(value="startbig",required=false) int startbig,
-			@RequestParam(value="startsmall",required=false) int startsmall,
-			@RequestParam(value="endbig",required=false) int endbig,
-			@RequestParam(value="endsmall",required=false) int endsmall,
-			@RequestParam(value="keep",required=false) boolean keep,
-			@RequestParam(value="usernum",required=false) int usernum) throws JsonProcessingException {
+	@GetMapping(value="all")
+	public ResponseEntity<List<Running>> searchRunningAll() throws JsonProcessingException {
 		
-		log.debug(keep);
+		List<Running> runningList = runningservice.selectRunningList(); 
+		log.debug(runningList);
+		return ResponseEntity.ok(runningList);
+	}
+	
+	@GetMapping
+	public ResponseEntity<Running> searchRunning(@RequestParam(value="runningNum", required=false) int runningNum) throws JsonProcessingException {
+		
 		Running run = new Running();
-		run.setRunningTitle(title);
-		run.setRunningContent(content);
-		run.setRunningCategoryBig(categorybig);
-		run.setRunningCategoryMedium(categorymedium);
-		run.setRunningStartBig(startbig);
-		run.setRunningStartSmall(startsmall);
-		run.setRunningEndBig(endbig);
-		run.setRunningEndSmall(endsmall);
-		run.setRunningKeep(keep);
-		run.setUserNum(usernum);
+		run.setRunningNum(runningNum);
+		runningservice.updateViewNum(run);
+		Running runningone = runningservice.selectRunning(run); 
+		log.debug(runningone);
+		return ResponseEntity.ok(runningone);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Integer> createRunning(@RequestBody Running run)  {
+
 		log.debug(run);
-		
 		int result = runningservice.createRunning(run);
 		log.debug(result);
 		
-		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
-		hashmap.put("result", result);
-		return hashmap;
-		
-	}
-	
-	@DeleteMapping(value="d") 
-	public ResponseEntity<Integer> deleteRunning(@RequestParam int usernum, 
-			@RequestParam int runningnum) {
-		
-		Running run = new Running();
-		run.setUserNum(usernum);
-		run.setRunningNum(runningnum);
-		log.debug(run);
-		
-		int result = runningservice.deleteRunning(run);
-		log.debug(result);
-		
-
 		return ResponseEntity.ok(result);
 		
 	}
 	
-	@PutMapping(value="u") 
-	public int updateRunning(@RequestBody String title, 
-			@RequestBody String content, @RequestBody String categorybig,
-			@RequestParam(value="categorymedium",required=false) String categorymedium,
-			@RequestParam(value="usernum",required=false) int usernum) throws JsonProcessingException {
+	@DeleteMapping
+	public ResponseEntity<Integer> deleteRunning(@RequestBody Running run) {
 		
-		log.debug(usernum);
-		Running run = new Running();
-		run.setRunningTitle(title);
-		run.setRunningContent(content);
-		run.setRunningCategoryBig(categorybig);
-		run.setRunningCategoryMedium(categorymedium);
-		run.setUserNum(usernum);
 		log.debug(run);
+		int result = runningservice.deleteRunning(run);
+		log.debug(result);
 		
+		return ResponseEntity.ok(result);
+	}
+	
+	@PutMapping
+	public ResponseEntity<Integer> updateRunning(@RequestBody Running run) {
+		
+		log.debug(run);
 		int result = runningservice.updateRunning(run);
 		log.debug(result);
 		
-		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 }

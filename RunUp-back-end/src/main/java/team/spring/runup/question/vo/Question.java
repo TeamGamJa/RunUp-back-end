@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question {
-	private int QuestionNum;
-	private int QuestionChoice;
-	private String QuestionTitle;
-	private String QuestionAuthor;
-	private String QuestionDate;
-	private String QuestionContent;
-	private String QuestionCategoryBig;
-	private String QuestionCategoryMedium;
-	private int QuestionEmpathy;
-	private int UserNum;
+	private int questionNum;
+	private int questionChoice;
+	private String questionTitle;
+	private String questionAuthor;
+	private String questionDate;
+	private String questionContent;
+	private String questionCategoryBig;
+	private String questionCategoryMedium;
+	private int questionEmpathy;
+	private int userNum;
 }
