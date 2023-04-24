@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import team.spring.runup.message.service.MessageService;
@@ -30,11 +31,10 @@ public class MessageController {
 
 	
 	// 쪽지 전송(생성)
-	@PostMapping(value="send", produces = "application/json; charset=UTF-8")
+	@PostMapping(value="send", produces="application/json; charset=UTF-8")
 	public int sendMessage(@RequestBody Message message) {
-		log.debug("test");
-		
-		log.debug("sendMessage ����={}", message);
+	
+		log.debug("sendMessage 실행 = {}", message);
 		
 		int result = service.sendMessage(message);
 		
@@ -43,7 +43,7 @@ public class MessageController {
 		} else {
 			log.debug("이상이 있어요");
 		}
-		log.debug("결과={}", result);
+		log.debug("결과 = {}", result);
 		
 		return result;
 	}
@@ -58,18 +58,29 @@ public class MessageController {
 
 	
 	// 받은 쪽지함
-	@GetMapping(value="message/inbox/{messageReceiver}")
-	public List<String> receiveMessageList(String messageReceiver) {
-		// TODO Auto-generated method stub
-		return null;
+	@GetMapping(value="inbox", produces="application/json; charset=UTF-8")
+	public List<Message> receiveMessageList(@RequestParam(value="receiverNum", required=false) int receiverNum) {
+		
+		log.debug("receiverNum 조회 = {}", receiverNum);
+		
+		List<Message> result = service.inboxList(receiverNum);
+
+//		log.debug(result);
+		
+		return result;
 	}
 
 	
 	// 보낸 쪽지함
-	@GetMapping(value="message/sentbox/{messageSender}")
-	public List<String> sendMessageList(String messageSender) {
-		// TODO Auto-generated method stub
-		return null;
+	@GetMapping(value="sentbox", produces="application/json; charset=UTF-8")
+	public List<Message> sendMessageList(@RequestParam(value="senderNum", required=false) int senderNum) {
+		log.debug("senderNum 조회 = {}", senderNum);
+		
+		List<Message> result = service.sentboxList(senderNum);
+
+		log.debug(result);
+		
+		return result;
 	}
 
 	

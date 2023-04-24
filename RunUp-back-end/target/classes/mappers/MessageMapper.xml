@@ -6,11 +6,18 @@
   
 <mapper namespace="message">
 
-	<insert id="insert" parameterType="Message">
-		INSERT INTO message (MessageNum, MessageSender, MessageReceiver, MessageTitle,
-		MessageContent, MessageDate, UserNum)
-		VALUES (#{messageNum}, #{messageSender}, #{messageReceiver}, #{messageTitle}, #{messageContent}, Now(), #{userNum})
+	<insert id="sendMessage" parameterType="Message">
+		INSERT INTO message (MessageNum, MessageSender, SenderNum, MessageReceiver, ReceiverNum, 
+		MessageTitle, MessageContent, MessageDate)
+		VALUES (#{messageNum}, #{messageSender}, #{SenderNum}, #{messageReceiver}, #{ReceiverNum}, #{messageTitle}, #{messageContent}, Now())
 	</insert>
 
+	<select id="inboxList" parameterType="Integer" resultType="Message">
+		SELECT * FROM message WHERE ReceiverNum = #{receiverNum}
+	</select>
+	
+	<select id="sentboxList" parameterType="Integer" resultType="Message">
+		SELECT * FROM message WHERE SenderNum = #{senderNum}
+	</select>
 
 </mapper>
