@@ -34,14 +34,14 @@
    <select id="selectRunningBycategorybig" parameterType = "String" resultType="Running">
    <![CDATA[
    	  select * 
-   	  from running where runningShow = 1 and RunningCategoryBig = #{RunningCategoryBig}
+   	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
    ]]>
    </select>
    
    <select id="selectRunningBycategorymedium" parameterType = "String" resultType="Running">
    <![CDATA[
    	  select * 
-   	  from running where runningShow = 1 and RunningCategoryMedium = #{RunningCategoryMedium}
+   	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
    ]]>
    </select>
    
@@ -52,12 +52,19 @@
    ]]>
    </select>
    
+   <select id="selectRunning" resultType="Running">
+   <![CDATA[
+   	  select * 
+   	  from running where runningNum = #{runningNum}
+   ]]>
+   </select>
+   
    <insert id="createRunning" parameterType="Running">
    <![CDATA[
-     insert into running(runningTitle,runningContent,runningCategorybig,
-     runningCategorymedium, runningStartbig, runningStartsmall, runnihgEndbig, runningEndsmall,runningKeep,userNum) 
-     values (#{runningTitle}, #{runningContent}, #{runningCategorybig}, #{runningCategorymedium}, #{runningStartbig}, 
-     #{runningStartsmall}, #{runningEndbig}, #{runningEndsmall}, #{runningKeep}, #{userNum})
+     insert into running(runningTitle,runningContent,runningCategoryBig,
+     runningCategoryMedium, runningStartBig, runningStartSmall, runningEndBig, runningEndSmall,runningKeep,userNum) 
+     values (#{runningTitle}, #{runningContent}, #{runningCategoryBig}, #{runningCategoryMedium}, #{runningStartBig}, 
+     #{runningStartSmall}, #{runningEndBig}, #{runningEndSmall}, #{runningKeep}, #{userNum})
    ]]>
    </insert>
    
@@ -70,10 +77,18 @@
    <update id="updateRunning" parameterType="Running" >
    <![CDATA[
      update running set runningTitle = #{runningTitle}, runningContent = #{runningContent}, 
-     runningCategorybig = #{runningCategorybig}, runningCategorymedium = #{runningCategorymedium},
-     runningStartbig = #{runningStartbig}, runningStartsmall = #{runningStartsmall}, 
-     runningEndbig = #{running 
+     runningCategoryBig = #{runningCategoryBig}, runningCategoryMedium = #{runningCategoryMedium},
+     runningStartBig = #{runningStartBig}, runningStartSmall = #{runningStartSmall}, 
+     runningEndBig = #{runningEndBig}, runningEndSmall = #{runningEndSmall},
+     runningKeep = #{runningKeep}
      where userNum = #{userNum} and runningNum = #{runningNum}
+   ]]>
+   </update>
+   
+   <update id="updateViewNum" parameterType="Running" >
+   <![CDATA[
+   	 update running set runningViewNum = runningViewNum + 1 
+   	 where runningNum = #{runningNum}
    ]]>
    </update>
    

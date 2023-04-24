@@ -7,7 +7,7 @@
 <mapper namespace="question">
    
    <select id="getQuestionByKeyword" parameterType="String" resultType="Question">
-      select * from question where QuestionTitle Like CONCAT('%', #{keyword},'%')
+      select * from question where questionTitle Like CONCAT('%', #{keyword},'%')
    </select>
 
 </mapper>

@@ -21,6 +21,10 @@ public interface RunningDao {
 	
 	List<Running> selectRunningByKeyword(String keyword);
 	
+	Running selectRunning(Running run);
+	
+	int updateRunningView(Running run);
+	
 	int createRunning(Running run);
 	
 	int deleteRunning(Running run);
