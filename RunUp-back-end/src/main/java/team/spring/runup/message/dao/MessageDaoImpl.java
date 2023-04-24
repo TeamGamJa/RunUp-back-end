@@ -37,6 +37,10 @@ public class MessageDaoImpl implements MessageDao {
 	public Message openMessage(int messageNum) {
 		return session.selectOne("message.openMessage", messageNum);
 	}
+
+	public int trashMessage(int messageNum) {
+		return session.update("message.trashMessage", messageNum);
+	}
 	
 	
 
