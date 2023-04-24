@@ -8,8 +8,8 @@
 
 	<insert id="sendMessage" parameterType="Message">
 		INSERT INTO message (MessageNum, MessageSender, SenderNum, MessageReceiver, ReceiverNum, 
-		MessageTitle, MessageContent, MessageDate)
-		VALUES (#{messageNum}, #{messageSender}, #{SenderNum}, #{messageReceiver}, #{ReceiverNum}, #{messageTitle}, #{messageContent}, Now())
+		MessageTitle, MessageContent, MessageDate, MessageTrash)
+		VALUES (#{messageNum}, #{messageSender}, #{SenderNum}, #{messageReceiver}, #{ReceiverNum}, #{messageTitle}, #{messageContent}, Now(), #{messageTrash})
 	</insert>
 
 	<select id="inboxList" parameterType="Integer" resultType="Message">
@@ -23,5 +23,11 @@
 	<select id="openMessage" parameterType="Integer" resultType="Message">
 		SELECT * FROM message WHERE MessageNum = #{messageNum}
 	</select>
+	
+	<update id="trashMessage" parameterType="Integer">
+		UPDATE message
+		SET messageTrash = 1
+		WHERE messageNum = #{messageNum}
+	</update>
 
 </mapper>

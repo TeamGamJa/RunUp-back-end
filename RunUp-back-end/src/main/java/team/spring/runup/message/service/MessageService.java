@@ -82,5 +82,23 @@ public class MessageService {
 		return result;
 	}
 
+	// 쪽지 휴지통에 넣기
+	public int trashMessage(int messageNum) {
+		int result = 0;
+		
+		try {
+			result = dao.trashMessage(messageNum);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("쪽지를 휴지통에 넣는 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
 }
 
