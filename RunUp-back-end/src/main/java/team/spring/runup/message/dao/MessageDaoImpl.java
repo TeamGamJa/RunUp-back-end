@@ -33,6 +33,10 @@ public class MessageDaoImpl implements MessageDao {
 		List<Message> message = session.selectList("message.sentboxList", senderNum);
 		return message;
 	}
+
+	public Message openMessage(int messageNum) {
+		return session.selectOne("message.openMessage", messageNum);
+	}
 	
 	
 

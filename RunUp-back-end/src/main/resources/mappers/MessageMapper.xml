@@ -19,5 +19,9 @@
 	<select id="sentboxList" parameterType="Integer" resultType="Message">
 		SELECT * FROM message WHERE SenderNum = #{senderNum}
 	</select>
+	
+	<select id="openMessage" parameterType="Integer" resultType="Message">
+		SELECT * FROM message WHERE MessageNum = #{messageNum}
+	</select>
 
 </mapper>

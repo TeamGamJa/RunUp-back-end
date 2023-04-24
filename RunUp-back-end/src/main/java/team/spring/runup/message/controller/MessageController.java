@@ -84,19 +84,15 @@ public class MessageController {
 	}
 
 	
-	// 받은 쪽지 상세
-	@GetMapping(value="message/inbox/{messageId}")
-	public Message receiveMessageDetail(String messageId) {
-		// TODO Auto-generated method stub
-		return null;
+	// 쪽지 상세
+	@GetMapping(value="content")
+	public Message openMessage(int messageNum) {
+		log.debug("messageNum 조회 = {}", messageNum);
+		
+		Message result = service.openMessage(messageNum);
+		
+		return result;
 	}
 
-	
-	// 보낸 쪽지 상세
-	@GetMapping(value="message/sentbox/{messageId}")
-	public Message sendMessageDetail(String messageId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
