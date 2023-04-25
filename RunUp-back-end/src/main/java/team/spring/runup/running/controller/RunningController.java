@@ -50,8 +50,8 @@ Logger log = LogManager.getLogger("case3");
 	@GetMapping(value="category")
 	public HashMap<Object, Object> searchCategoryAll() throws JsonProcessingException {
 		
-		List<String> categoryBig = runningservice.selectCategoryBigAll();
-		List<String> categoryMedium = runningservice.selectCategoryMediumAll();
+		List<String> categoryBig = runningservice.getCategoryBigAll();
+		List<String> categoryMedium = runningservice.getCategoryMediumAll();
 		
 		log.debug(categoryBig);
 		log.debug(categoryMedium);
@@ -67,14 +67,12 @@ Logger log = LogManager.getLogger("case3");
 	@GetMapping(value="categorybig")
 	public HashMap<Object, Object> searchCategoryBig() throws JsonProcessingException {
 		
-		List<String> categoryBig = runningservice.selectCategoryBigAll();
-		
+		List<String> categoryBig = runningservice.getCategoryBigAll();
 		
 		log.debug(categoryBig);
 		
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
 		hashmap.put("categoryBig", categoryBig);
-		
 		
 		return hashmap;
 	}
@@ -83,8 +81,7 @@ Logger log = LogManager.getLogger("case3");
 	public HashMap<Object, Object> searchCategoryMedium(@RequestParam(value="categoryBig", 
 			required=false) String categoryBig) throws JsonProcessingException {
 		
-		
-		List<String> categoryMedium = runningservice.selectCategoryMediumList(categoryBig);
+		List<String> categoryMedium = runningservice.getCategoryMediumList(categoryBig);
 		
 		log.debug(categoryMedium);
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
@@ -96,7 +93,7 @@ Logger log = LogManager.getLogger("case3");
 	@GetMapping(value="bar")
 	public HashMap<Object, Object> barSearch(@RequestParam(value="keyword", required=false) String keyword) throws JsonProcessingException {
 		
-		List<Running> runninglist = runningservice.selectRunningByKeyword(keyword); 
+		List<Running> runninglist = runningservice.getRunningByKeyword(keyword); 
 		List<User> userlist = userservice.getUserByNickname(keyword);
 		List<Question> questionlist = questionservice.getQuestionByKeyword(keyword); 
 		log.debug(runninglist);
@@ -120,25 +117,26 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@GetMapping(value="bycategorybig")
-	public ResponseEntity<List<Running>> searchRunningByCategoryBig(@RequestParam(value="categoryBig", required=false) String categoryBig) throws JsonProcessingException {
+	public ResponseEntity<List<Runup>> searchRunningByCategoryBig(@RequestParam(value="categoryBig", required=false) String categoryBig) throws JsonProcessingException {
 		
-		List<Running> runningBig = runningservice.selectRunningBycategoryBig(categoryBig); 
-		log.debug(runningBig);
-		return ResponseEntity.ok(runningBig);
+		List<Runup> runningList = runningservice.getRunningBycategoryBig(categoryBig); 
+		log.debug(runningList);
+		return ResponseEntity.ok(runningList);
 	}
 	
 	@GetMapping(value="bycategorymedium")
-	public ResponseEntity<List<Running>> searchRunningByCategoryMedium(@RequestParam(value="categoryMedium", required=false) String categoryMedium) throws JsonProcessingException {
+	public ResponseEntity<List<Runup>> searchRunningByCategoryMedium(@RequestParam(value="categoryBig", required=false) String categoryBig,
+			@RequestParam(value="categoryMedium", required=false) String categoryMedium) throws JsonProcessingException {
 		
-		List<Running> runningMedium = runningservice.selectRunningBycategoryMedium(categoryMedium); 
-		log.debug(runningMedium);
-		return ResponseEntity.ok(runningMedium);
+		List<Runup> runningList = runningservice.getRunningBycategoryMedium(categoryMedium); 
+		log.debug(runningList);
+		return ResponseEntity.ok(runningList);
 	}
 	
 	@GetMapping(value="all")
 	public ResponseEntity<List<Runup>> searchRunningAll() throws JsonProcessingException {
 		
-		List<Runup> runningList = runningservice.selectRunningList(); 
+		List<Runup> runningList = runningservice.getRunningList(); 
 		log.debug(runningList);
 		return ResponseEntity.ok(runningList);
 	}
@@ -149,7 +147,7 @@ Logger log = LogManager.getLogger("case3");
 		Running run = new Running();
 		run.setRunningNum(runningNum);
 		runningservice.updateViewNum(run);
-		Running runningOne = runningservice.selectRunning(run); 
+		Running runningOne = runningservice.getRunning(run); 
 		log.debug(runningOne);
 		return ResponseEntity.ok(runningOne);
 	}
@@ -180,6 +178,41 @@ Logger log = LogManager.getLogger("case3");
 		
 		log.debug(run);
 		int result = runningservice.updateRunning(run);
+		log.debug(result);
+		
+		return ResponseEntity.ok(result);
+	}
+	
+	@PutMapping(value="participation")
+	public ResponseEntity<Integer> participateRunning(@RequestBody Running run) {
+		
+		log.debug(run);
+		int registerresult=runningservice.createRegister(run);
+		int result = runningservice.updateRunningAble(run);
+		
+		return ResponseEntity.ok(result);
+	}
+	
+	@PutMapping(value="cancellation")
+	public ResponseEntity<Integer> participateCancel(@RequestBody Running run) {
+		
+		log.debug(run);
+		int registerresult=runningservice.deleteRegister(run);
+		int result = runningservice.updateRunningAble(run);
+				
+		return ResponseEntity.ok(result);
+	}
+	
+	@PutMapping(value="salt")
+	public ResponseEntity<Integer> saltRunning(@RequestBody Map<Object,Object> salt) {
+		
+		int runningnum = (int) salt.get("runningNum");
+		int usercolor = (int) salt.get("userLuxColor");
+		int usernum = runningservice.getUserNumByRunningNum(runningnum);
+		User user = new User();
+		user.setUserNum(usernum);
+		user.setUserLuxColor(usercolor);
+		int result = runningservice.updateSalt(user);
 		log.debug(result);
 		
 		return ResponseEntity.ok(result);

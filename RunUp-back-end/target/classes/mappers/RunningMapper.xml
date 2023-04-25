@@ -6,56 +6,70 @@
 
 <mapper namespace="running">
    
-   <select id="selectCategoryBigList" resultType="String">
+   <select id="getCategoryBigList" resultType="String">
     <![CDATA[
       select distinct categoryBig from category
     ]]>  
    </select>
    
-   <select id="selectCategoryMediumList" resultType="String">
+   <select id="getCategoryMediumList" resultType="String">
     <![CDATA[
       select distinct categoryMedium from category
     ]]>  
    </select>
    
-   <select id="selectCategoryMediumListByCategoryBig" resultType="String">
+   <select id="getCategoryMediumListByCategoryBig" resultType="String">
     <![CDATA[
       select distinct categoryMedium from category where categoryBig = #{categoryBig}
     ]]>  
    </select>
    
-   <select id="selectRunningList" resultType="Running">
+   <select id="getRunningList" resultType="Running">
    <![CDATA[
-   	  select * 
+   	  select *
    	  from running where runningShow = 1
    ]]>
    </select>
    
-   <select id="selectRunningBycategorybig" parameterType = "String" resultType="Running">
+   <select id="getRunningBycategorybig" parameterType = "String" resultType="Running">
    <![CDATA[
-   	  select * 
+   	  select *
    	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
    ]]>
    </select>
    
-   <select id="selectRunningBycategorymedium" parameterType = "String" resultType="Running">
+   <select id="getRunningBycategorymedium" parameterType = "String" resultType="Running">
    <![CDATA[
-   	  select * 
+   	  select *
    	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
    ]]>
    </select>
    
-   <select id="selectRunningByKeyword" parameterType="String" resultType="Running">
+   <select id="getRunningByKeyword" parameterType="String" resultType="Running">
    <![CDATA[
       select *
       from running where runningShow = 1 and runningTitle Like CONCAT('%', #{keyword},'%')
    ]]>
    </select>
    
-   <select id="selectRunning" parameterType="Running" resultType="Running">
+   <select id="getRunning" parameterType="Running" resultType="Running">
    <![CDATA[
    	  select * 
    	  from running where runningNum = #{runningNum}
+   ]]>
+   </select>
+   
+   <select id="getUserNumByRunningNum" parameterType="int" resultType="int">
+   <![CDATA[
+   	  select userNum
+   	  from running where runningNum = #{runningNum}
+   ]]>
+   </select>
+   
+   <select id="countMentor" parameterType="int" resultType="int">
+   <![CDATA[
+   	  select count(*) 
+   	  from running where runningShow = false and userNum = #{userNum}
    ]]>
    </select>
    
@@ -67,6 +81,19 @@
      #{runningStartSmall}, #{runningEndBig}, #{runningEndSmall}, #{runningKeep}, #{userNum})
    ]]>
    </insert>
+   
+   <insert id="createRegister" parameterType="Running">
+   <![CDATA[
+     insert into register(userNum, runningNum) 
+     values (#{userNum},#{runningNum})
+   ]]>
+   </insert>
+   
+   <delete id="deleteRegister" parameterType="Running">
+   <![CDATA[
+     delete from register where userNum = #{userNum} and runningNum = #{runningNum}
+   ]]>
+   </delete>
    
    <delete id="deleteRunning" parameterType="Running">
    <![CDATA[
@@ -82,6 +109,17 @@
      runningEndBig = #{runningEndBig}, runningEndSmall = #{runningEndSmall},
      runningKeep = #{runningKeep}
      where userNum = #{userNum} and runningNum = #{runningNum}
+   ]]>
+   </update>
+   
+   <update id="updateRunningAble" parameterType="Running">
+   <![CDATA[
+   	 update running set runningAble =
+   	 case
+   	 	when runningAble = true then false
+   	 	else true
+   	 end	
+   	 where runningNum = #{runningNum}
    ]]>
    </update>
    
