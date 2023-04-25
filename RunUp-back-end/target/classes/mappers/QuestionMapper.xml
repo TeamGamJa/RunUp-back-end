@@ -7,7 +7,14 @@
 <mapper namespace="question">
    
    <select id="getQuestionByKeyword" parameterType="String" resultType="Question">
-      select * from question where questionTitle Like CONCAT('%', #{keyword},'%')
+		SELECT * FROM question WHERE questionTitle LIKE CONCAT('%', #{keyword},'%')
    </select>
+   
+   <insert id="createQuestion" parameterType="Question">
+		INSERT INTO question (QuestionNum, QuestionCategoryBig, QuestionCategoryMedium, QuestionChoice, 
+		QuestionTitle, QuestionContent, QuestionWriter, UserNum, QuestionDate)
+		VALUES (#{questionNum}, #{questionCategoryBig}, #{questionCategoryMedium}, #{questionChoice}, 
+			#{questionTitle}, #{questionContent}, #{questionWriter}, #{userNum}, Now())
+   </insert>
 
 </mapper>
