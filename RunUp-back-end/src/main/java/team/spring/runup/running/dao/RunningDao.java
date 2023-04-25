@@ -8,21 +8,25 @@ import team.spring.runup.running.vo.Runup;
 
 public interface RunningDao {
 
-	List<String> selectCategoryBigAll();
+	List<String> getCategoryBigAll();
 	
-	List<String> selectCategoryMediumAll();
+	List<String> getCategoryMediumAll();
 	
-	List<String> selectCategoryMediumList(String categoryBig);
+	List<String> getCategoryMediumList(String categoryBig);
 	
-	List<Running> selectRunningList();
+	List<Running> getRunningList();
 	
-	List<Running> selectRunningBycategoryBig(String categoryBig);
+	List<Running> getRunningBycategoryBig(String categoryBig);
 	
-	List<Running> selectRunningBycategoryMedium(String categoryMedium);
+	List<Running> getRunningBycategoryMedium(String categoryMedium);
 	
-	List<Running> selectRunningByKeyword(String keyword);
+	List<Running> getRunningByKeyword(String keyword);
 	
-	Running selectRunning(Running run);
+	Running getRunning(Running run);
+	
+	int getUserNumByRunningNum(int runningnum);
+	
+	int getMentorByUserNum(int num);
 	
 	int updateRunningView(Running run);
 	
@@ -31,5 +35,11 @@ public interface RunningDao {
 	int deleteRunning(Running run);
 	
 	int updateRunning(Running run);
+	
+	int updateRunningAble(Running run);
+	
+	int createRegister(Running run);
+	
+	int deleteRegister(Running run);
 
 }

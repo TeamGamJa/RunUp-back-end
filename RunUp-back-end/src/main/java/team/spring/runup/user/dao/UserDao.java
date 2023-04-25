@@ -17,6 +17,8 @@ public interface UserDao {
 	int registUser(User user);
 
 	int updateUser(User user);
+	
+	int updateUserLuxColor(User user);
 
 	int deleteUser(String userId);
 

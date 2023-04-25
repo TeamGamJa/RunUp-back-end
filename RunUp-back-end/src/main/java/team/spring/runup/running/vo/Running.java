@@ -1,5 +1,7 @@
 package team.spring.runup.running.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,7 @@ public class Running {
 	private boolean runningKeep;
 	private boolean runningShow;
 	private boolean runningAble;
-	private String runningDate;
+	private Date runningDate;
 	private int runningViewNum;
 	private int userNum;
 }
