@@ -10,6 +10,8 @@ public interface UserDao {
 
 	User getUserById(String userId);
 	
+	User getUserByNum(int userNum);
+	
 	List<User> getUserByNickname(String userNickname);
 
 	int registUser(User user);

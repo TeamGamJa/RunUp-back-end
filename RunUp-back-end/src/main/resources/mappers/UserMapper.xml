@@ -14,6 +14,10 @@
       select * from user where userId=#{userId}
    </select>
    
+   <select id="getUserByNum" parameterType="int" resultType="User">
+   	  select * from user where userNum=#{userNum}	
+   </select>
+   
    <select id="getUserByNickname" parameterType="String" resultType="User">
       select * from user where userNickname Like CONCAT('%', #{userNickname},'%')
    </select>

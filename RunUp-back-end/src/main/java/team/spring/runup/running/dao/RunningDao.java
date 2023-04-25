@@ -4,6 +4,7 @@ import java.util.List;
 
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.Runup;
 
 public interface RunningDao {
 
