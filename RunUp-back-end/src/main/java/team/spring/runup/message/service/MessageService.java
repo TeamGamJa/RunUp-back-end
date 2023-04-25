@@ -82,7 +82,7 @@ public class MessageService {
 		return result;
 	}
 
-	// 쪽지 휴지통에 넣기
+	// 쪽지 (휴지통에)버리기
 	public int trashMessage(int messageNum) {
 		int result = 0;
 		
@@ -96,6 +96,39 @@ public class MessageService {
 		} catch (Exception e) {
 			log.debug("service => 뭔가 이상해요 사유 = {}", e);
 			throw new RuntimeException("쪽지를 휴지통에 넣는 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	// 쪽지 휴지통
+	public List<Message> trashcanList(int userNum) {
+		List<Message> result = null;
+		
+		try {
+			result = dao.trashcanList(userNum);
+			log.debug("service => 잘실행되었어요");
+		} catch (Exception e) {
+			log.debug("service => 이상해요 사유 = {}", e);
+			throw new RuntimeException("쪽지 휴지통 목록 조회 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+		
+	}
+
+	// 쪽지 삭제
+	public int deleteMessage(int messageNum) {
+		int result = 0;
+
+		try {
+			result = dao.deleteMessage(messageNum);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("쪽지 생성 중 오류가 발생하였습니다.", e);
 		}
 		return result;
 	}

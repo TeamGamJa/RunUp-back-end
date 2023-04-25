@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,6 +59,8 @@ public class MessageController {
 		
 		List<Message> result = service.inboxList(receiverNum);
 		
+		log.debug("결과 = {}", result);
+		
 		return result;
 	}
 
@@ -67,6 +71,8 @@ public class MessageController {
 		log.debug("senderNum 조회 = {}", senderNum);
 		
 		List<Message> result = service.sentboxList(senderNum);
+		
+		log.debug("결과 = {}", result);
 		
 		return result;
 	}
@@ -79,10 +85,13 @@ public class MessageController {
 		
 		Message result = service.openMessage(messageNum);
 		
+		log.debug("결과 = {}", result);
+		
 		return result;
 	}
 	
-	// 쪽지 휴지통
+	
+	// 쪽지 (휴지통에)버리기
 	@PostMapping(value="trash")
 	public int trashMessage(@RequestBody Message messageNum) throws Exception {
 		log.debug("messageNum 조회 = {}", messageNum);
@@ -99,13 +108,37 @@ public class MessageController {
 		
 		return result;
 	}
+	
+	
+	// 쪽지 휴지통
+	@GetMapping(value="trashcan")
+	public List<Message> trashMesssageList(@RequestParam(value="userNum", required=false) int userNum) throws Exception {
+		log.debug("userNum 조회 = {}", userNum);
+		
+		List<Message> result = service.trashcanList(userNum);
+		
+		log.debug("결과 = {}", result);
+		
+		return result;
+	}
+	
 
-
-//	// 쪽지 삭제
-//	@PostMapping(produces="application/json; charset=UTF-8")
-//	public ResponseEntity<String> deleteMessage(int messageNum) throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	// 쪽지 삭제
+	@DeleteMapping(produces="application/json; charset=UTF-8")
+	public int deleteMessage(int messageNum) throws Exception {
+		log.debug("messageNum 조회 = {}", messageNum);
+		
+		int result = service.deleteMessage(messageNum);
+		
+		if (result ==1) {
+			log.debug("쪽지 삭제 성공");
+		} else {
+			log.debug("이상이 있어요");
+		}
+		
+		log.debug("결과 = {}", result);
+		
+		return result;
+	}
 
 }
