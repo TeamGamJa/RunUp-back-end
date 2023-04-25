@@ -29,5 +29,15 @@
 		SET messageTrash = 1
 		WHERE messageNum = #{messageNum}
 	</update>
+	
+	<select id="trashcanList" parameterType="Integer" resultType="Message">
+		SELECT * FROM message 
+		WHERE messageTrash = 1 AND (ReceiverNum = #{userNum} OR SenderNum = #{userNum})
+	</select>
+	
+	<delete id="deleteMessage" parameterType="Integer">
+		DELETE FROM message
+		WHERE messageTrash = 1 AND MessageNum = #{messageNum}
+	</delete>
 
 </mapper>
