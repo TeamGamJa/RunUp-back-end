@@ -31,4 +31,13 @@ public class QuestionDaoImpl implements QuestionDao {
 	public Question openQuestion(int questionNum) {
 		return session.selectOne("question.openQuestion", questionNum);
 	}
+
+	// 고민상담 글 수정
+	public int updateQuestion(Question question) {
+		return session.update("question.updateQuestion", question);
+	}
+
+	public int deleteMessage(int questionNum) {
+		return session.delete("question.deleteQuestion", questionNum);
+	}
 }

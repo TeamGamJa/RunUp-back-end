@@ -128,7 +128,7 @@ public class MessageService {
 			}
 		} catch (Exception e) {
 			log.debug("service => 뭔가 이상해요 사유 = {}", e);
-			throw new RuntimeException("쪽지 생성 중 오류가 발생하였습니다.", e);
+			throw new RuntimeException("쪽지 삭제 중 오류가 발생하였습니다.", e);
 		}
 		return result;
 	}
