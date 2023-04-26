@@ -53,7 +53,28 @@ public class RunningService {
 			runup.setRunningTitle(running.getRunningTitle());
 			runup.setUserNickname(user.getUserNickname());
 			runup.setRunningCategoryMedium(running.getRunningCategoryMedium());
-			runup.setUserLuxColor(user.getUserLuxColor());
+			
+			String luxcolor = new String();
+			int luxnum = user.getUserLuxColor();
+			if (luxnum<100) {
+				luxcolor = "red";
+			} else if (luxnum>=100 & luxnum<200) {
+				luxcolor = "orange";
+			} else if (luxnum>=200 & luxnum<300) {
+				luxcolor = "yellow";
+			} else if (luxnum>=300 & luxnum<400) {
+				luxcolor = "green";
+			} else if (luxnum>=400 & luxnum<500) {
+				luxcolor = "blue";
+			} else if (luxnum>=500 & luxnum<600) {
+				luxcolor = "navy";
+			} else if (luxnum>=600 & luxnum<700) {
+				luxcolor = "purple";
+			} else if (luxnum>=700) {
+				luxcolor = "white";
+			}
+			
+			runup.setUserLuxColor(luxcolor);
 			runup.setUserMentorCnt(cnt);
 			SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
 			String newrunningdate = newDtFormat.format(running.getRunningDate());
@@ -84,7 +105,28 @@ public class RunningService {
 			runup.setRunningTitle(running.getRunningTitle());
 			runup.setUserNickname(user.getUserNickname());
 			runup.setRunningCategoryMedium(running.getRunningCategoryMedium());
-			runup.setUserLuxColor(user.getUserLuxColor());
+			
+			String luxcolor = new String();
+			int luxnum = user.getUserLuxColor();
+			if (luxnum<100) {
+				luxcolor = "red";
+			} else if (luxnum>=100 & luxnum<200) {
+				luxcolor = "orange";
+			} else if (luxnum>=200 & luxnum<300) {
+				luxcolor = "yellow";
+			} else if (luxnum>=300 & luxnum<400) {
+				luxcolor = "green";
+			} else if (luxnum>=400 & luxnum<500) {
+				luxcolor = "blue";
+			} else if (luxnum>=500 & luxnum<600) {
+				luxcolor = "navy";
+			} else if (luxnum>=600 & luxnum<700) {
+				luxcolor = "purple";
+			} else if (luxnum>=700) {
+				luxcolor = "white";
+			}
+			
+			runup.setUserLuxColor(luxcolor);
 			runup.setUserMentorCnt(cnt);
 			SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
 			String newrunningdate = newDtFormat.format(running.getRunningDate());
@@ -110,7 +152,28 @@ public class RunningService {
 			runup.setRunningTitle(running.getRunningTitle());
 			runup.setUserNickname(user.getUserNickname());
 			runup.setRunningCategoryMedium(running.getRunningCategoryMedium());
-			runup.setUserLuxColor(user.getUserLuxColor());
+			
+			String luxcolor = new String();
+			int luxnum = user.getUserLuxColor();
+			if (luxnum<100) {
+				luxcolor = "red";
+			} else if (luxnum>=100 & luxnum<200) {
+				luxcolor = "orange";
+			} else if (luxnum>=200 & luxnum<300) {
+				luxcolor = "yellow";
+			} else if (luxnum>=300 & luxnum<400) {
+				luxcolor = "green";
+			} else if (luxnum>=400 & luxnum<500) {
+				luxcolor = "blue";
+			} else if (luxnum>=500 & luxnum<600) {
+				luxcolor = "navy";
+			} else if (luxnum>=600 & luxnum<700) {
+				luxcolor = "purple";
+			} else if (luxnum>=700) {
+				luxcolor = "white";
+			}
+			
+			runup.setUserLuxColor(luxcolor);
 			runup.setUserMentorCnt(cnt);
 			SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
 			String newrunningdate = newDtFormat.format(running.getRunningDate());

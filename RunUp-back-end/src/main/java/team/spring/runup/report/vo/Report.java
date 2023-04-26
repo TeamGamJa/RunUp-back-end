@@ -14,8 +14,7 @@ public class Report {
 	private String reportDate;
 	private String reportContent;
 	private String reportResult;
-	private String reportCategoryBig;
-	private String reportCategoryMedium;
-	private byte[] reportFile;
+	private String reportCategory;
+	private String reportFile;
 	private int userNum;
 }

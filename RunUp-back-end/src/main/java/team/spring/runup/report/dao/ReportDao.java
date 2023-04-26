@@ -1,5 +1,10 @@
 package team.spring.runup.report.dao;
 
-public interface ReportDao {
+import team.spring.runup.report.vo.Report;
 
+public interface ReportDao {
+	
+	int createReport(Report report);
+	
+	
 }
