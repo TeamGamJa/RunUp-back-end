@@ -25,6 +25,10 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Override
 	public int createQuestion(Question question) throws Exception {
 		return session.insert("question.createQuestion", question);
+	}
 
+	// 고민상담 글 상세
+	public Question openQuestion(int questionNum) {
+		return session.selectOne("question.openQuestion", questionNum);
 	}
 }
