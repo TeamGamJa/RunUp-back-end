@@ -20,5 +20,16 @@
    <select id="openQuestion" parameterType="Integer" resultType="Question">
 		SELECT * FROM question WHERE QuestionNum = #{QuestionNum}
    </select>
+   
+   <update id="updateQuestion" parameterType="Question">
+   		UPDATE question SET QuestionCategoryBig = #{questionCategoryBig}, QuestionCategoryMedium = #{questionCategoryMedium},
+   		QuestionChoice = #{questionChoice}, QuestionTitle = #{questionTitle}, QuestionContent = #{questionContent}
+   		WHERE userNum = #{userNum} and QuestionNum = #{questionNum}
+   </update>
+   
+   <delete id="deleteQuestion" parameterType="Integer">
+   		DELETE FROM question
+		WHERE QuestionNum = #{questionNum}
+   </delete>
 
 </mapper>

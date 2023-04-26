@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,27 +33,27 @@ public class MessageController {
 	
 	// 쪽지 전송(생성)
 	@PostMapping
-	public int sendMessage(@RequestBody Message message) throws Exception {
+	public ResponseEntity<Integer> sendMessage(@RequestBody Message message) throws Exception {
 	
-		log.debug("sendMessage 실행 = {}", message);
+//		log.debug("sendMessage 실행 = {}", message);
 		
 		int result = service.sendMessage(message);
 		
-		if (result ==1) {
-			log.debug("쪽지 생성 성공");
-		} else {
-			log.debug("이상이 있어요");
-		}
+//		if (result ==1) {
+//			log.debug("쪽지 생성 성공");
+//		} else {
+//			log.debug("이상이 있어요");
+//		}
+//		
+//		log.debug("결과 = {}", result);
 		
-		log.debug("결과 = {}", result);
-		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 
 	
 	// 받은 쪽지함
 	@GetMapping(value="inbox")
-	public List<Message> receiveMessageList(@RequestParam(value="receiverNum", required=false) int receiverNum) throws Exception {
+	public ResponseEntity<List<Message>> receiveMessageList(@RequestParam(value="receiverNum", required=false) int receiverNum) throws Exception {
 		
 		log.debug("receiverNum 조회 = {}", receiverNum);
 		
@@ -60,39 +61,39 @@ public class MessageController {
 		
 		log.debug("결과 = {}", result);
 		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 
 	
 	// 보낸 쪽지함
 	@GetMapping(value="sentbox")
-	public List<Message> sendMessageList(@RequestParam(value="senderNum", required=false) int senderNum) throws Exception {
+	public ResponseEntity<List<Message>> sendMessageList(@RequestParam(value="senderNum", required=false) int senderNum) throws Exception {
 		log.debug("senderNum 조회 = {}", senderNum);
 		
 		List<Message> result = service.sentboxList(senderNum);
 		
 		log.debug("결과 = {}", result);
 		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 
 	
 	// 쪽지 상세
 	@GetMapping(value="content")
-	public Message openMessage(int messageNum) throws Exception {
+	public ResponseEntity<Message> openMessage(int messageNum) throws Exception {
 		log.debug("messageNum 조회 = {}", messageNum);
 		
 		Message result = service.openMessage(messageNum);
 		
 		log.debug("결과 = {}", result);
 		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 	
 	
 	// 쪽지 (휴지통에)버리기
 	@PostMapping(value="trash")
-	public int trashMessage(@RequestBody Message messageNum) throws Exception {
+	public ResponseEntity<Integer> trashMessage(@RequestBody Message messageNum) throws Exception {
 		log.debug("messageNum 조회 = {}", messageNum);
 		
 		int result = service.trashMessage(messageNum.getMessageNum());
@@ -105,26 +106,26 @@ public class MessageController {
 		
 		log.debug("결과 = {}", result);
 		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 	
 	
 	// 쪽지 휴지통
 	@GetMapping(value="trashcan")
-	public List<Message> trashMesssageList(@RequestParam(value="userNum", required=false) int userNum) throws Exception {
+	public ResponseEntity<List<Message>> trashMesssageList(@RequestParam(value="userNum", required=false) int userNum) throws Exception {
 		log.debug("userNum 조회 = {}", userNum);
 		
 		List<Message> result = service.trashcanList(userNum);
 		
 		log.debug("결과 = {}", result);
 		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 	
 
 	// 쪽지 삭제
-	@DeleteMapping(produces="application/json; charset=UTF-8")
-	public int deleteMessage(int messageNum) throws Exception {
+	@DeleteMapping
+	public ResponseEntity<Integer> deleteMessage(int messageNum) throws Exception {
 		log.debug("messageNum 조회 = {}", messageNum);
 		
 		int result = service.deleteMessage(messageNum);
@@ -137,7 +138,7 @@ public class MessageController {
 		
 		log.debug("결과 = {}", result);
 		
-		return result;
+		return ResponseEntity.ok(result);
 	}
 
 }

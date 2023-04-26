@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.dao.QuestionDaoImpl;
 import team.spring.runup.question.vo.Question;
 
@@ -60,6 +59,41 @@ public class QuestionService {
 		} catch (Exception e) {
 			log.debug("service => 이상해요 사유 = {}", e);
 			throw new RuntimeException("고민 글 상세 조회 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	// 고민상담 글 수정
+	public int updateQuestion(Question question) {
+		int result = 0;
+
+		try {
+			result = dao.updateQuestion(question);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민 글 수정 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	public int deleteQuestion(int questionNum) {
+		int result = 0;
+
+		try {
+			result = dao.deleteMessage(questionNum);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민 글 삭제 중 오류가 발생하였습니다.", e);
 		}
 		return result;
 	}
