@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.dao.QuestionDaoImpl;
 import team.spring.runup.question.vo.Question;
 
@@ -45,5 +46,25 @@ public class QuestionService {
 		}
 		return result;
 	}
+
+	// 고민상담 글 전체 목록
+	
+	
+	// 고민상담 글 상세
+	public Question openQuestion(int questionNum) {
+		Question result = null;
+		
+		try {
+			result = dao.openQuestion(questionNum); 
+			log.debug("service => 잘실행되었어요");
+		} catch (Exception e) {
+			log.debug("service => 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민 글 상세 조회 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+	
+	
+	
 	
 }

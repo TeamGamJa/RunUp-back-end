@@ -4,11 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.service.QuestionService;
 import team.spring.runup.question.vo.Question;
 
@@ -46,7 +48,16 @@ public class QuestionController {
 	// 고민상담 글 전체 목록 
 		
 	// 고민상담 글 상세
+	@GetMapping(value="content")
+	public Question openQuestion(int questionNum) throws Exception {
+		log.debug("questionNum 조회 = {}", questionNum);
 		
+		Question result = service.openQuestion(questionNum);
+		
+		log.debug("결과 = {}", result);
+		
+		return result;
+	}
 		
 	// 고민상담 글 수정
 		

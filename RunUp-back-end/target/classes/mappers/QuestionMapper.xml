@@ -16,5 +16,9 @@
 		VALUES (#{questionNum}, #{questionCategoryBig}, #{questionCategoryMedium}, #{questionChoice}, 
 			#{questionTitle}, #{questionContent}, #{questionWriter}, #{userNum}, Now())
    </insert>
+   
+   <select id="openQuestion" parameterType="Integer" resultType="Question">
+		SELECT * FROM question WHERE QuestionNum = #{QuestionNum}
+   </select>
 
 </mapper>
