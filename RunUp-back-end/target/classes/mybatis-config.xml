@@ -20,8 +20,12 @@
 	 	<typeAlias type="team.spring.runup.message.vo.Message" alias="Message"/>
 	 	<typeAlias type="team.spring.runup.running.vo.Category" alias="Category"/>
 		<typeAlias type="team.spring.runup.question.vo.Question" alias="Question"/>
+
 		<typeAlias type="team.spring.runup.question.vo.QuestionComment" alias="QuestionComment"/>
 		<typeAlias type="team.spring.runup.question.vo.QuestionLike" alias="QuestionLike"/>
+
+		<typeAlias type="team.spring.runup.report.vo.Report" alias="Report"/>
+
 
 	 </typeAliases>
 

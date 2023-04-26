@@ -37,6 +37,7 @@
             <value>classpath:mappers/RunningMapper.xml</value>
             <value>classpath:mappers/MessageMapper.xml</value>
             <value>classpath:mappers/QuestionMapper.xml</value>
+            <value>classpath:mappers/ReportMapper.xml</value>
          </list>
       </property>
    </bean>

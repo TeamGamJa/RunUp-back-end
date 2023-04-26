@@ -14,7 +14,7 @@ public class Runup {
 	private String runningTitle;
 	private String userNickname;
 	private String runningCategoryMedium;
-	private int userLuxColor;
+	private String userLuxColor;
 	private int userMentorCnt;
 	private String runningDate;
 	private boolean runningAble;
