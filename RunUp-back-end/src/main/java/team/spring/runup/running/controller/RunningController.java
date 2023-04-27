@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -153,9 +154,10 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@PostMapping
-	public ResponseEntity<Integer> createRunning(@RequestBody Running run)  {
+	public ResponseEntity<Integer> createRunning(@RequestPart Running run)  {
 
 		log.debug(run);
+		//log.debug(okay);
 		int result = runningservice.createRunning(run);
 		log.debug(result);
 		
@@ -187,9 +189,12 @@ Logger log = LogManager.getLogger("case3");
 	public ResponseEntity<Integer> participateRunning(@RequestBody Running run) {
 		
 		log.debug(run);
+		//int mypoint = runningservice.getRunningPoint(run);
+		//if (mypoint >= 30) {
+			
 		int registerresult=runningservice.createRegister(run);
 		int result = runningservice.updateRunningAble(run);
-		
+		//}
 		return ResponseEntity.ok(result);
 	}
 	
