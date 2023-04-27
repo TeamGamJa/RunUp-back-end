@@ -25,4 +25,6 @@ public class Running {
 	private Date runningDate;
 	private int runningViewNum;
 	private int userNum;
+	private Date runningRegisterDate;
+	private int runningPoint;
 }

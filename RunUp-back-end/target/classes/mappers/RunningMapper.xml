@@ -76,9 +76,9 @@
    <insert id="createRunning" parameterType="Running">
    <![CDATA[
      insert into running(runningTitle,runningContent,runningCategoryBig,
-     runningCategoryMedium, runningStartBig, runningStartSmall, runningEndBig, runningEndSmall,runningKeep,userNum) 
+     runningCategoryMedium, runningStartBig, runningStartSmall, runningEndBig, runningEndSmall,runningKeep,userNum,runningRegisterDate) 
      values (#{runningTitle}, #{runningContent}, #{runningCategoryBig}, #{runningCategoryMedium}, #{runningStartBig}, 
-     #{runningStartSmall}, #{runningEndBig}, #{runningEndSmall}, #{runningKeep}, #{userNum})
+     #{runningStartSmall}, #{runningEndBig}, #{runningEndSmall}, #{runningKeep}, #{userNum}, #{runningRegisterDate})
    ]]>
    </insert>
    
