@@ -17,6 +17,14 @@
 			#{questionTitle}, #{questionContent}, #{questionWriter}, #{userNum}, Now())
    </insert>
    
+   <select id="searchAllQuestion" parameterType="Integer" resultType="Question">
+   		SELECT QuestionNum, QuestionCategoryMedium, QuestionChoice, QuestionTitle,
+   		QuestionWriter, QuestionDate, QuestionLike 
+   		FROM question 
+   		WHERE #{questionChoice} = 0 or #{questionChoice} = 1 
+   		ORDER BY QuestionDate ASC;
+   </select>
+   
    <select id="openQuestion" parameterType="Integer" resultType="Question">
 		SELECT * FROM question WHERE QuestionNum = #{QuestionNum}
    </select>

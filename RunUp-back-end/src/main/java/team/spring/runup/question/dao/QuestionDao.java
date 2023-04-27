@@ -13,14 +13,16 @@ public interface QuestionDao {
 	int createQuestion(Question question) throws Exception;
 	
 	// 고민상담 글 전체 목록 
-//	List<Question> 
+	public List<Question> searchAllQuestion(int questionChoice);
 	
 	// 고민상담 글 상세
-	
+	public Question openQuestion(int questionNum);
 	
 	// 고민상담 글 수정
+	public int updateQuestion(Question question);
 	
 	// 고민상담 글 삭제
+	public int deleteMessage(int questionNum);
 	
 	// 댓글 작성
 	

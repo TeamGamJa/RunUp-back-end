@@ -1,5 +1,7 @@
 package team.spring.runup.question.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import team.spring.runup.question.service.QuestionService;
@@ -48,6 +51,16 @@ public class QuestionController {
 	}
 		
 	// 고민상담 글 전체 목록 
+	@GetMapping(value="all")
+	public ResponseEntity<List<Question>> searchAllQuestion(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
+		log.debug("receiverNum 조회 = {}", questionChoice);
+		
+		List<Question> result = service.searchAllQuestion(questionChoice);
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
 		
 	// 고민상담 글 상세
 	@GetMapping(value="content")

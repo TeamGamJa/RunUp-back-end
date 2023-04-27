@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.vo.Question;
 
 @Repository
@@ -27,6 +28,12 @@ public class QuestionDaoImpl implements QuestionDao {
 		return session.insert("question.createQuestion", question);
 	}
 
+	// 고민상담 글 전체 목록 
+	public List<Question> searchAllQuestion(int questionChoice) {
+		List<Question> question = session.selectList("question.searchAllQuestion", questionChoice);
+		return question;
+	}
+	
 	// 고민상담 글 상세
 	public Question openQuestion(int questionNum) {
 		return session.selectOne("question.openQuestion", questionNum);
@@ -37,7 +44,10 @@ public class QuestionDaoImpl implements QuestionDao {
 		return session.update("question.updateQuestion", question);
 	}
 
+	// 고민상담 글 삭제
 	public int deleteMessage(int questionNum) {
 		return session.delete("question.deleteQuestion", questionNum);
 	}
+
+	
 }

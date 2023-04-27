@@ -19,4 +19,5 @@ public class Question {
 	private int userNum;
 	private String questionDate;
 	private int questionLike;
+		
 }
