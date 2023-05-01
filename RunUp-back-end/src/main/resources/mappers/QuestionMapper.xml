@@ -39,5 +39,15 @@
    		DELETE FROM question
 		WHERE QuestionNum = #{questionNum}
    </delete>
+   
+   <insert id="createQuestionComment" parameterType="QuestionComment">
+   		INSERT INTO questioncomment(QcommentNum, QcommentContent, QcommentWriter, QuestionNum)
+   		VALUES (#{qCommentNum}, #{qCommentContent}, #{qCommentWriter}, #{questionNum})
+   </insert>
+   
+   <update id="updateQuestionComment" parameterType="QuestionComment">
+   		UPDATE questioncomment SET QcommentContent = #{qCommentContent}
+   		WHERE QcommentNum = #{qNum} 
+   </update>
 
 </mapper>

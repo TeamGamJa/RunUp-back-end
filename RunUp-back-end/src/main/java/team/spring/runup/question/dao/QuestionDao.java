@@ -3,6 +3,7 @@ package team.spring.runup.question.dao;
 import java.util.List;
 
 import team.spring.runup.question.vo.Question;
+import team.spring.runup.question.vo.QuestionComment;
 
 public interface QuestionDao {
 
@@ -24,7 +25,8 @@ public interface QuestionDao {
 	// 고민상담 글 삭제
 	public int deleteMessage(int questionNum);
 	
-	// 댓글 작성
+	// 댓글 작성(생성)
+	public int createQuestionComment(QuestionComment questioncomment);
 	
 	// 댓글 수정
 	

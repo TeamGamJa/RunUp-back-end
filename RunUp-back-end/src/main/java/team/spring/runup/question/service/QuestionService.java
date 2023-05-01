@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.dao.QuestionDaoImpl;
 import team.spring.runup.question.vo.Question;
+import team.spring.runup.question.vo.QuestionComment;
 
 
 @Service
@@ -107,6 +107,41 @@ public class QuestionService {
 		} catch (Exception e) {
 			log.debug("service => 뭔가 이상해요 사유 = {}", e);
 			throw new RuntimeException("고민 글 삭제 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	// 댓글 작성(생성)
+	public int createQuestionComment(QuestionComment questioncomment) {
+		int result = 0;
+
+		try {
+			result = dao.createQuestionComment(questioncomment);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민상담 댓글 생성 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	public int updateQuestionComment(QuestionComment questioncomment) {
+		int result = 0;
+
+		try {
+			result = dao.updateQuestionComment(questioncomment);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민상담 댓글 수정 중 오류가 발생하였습니다.", e);
 		}
 		return result;
 	}

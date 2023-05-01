@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import team.spring.runup.question.service.QuestionService;
+import team.spring.runup.question.vo.QuestionComment;
 import team.spring.runup.question.vo.Question;
 
 @RestController
@@ -31,11 +32,14 @@ public class QuestionController {
 	@Autowired
 	private QuestionService service;
 	
+	@Autowired
+	private QuestionComment qCmt;
+	
 	// 고민상담 글 작성(생성)
 	@PostMapping
 	private ResponseEntity<Integer> createQuestion(@RequestBody Question question) throws Exception {
 		
-		log.debug("createMessage 실행 = {}", question);
+		log.debug("createQuestion 실행 = {}", question);
 		
 		int result = service.createQuestion(question);
 		
@@ -53,7 +57,7 @@ public class QuestionController {
 	// 고민상담 글 전체 목록 
 	@GetMapping(value="all")
 	public ResponseEntity<List<Question>> searchAllQuestion(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
-		log.debug("receiverNum 조회 = {}", questionChoice);
+		log.debug("questionChoice 조회 = {}", questionChoice);
 		
 		List<Question> result = service.searchAllQuestion(questionChoice);
 		
@@ -77,7 +81,7 @@ public class QuestionController {
 	// 고민상담 글 수정
 	@PutMapping
 	public ResponseEntity<Integer> updateQuestion(@RequestBody Question question) throws Exception {
-		log.debug("updateMessage 실행 = {}", question);
+		log.debug("updateQuestion 실행 = {}", question);
 		
 		int result = service.updateQuestion(question);
 		
@@ -110,9 +114,43 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 댓글 작성
+	// 댓글 작성(생성)
+	@PostMapping(value="comment")
+	private ResponseEntity<Integer> createQuestionComment(@RequestBody QuestionComment questioncomment) throws Exception {
+		
+		log.debug("createQuestionComment 실행 = {}", questioncomment);
+		
+		int result = service.createQuestionComment(questioncomment);
+		
+		if (result ==1) {
+			log.debug("고민상담 댓글 작성 성공");
+		} else {
+			log.debug("이상이 있어요");
+		}
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
 		
 	// 댓글 수정
+	@PutMapping(value="comment")
+	public ResponseEntity<Integer> updateQuestionComment(@RequestBody QuestionComment qCmt) throws Exception {
+		
+		log.debug("updateQuestionComment 실행 = {}", qCmt);
+		
+		int result = service.updateQuestionComment(qCmt);
+		
+		if (result ==1) {
+			log.debug("고민상담 댓글 수정 성공");
+		} else {
+			log.debug("이상이 있어요");
+		}
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
 		
 	// 댓글 삭제
 		
