@@ -26,24 +26,24 @@
    
    <select id="getRunningList" resultType="Runup">
    <![CDATA[
-   	  select runningNum, runningTitle, runningNickName, runningCategoryMedium, runningColorName,
-   	  runningMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
+   	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
    	  from running where runningShow = 1
    ]]>
    </select>
    
    <select id="getRunningBycategorybig" parameterType = "String" resultType="Runup">
    <![CDATA[
-   	  select runningNum, runningTitle, runningNickName, runningCategoryMedium, runningColorName,
-   	  runningMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
+   	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
    	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
    ]]>
    </select>
    
    <select id="getRunningBycategorymedium" parameterType = "String" resultType="Runup">
    <![CDATA[
-   	  select runningNum, runningTitle, runningNickName, runningCategoryMedium, runningColorName,
-   	  runningMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
+   	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
    	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
    ]]>
    </select>

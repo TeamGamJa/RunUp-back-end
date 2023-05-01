@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 public class Runup {
 	private int runningNum;
 	private String runningTitle;
-	private String runningNickName;
+	private String userNickname;
 	private String runningCategoryMedium;
-	private String runningColorName;
-	private int runningMentorCnt;
+	private String userLuxColor;
+	private int userMentorCnt;
 	private String runningDate;
 	private boolean runningAble;
 }
