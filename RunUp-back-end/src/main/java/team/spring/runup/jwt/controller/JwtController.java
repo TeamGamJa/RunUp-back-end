@@ -1,5 +1,6 @@
 package team.spring.runup.jwt.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,13 +65,16 @@ public class JwtController {
 			insertUser.setUserId(userId);
 			insertUser.setUserPw(userPw);
 			User user = userService.getUser(insertUser);
-			log.debug(user);
+			Map<String, String> map = new HashMap<String, String>();
 			
 			if (!(StringUtils.isNullOrEmpty(user.getUserId()))) {
 				String token = jwtService.createToken(user);
-				log.debug(token);
+				map.put("token", token);
+				map.put("userId", user.getUserId());
+				map.put("userNickName", user.getUserNickname());
+				map.put("userNum", Integer.toString(user.getUserNum()));
 				response.setHeader("jwt-auth-token", token);
-				return new ResponseEntity<Object>("login Success", HttpStatus.OK);
+				return new ResponseEntity<Object>(map, HttpStatus.OK);
 			} else
 				return new ResponseEntity<Object>("login Fail", HttpStatus.OK);
 		} catch (Exception e) {
