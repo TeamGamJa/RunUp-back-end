@@ -22,13 +22,13 @@ public class Running {
 	private boolean runningKeep;
 	private boolean runningShow;
 	private boolean runningAble;
-	private String runningDate;
+	private String runningDay;
 	private int runningViewNum;
 	private int userNum;
 	private int runningPoint;
-	private String runningNickName;
-	private String runningRegisterDate;
+	private String userNickname;
+	private String runningDate;
 	private int runningColor;
-	private String runningColorName;
-	private int runningMentorCnt;
+	private String userLuxColor;
+	private int userMentorCnt;
 }
