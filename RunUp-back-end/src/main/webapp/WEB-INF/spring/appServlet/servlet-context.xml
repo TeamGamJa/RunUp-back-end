@@ -39,6 +39,7 @@
 	        allowed-methods="GET, PUT"/>
 	</mvc:cors>
 	
+	<beans:bean id="webSocketConfig" class="team.spring.runup.chatMessage.WebSocketConfig" />
 <!-- 	<websocket:handlers>
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
 		<websocket:sockjs></websocket:sockjs>

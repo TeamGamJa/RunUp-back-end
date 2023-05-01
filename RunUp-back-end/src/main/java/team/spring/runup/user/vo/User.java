@@ -1,5 +1,7 @@
 package team.spring.runup.user.vo;
 
+import org.springframework.stereotype.Repository;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Repository
 public class User {
 
 	private int userNum;

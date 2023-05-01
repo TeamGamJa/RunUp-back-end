@@ -36,7 +36,7 @@ public class ServletContext implements WebMvcConfigurer {
 		log.debug("들어오나아아");
 		registry.addInterceptor(jwtInterceptor)
 				.addPathPatterns("/**") // Interceptor가 적용될 경로
-				.excludePathPatterns(new String[]{"login"});
+				.excludePathPatterns("login", "/websocket-chat/**");
 	}
 
 }

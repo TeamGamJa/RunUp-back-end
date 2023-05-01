@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -12,6 +13,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import team.spring.runup.user.vo.User;
 
 @Component
+@Service
 public class JwtServiceImpl {
 
 	private String secretKey = "myKey";

@@ -19,7 +19,8 @@
     </Appenders>
   
     <Loggers>
-  
+  		<Logger name="org.springframework.messaging" level="debug"/>
+  		
         <Logger name="case1" level="warn">
             <AppenderRef ref="File_1" />
         </Logger>
