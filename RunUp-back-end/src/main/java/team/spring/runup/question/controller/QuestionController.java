@@ -32,8 +32,7 @@ public class QuestionController {
 	@Autowired
 	private QuestionService service;
 	
-	@Autowired
-	private QuestionComment qCmt;
+	
 	
 	// 고민상담 글 작성(생성)
 	@PostMapping
@@ -135,11 +134,11 @@ public class QuestionController {
 		
 	// 댓글 수정
 	@PutMapping(value="comment")
-	public ResponseEntity<Integer> updateQuestionComment(@RequestBody QuestionComment qCmt) throws Exception {
+	public ResponseEntity<Integer> updateQuestionComment(@RequestBody QuestionComment questioncomment) throws Exception {
 		
-		log.debug("updateQuestionComment 실행 = {}", qCmt);
+		log.debug("updateQuestionComment 실행 = {}", questioncomment.getqCommentWriter());
 		
-		int result = service.updateQuestionComment(qCmt);
+		int result = service.updateQuestionComment(questioncomment);
 		
 		if (result ==1) {
 			log.debug("고민상담 댓글 수정 성공");
@@ -153,6 +152,22 @@ public class QuestionController {
 	}
 		
 	// 댓글 삭제
+	@DeleteMapping(value="comment")
+	public ResponseEntity<Integer> deleteQuestionComment(int qCommentNum) throws Exception {
+		log.debug("qCommentNum 조회 = {}", qCommentNum);
+		
+		int result = service.deleteQuestionComment(qCommentNum);
+		
+		if (result ==1) {
+			log.debug("고민상담 댓글 삭제 성공");
+		} else {
+			log.debug("이상이 있어요");
+		}
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
 		
 	// 고민상담 글 공감
 		

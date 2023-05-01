@@ -29,8 +29,10 @@ public interface QuestionDao {
 	public int createQuestionComment(QuestionComment questioncomment);
 	
 	// 댓글 수정
+	public int updateQuestionComment(QuestionComment questioncomment);
 	
 	// 댓글 삭제
+	public int deleteQuestionComment(int qCommentNum);
 	
 	// 고민상담 글 공감
 	
