@@ -18,6 +18,8 @@ public interface ReportDao {
 	
 	int updateReport(Report report);
 	
+	int updateReportFile(Report report);
+	
 	int saveReport(Report report);
 	
 }

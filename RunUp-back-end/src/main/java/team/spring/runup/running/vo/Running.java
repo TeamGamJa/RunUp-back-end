@@ -16,15 +16,19 @@ public class Running {
 	private String runningCategoryBig;
 	private String runningCategoryMedium;
 	private int runningStartBig;
-	private int runningStartSmall;
+	private String runningStartSmall;
 	private int runningEndBig;
-	private int runningEndSmall;
+	private String runningEndSmall;
 	private boolean runningKeep;
 	private boolean runningShow;
 	private boolean runningAble;
-	private Date runningDate;
+	private String runningDate;
 	private int runningViewNum;
 	private int userNum;
-	private Date runningRegisterDate;
 	private int runningPoint;
+	private String runningNickName;
+	private String runningRegisterDate;
+	private int runningColor;
+	private String runningColorName;
+	private int runningMentorCnt;
 }

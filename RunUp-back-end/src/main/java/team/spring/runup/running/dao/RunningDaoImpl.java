@@ -35,20 +35,20 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public List<Running> getRunningList() {
-		List<Running> list = session.selectList("running.getRunningList");
+	public List<Runup> getRunningList() {
+		List<Runup> list = session.selectList("running.getRunningList");
 		return list;
 	}
 	
 	@Override
-	public List<Running> getRunningBycategoryBig(String categoryBig) {
-		List<Running> list = session.selectList("running.getRunningBycategorybig", categoryBig);
+	public List<Runup> getRunningBycategoryBig(String categoryBig) {
+		List<Runup> list = session.selectList("running.getRunningBycategorybig", categoryBig);
 		return list;
 	}
 	
 	@Override
-	public List<Running> getRunningBycategoryMedium(String categoryMedium) {
-		List<Running> list = session.selectList("running.getRunningBycategorymedium", categoryMedium);
+	public List<Runup> getRunningBycategoryMedium(String categoryMedium) {
+		List<Runup> list = session.selectList("running.getRunningBycategorymedium", categoryMedium);
 		return list;
 	}
 	

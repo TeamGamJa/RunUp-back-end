@@ -55,6 +55,12 @@ public class ReportDaoImpl implements ReportDao {
 	}
 	
 	@Override
+	public int updateReportFile(Report report) {
+		int result = session.update("report.updateReportFile",report);
+		return result;
+	}
+	
+	@Override
 	public int saveReport(Report report) {
 		int result = session.update("report.updateReportResult",report);
 		return result;

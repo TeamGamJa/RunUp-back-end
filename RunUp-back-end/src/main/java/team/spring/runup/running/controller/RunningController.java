@@ -154,7 +154,7 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@PostMapping
-	public ResponseEntity<Integer> createRunning(@RequestPart Running run)  {
+	public ResponseEntity<Integer> createRunning(@RequestBody Running run)  {
 
 		log.debug(run);
 		//log.debug(okay);

@@ -14,11 +14,11 @@ public interface RunningDao {
 	
 	List<String> getCategoryMediumList(String categoryBig);
 	
-	List<Running> getRunningList();
+	List<Runup> getRunningList();
 	
-	List<Running> getRunningBycategoryBig(String categoryBig);
+	List<Runup> getRunningBycategoryBig(String categoryBig);
 	
-	List<Running> getRunningBycategoryMedium(String categoryMedium);
+	List<Runup> getRunningBycategoryMedium(String categoryMedium);
 	
 	List<Running> getRunningByKeyword(String keyword);
 	
