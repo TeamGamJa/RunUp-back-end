@@ -28,7 +28,12 @@
    
    <update id="updateReport" parameterType="Report">
    	 update report set reporter = #{reporter}, accused = #{accused}, reportContent = #{reportContent}, 
-   	 reportCategory = #{reportCategory}, reportFile = #{reportFile}
+   	 reportCategory = #{reportCategory}
+   	 where reportNum = #{reportNum}
+   </update>
+   
+   <update id="updateReportFile" parameterType="Report">
+   	 update report set reportFile = #{reportFile}
    	 where reportNum = #{reportNum}
    </update>
    

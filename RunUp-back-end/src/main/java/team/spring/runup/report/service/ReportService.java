@@ -48,6 +48,11 @@ public class ReportService {
 		return result;
 	}
 	
+	public int updateReportFile(Report report) {
+		int result = dao.updateReportFile(report);
+		return result;
+	}
+	
 	public int saveReport(Report report) {
 		int result = dao.saveReport(report);
 		return result;

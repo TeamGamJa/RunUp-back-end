@@ -1,5 +1,6 @@
 package team.spring.runup.running.vo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -12,10 +13,10 @@ import lombok.NoArgsConstructor;
 public class Runup {
 	private int runningNum;
 	private String runningTitle;
-	private String userNickname;
+	private String runningNickName;
 	private String runningCategoryMedium;
-	private String userLuxColor;
-	private int userMentorCnt;
+	private String runningColorName;
+	private int runningMentorCnt;
 	private String runningDate;
 	private boolean runningAble;
 }
