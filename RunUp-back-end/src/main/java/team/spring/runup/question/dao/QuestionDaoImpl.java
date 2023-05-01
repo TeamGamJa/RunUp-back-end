@@ -59,8 +59,15 @@ public class QuestionDaoImpl implements QuestionDao {
 		return session.insert("question.createQuestionComment", questioncomment);
 	}
 
+	// 댓글 수정
+	@Override
 	public int updateQuestionComment(QuestionComment questioncomment) {
 		return session.update("question.updateQuestionComment", questioncomment);
+	}
+
+	// 댓글 삭제
+	public int deleteQuestionComment(int qCommentNum) {
+		return session.delete("question.deleteQuestionComment", qCommentNum);
 	}
 
 	

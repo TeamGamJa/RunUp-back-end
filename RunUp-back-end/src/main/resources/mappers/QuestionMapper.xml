@@ -47,7 +47,12 @@
    
    <update id="updateQuestionComment" parameterType="QuestionComment">
    		UPDATE questioncomment SET QcommentContent = #{qCommentContent}
-   		WHERE QcommentNum = #{qNum} 
+   		WHERE QuestionNum = #{questionNum} 
    </update>
+   
+   <delete id="deleteQuestionComment" parameterType="Integer">
+   		DELETE FROM questioncomment
+   		WHERE QcommentNum = #{qCommentNum}
+   </delete>
 
 </mapper>
