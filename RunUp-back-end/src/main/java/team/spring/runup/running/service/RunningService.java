@@ -217,7 +217,16 @@ public class RunningService {
 	}
 	
 	public int createRunning(Running run) {
+		
+		User user = udao.getUserByNum(run.getUserNum());
+		run.setUserNickname(user.getUserNickname());
+		run.setRunningColor(user.getUserLuxColor());
+		run.setUserMentorCnt(run.getUserMentorCnt());
+		String string = new String();
+		string = run.getRunningDate() + ' ' + run.getRunningEndSmall();
+		run.setRunningDate(string);
 		int result = dao.createRunning(run);
+		
 		return result;
 	}
 	
