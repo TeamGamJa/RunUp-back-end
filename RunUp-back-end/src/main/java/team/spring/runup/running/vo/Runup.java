@@ -19,4 +19,5 @@ public class Runup {
 	private int userMentorCnt;
 	private String runningDate;
 	private boolean runningAble;
+	private int participateNum;
 }

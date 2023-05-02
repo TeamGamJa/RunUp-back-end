@@ -29,6 +29,8 @@ public interface RunningDao {
 	
 	List<RunCalender> getRunningByRunningShow(int userNum);
 	
+	List<RunCalender> getRunningByParticipateNum(int participateNum);
+	
 	Running getRunning(Running run);
 	
 	int getUserNumByRunningNum(int runningnum);
