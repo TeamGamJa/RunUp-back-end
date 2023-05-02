@@ -144,9 +144,9 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@GetMapping(value="alltake")
-	public ResponseEntity<List<Runup>> takeRunningAll(@RequestParam(value="userNum", required=false) int uerNum) throws JsonProcessingException {
+	public ResponseEntity<List<RunCalender>> takeRunningAll(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
 		
-		List<Runup> runningGreen = runningservice.getRunningList(); 
+		List<RunCalender> runningGreen = runningservice.getRunningByParticipateNum(participateNum); 
 		log.debug(runningGreen);
 		return ResponseEntity.ok(runningGreen);
 	}

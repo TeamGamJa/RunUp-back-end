@@ -31,4 +31,6 @@ public class Running {
 	private int runningColor;
 	private String userLuxColor;
 	private int userMentorCnt;
+	private String chatRoomId;
+	private int participateNum;
 }

@@ -96,6 +96,12 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
+	public List<RunCalender> getRunningByParticipateNum(int participateNum) {
+		List<RunCalender> list = session.selectList("running.getRunningByParticipateNum", participateNum);
+		return list;
+	}
+	
+	@Override
 	public int createRunning(Running run) {
 		int result = session.insert("running.createRunning",run);
 		return result;
