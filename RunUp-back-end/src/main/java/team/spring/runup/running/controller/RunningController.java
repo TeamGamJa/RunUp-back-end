@@ -25,6 +25,7 @@ import team.spring.runup.question.service.QuestionService;
 import team.spring.runup.question.vo.Question;
 import team.spring.runup.running.service.RunningService;
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.Runup;
 import team.spring.runup.user.service.UserService;
@@ -134,12 +135,31 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(runningList);
 	}
 	
-	@GetMapping(value="all")
-	public ResponseEntity<List<Runup>> searchRunningAll() throws JsonProcessingException {
+	
+	@GetMapping(value="alltake")
+	public ResponseEntity<List<Runup>> takeRunningAll(@RequestParam(value="userNum", required=false) int uerNum) throws JsonProcessingException {
 		
-		List<Runup> runningList = runningservice.getRunningList(); 
-		log.debug(runningList);
-		return ResponseEntity.ok(runningList);
+		List<Runup> runningGreen = runningservice.getRunningList(); 
+		log.debug(runningGreen);
+		return ResponseEntity.ok(runningGreen);
+	}
+	
+	@GetMapping(value="allgive")
+	public HashMap<Object, Object> giveRunningAll(@RequestParam(value="userNum", required=false) int userNum) throws JsonProcessingException {
+		
+		
+		List<RunCalender> runningOrange = runningservice.getRunningByRunningAble(userNum); 
+		List<RunCalender> runningBlue = runningservice.getRunningByRunningAbleTrue(userNum);
+		List<RunCalender> runningGray = runningservice.getRunningByRunningShow(userNum); 
+		
+		log.debug(runningOrange);
+		log.debug(runningBlue);
+		log.debug(runningGray);
+		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
+		hashmap.put("runningOrange", runningOrange);
+		hashmap.put("runningBlue", runningBlue);
+		hashmap.put("runningGray", runningGray);
+		return hashmap;
 	}
 	
 	@GetMapping
@@ -160,9 +180,7 @@ Logger log = LogManager.getLogger("case3");
 		//log.debug(okay);
 		int result = runningservice.createRunning(run);
 		log.debug(result);
-		
 		return ResponseEntity.ok(result);
-		
 	}
 	
 	@DeleteMapping
@@ -171,7 +189,6 @@ Logger log = LogManager.getLogger("case3");
 		log.debug(run);
 		int result = runningservice.deleteRunning(run);
 		log.debug(result);
-		
 		return ResponseEntity.ok(result);
 	}
 	

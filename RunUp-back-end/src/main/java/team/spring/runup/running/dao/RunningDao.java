@@ -3,6 +3,7 @@ package team.spring.runup.running.dao;
 import java.util.List;
 
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.Runup;
 
@@ -21,6 +22,12 @@ public interface RunningDao {
 	List<Runup> getRunningBycategoryMedium(String categoryMedium);
 	
 	List<Running> getRunningByKeyword(String keyword);
+	
+	List<RunCalender> getRunningByRunningAble(int userNum);
+	
+	List<RunCalender> getRunningByRunningAbleTrue(int userNum);
+	
+	List<RunCalender> getRunningByRunningShow(int userNum);
 	
 	Running getRunning(Running run);
 	
