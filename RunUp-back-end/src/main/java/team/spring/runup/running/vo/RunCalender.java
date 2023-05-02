@@ -12,6 +12,7 @@ public class RunCalender {
 	private String runningTitle;
 	private String runningCategoryMedium;
 	private String userNickname;
+	private String runningDate;
 	private String runningStartSmall;
 	private String runningEndSmall;
 	private String runningContent;

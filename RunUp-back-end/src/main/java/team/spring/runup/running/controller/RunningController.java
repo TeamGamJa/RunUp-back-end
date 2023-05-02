@@ -135,6 +135,13 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(runningList);
 	}
 	
+	@GetMapping(value="all")
+	public ResponseEntity<List<Runup>> searchRunningAll() throws JsonProcessingException {
+		
+		List<Runup> runningList = runningservice.getRunningList(); 
+		log.debug(runningList);
+		return ResponseEntity.ok(runningList);
+	}
 	
 	@GetMapping(value="alltake")
 	public ResponseEntity<List<Runup>> takeRunningAll(@RequestParam(value="userNum", required=false) int uerNum) throws JsonProcessingException {
@@ -149,7 +156,7 @@ Logger log = LogManager.getLogger("case3");
 		
 		
 		List<RunCalender> runningOrange = runningservice.getRunningByRunningAble(userNum); 
-		List<RunCalender> runningBlue = runningservice.getRunningByRunningAbleTrue(userNum);
+		List<RunCalender> runningBlue = runningservice.getRunningByRunningAbleTrue(userNum);  
 		List<RunCalender> runningGray = runningservice.getRunningByRunningShow(userNum); 
 		
 		log.debug(runningOrange);
