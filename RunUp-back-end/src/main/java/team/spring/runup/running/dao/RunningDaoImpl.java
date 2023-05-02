@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.Runup;
 
@@ -74,6 +75,24 @@ public class RunningDaoImpl implements RunningDao {
 	public int getMentorByUserNum(int num) {
 		int count = session.selectOne("running.countMentor",num);
 		return count;
+	}
+	
+	@Override
+	public List<RunCalender> getRunningByRunningAble(int userNum) {
+		List<RunCalender> list = session.selectList("running.getRunningByRunningAble", userNum);
+		return list;
+	}
+	
+	@Override
+	public List<RunCalender> getRunningByRunningAbleTrue(int userNum) {
+		List<RunCalender> list = session.selectList("running.getRunningByRunningAbleTrue", userNum);
+		return list;
+	}
+	
+	@Override
+	public List<RunCalender> getRunningByRunningShow(int userNum) {
+		List<RunCalender> list = session.selectList("running.getRunningByRunningShow", userNum);
+		return list;
 	}
 	
 	@Override

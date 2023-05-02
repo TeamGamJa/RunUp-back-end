@@ -69,6 +69,27 @@
    ]]>
    </select>
    
+   <select id="getRunningByRunningAble" parameterType="int" resultType="RunCalender">
+   <![CDATA[
+   	  select runningTitle, runningCategoryMedium, userNickname, runningStartSmall, runningEndSmall, runningContent
+   	  from running where userNum = #{userNum} and runningAble = false and runningShow = True
+   ]]>
+   </select>
+   
+   <select id="getRunningByRunningAbleTrue" parameterType="int" resultType="RunCalender">
+   <![CDATA[
+   	  select runningTitle, runningCategoryMedium, userNickname, runningStartSmall, runningEndSmall, runningContent
+   	  from running where userNum = #{userNum} and runningAble = True and runningShow = True
+   ]]>
+   </select>
+   
+   <select id="getRunningByRunningShow" parameterType="int" resultType="RunCalender">
+   <![CDATA[
+   	  select runningTitle, runningCategoryMedium, userNickname, runningStartSmall, runningEndSmall, runningContent
+   	  from running where userNum = #{userNum} and runningShow = False
+   ]]>
+   </select>
+   
    <select id="countMentor" parameterType="int" resultType="int">
    <![CDATA[
    	  select count(*) 

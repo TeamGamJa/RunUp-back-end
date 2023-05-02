@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import team.spring.runup.running.dao.RunningDao;
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.Runup;
 import team.spring.runup.user.dao.UserDao;
@@ -208,6 +209,21 @@ public class RunningService {
 	
 	public List<Running> getRunningByKeyword(String keyword) {
 		List<Running> list = dao.getRunningByKeyword(keyword);
+		return list;
+	}
+	
+	public List<RunCalender> getRunningByRunningAble(int userNum) {
+		List<RunCalender> list = dao.getRunningByRunningAble(userNum);
+		return list;
+	}
+	
+	public List<RunCalender> getRunningByRunningAbleTrue(int userNum) {
+		List<RunCalender> list = dao.getRunningByRunningAbleTrue(userNum);
+		return list;
+	}
+	
+	public List<RunCalender> getRunningByRunningShow(int userNum) {
+		List<RunCalender> list = dao.getRunningByRunningShow(userNum);
 		return list;
 	}
 	
