@@ -26,6 +26,7 @@
 		<typeAlias type="team.spring.runup.question.vo.QuestionLike" alias="QuestionLike"/>
 
 		<typeAlias type="team.spring.runup.report.vo.Report" alias="Report"/>
+		<typeAlias type="team.spring.runup.chatMessage.vo.ChatMessage" alias="ChatMessage"/>
 
 
 	 </typeAliases>

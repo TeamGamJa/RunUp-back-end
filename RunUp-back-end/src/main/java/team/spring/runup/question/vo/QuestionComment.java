@@ -1,5 +1,6 @@
 package team.spring.runup.question.vo;
 
+
 public class QuestionComment {
 
 	

@@ -31,9 +31,7 @@ public class QuestionController {
 		
 	@Autowired
 	private QuestionService service;
-	
-	
-	
+
 	// 고민상담 글 작성(생성)
 	@PostMapping
 	private ResponseEntity<Integer> createQuestion(@RequestBody Question question) throws Exception {
