@@ -15,6 +15,7 @@ public class Runup {
 	private String runningTitle;
 	private String runningContent;
 	private String userNickname;
+	private String runningCategoryBig;
 	private String runningCategoryMedium;
 	private String userLuxColor;
 	private int userMentorCnt;

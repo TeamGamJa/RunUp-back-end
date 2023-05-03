@@ -13,6 +13,7 @@ import team.spring.runup.running.dao.RunningDao;
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 import team.spring.runup.user.dao.UserDao;
 import team.spring.runup.user.vo.User;
@@ -87,6 +88,11 @@ public class RunningService {
 //		}
 //		return resultList;
 //	}
+	
+	public List<RunningPieOne> getPieByParticipateNum(int participateNum) {
+		List<RunningPieOne> list = dao.getPieByParticipateNum(participateNum);
+		return list;
+	}
 	
 	public List<Runup> getRunningList() {
 		

@@ -5,6 +5,7 @@ import java.util.List;
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 
 public interface RunningDao {
@@ -30,6 +31,8 @@ public interface RunningDao {
 	List<RunCalender> getRunningByRunningShow(int userNum);
 	
 	List<RunCalender> getRunningByParticipateNum(int participateNum);
+	
+	List<RunningPieOne> getPieByParticipateNum(int participateNum);
 	
 	Running getRunning(Running run);
 	

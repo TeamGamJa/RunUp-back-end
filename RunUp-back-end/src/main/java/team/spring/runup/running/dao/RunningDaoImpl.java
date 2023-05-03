@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 
 @Repository
@@ -56,6 +57,12 @@ public class RunningDaoImpl implements RunningDao {
 	@Override
 	public List<Running> getRunningByKeyword(String keyword) {
 		List<Running> list = session.selectList("running.getRunningByKeyword",keyword);
+		return list;
+	}
+	
+	@Override
+	public List<RunningPieOne> getPieByParticipateNum(int participateNum) {
+		List<RunningPieOne> list = session.selectList("running.getPieByParticipateNum",participateNum);
 		return list;
 	}
 	

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class RunCalender {
 	
 	private String runningTitle;
+	private String runningCategoryBig;
 	private String runningCategoryMedium;
 	private String userNickname;
 	private String runningDate;

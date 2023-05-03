@@ -27,6 +27,7 @@ import team.spring.runup.running.service.RunningService;
 import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 import team.spring.runup.user.service.UserService;
 import team.spring.runup.user.vo.User;
@@ -48,6 +49,16 @@ Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	private QuestionService questionservice;
+	
+	@GetMapping(value="pchart")
+	public ResponseEntity<List<RunningPieOne>> pieChart(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+		
+		log.debug(participateNum);
+		List<RunningPieOne> pieList = runningservice.getPieByParticipateNum(participateNum);
+		log.debug(pieList);
+		
+		return ResponseEntity.ok(pieList);
+	}
 	
 	@GetMapping(value="category")
 	public HashMap<Object, Object> searchCategoryAll() throws JsonProcessingException {
