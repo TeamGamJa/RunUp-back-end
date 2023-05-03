@@ -71,7 +71,7 @@ public class JwtController {
 				String token = jwtService.createToken(user);
 				map.put("token", token);
 				map.put("userId", user.getUserId());
-				map.put("userNickName", user.getUserNickname());
+				map.put("userNickname", user.getUserNickname());
 				map.put("userNum", Integer.toString(user.getUserNum()));
 				response.setHeader("jwt-auth-token", token);
 				return new ResponseEntity<Object>(map, HttpStatus.OK);

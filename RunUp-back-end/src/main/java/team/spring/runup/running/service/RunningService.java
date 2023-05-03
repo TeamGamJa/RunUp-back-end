@@ -1,5 +1,6 @@
 package team.spring.runup.running.service;
 
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -238,13 +239,26 @@ public class RunningService {
 	}
 	
 	public int createRunning(Running run) {
+		String string = new String();
+		String chat = new String();
+		StringBuilder sb = new StringBuilder();
+		SecureRandom random = new SecureRandom();
+		String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		
+		for (int i=0; i<7; i++) {
+			int idx = random.nextInt(chars.length());
+			sb.append(chars.charAt(idx));
+		}
 		
 		User user = udao.getUserByNum(run.getUserNum());
 		run.setUserNickname(user.getUserNickname());
 		run.setRunningColor(user.getUserLuxColor());
 		run.setUserMentorCnt(run.getUserMentorCnt());
-		String string = new String();
+		
+		
 		string = run.getRunningDate() + ' ' + run.getRunningEndSmall();
+		chat = String.valueOf(run.getUserNum())+"room"+sb.toString();
+		run.setChatRoomId(chat);
 		run.setRunningDate(string);
 		int result = dao.createRunning(run);
 		

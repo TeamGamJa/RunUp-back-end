@@ -27,7 +27,7 @@
    <select id="getRunningList" resultType="Runup">
    <![CDATA[
    	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
-   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1
    ]]>
    </select>
@@ -35,7 +35,7 @@
    <select id="getRunningBycategorybig" parameterType = "String" resultType="Runup">
    <![CDATA[
    	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
-   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
    ]]>
    </select>
@@ -43,7 +43,7 @@
    <select id="getRunningBycategorymedium" parameterType = "String" resultType="Runup">
    <![CDATA[
    	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
-   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningAble
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
    ]]>
    </select>
@@ -97,7 +97,7 @@
    <![CDATA[
    	  select runningTitle, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
    	  chatRoomId
-   	  from running where participateNum = #{participateNum} and runningShow = False
+   	  from running where participateNum = #{participateNum} and runningShow = True
    ]]>
    </select>
    
@@ -111,9 +111,9 @@
    <insert id="createRunning" parameterType="Running">
    <![CDATA[
      insert into running(runningTitle,runningContent,runningCategoryBig,
-     runningCategoryMedium, runningStartBig, runningStartSmall, runningEndBig, runningEndSmall,runningKeep,userNum,userNickname,runningDate,runningColor,userMentorCnt) 
+     runningCategoryMedium, runningStartBig, runningStartSmall, runningEndBig, runningEndSmall,runningKeep,userNum,userNickname,runningDate,runningColor,userMentorCnt,chatRoomId) 
      values (#{runningTitle}, #{runningContent}, #{runningCategoryBig}, #{runningCategoryMedium}, #{runningStartBig}, 
-     #{runningStartSmall}, #{runningEndBig}, #{runningEndSmall}, #{runningKeep}, #{userNum},#{userNickname}, #{runningDate},#{runningColor},#{userMentorCnt})
+     #{runningStartSmall}, #{runningEndBig}, #{runningEndSmall}, #{runningKeep}, #{userNum},#{userNickname}, #{runningDate},#{runningColor},#{userMentorCnt},#{chatRoomId})
    ]]>
    </insert>
    
@@ -149,12 +149,8 @@
    
    <update id="updateRunningAble" parameterType="Running">
    <![CDATA[
-   	 update running set runningAble =
-   	 case
-   	 	when runningAble = true then false
-   	 	else true
-   	 end	
-   	 where runningNum = #{runningNum}
+   	 update running set runningAble = False, participateNum = #{participateNum}
+   	 where userNum = #{userNum} and runningNum = #{runningNum}
    ]]>
    </update>
    
