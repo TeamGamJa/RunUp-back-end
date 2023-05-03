@@ -26,7 +26,7 @@
    
    <select id="getRunningList" resultType="Runup">
    <![CDATA[
-   	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
+   	  select runningNum, runningTitle, runningContent, userNickname, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1
    ]]>
@@ -34,7 +34,7 @@
    
    <select id="getRunningBycategorybig" parameterType = "String" resultType="Runup">
    <![CDATA[
-   	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
+   	  select runningNum, runningTitle, runningContent ,userNickname, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
    ]]>
@@ -42,7 +42,7 @@
    
    <select id="getRunningBycategorymedium" parameterType = "String" resultType="Runup">
    <![CDATA[
-   	  select runningNum, runningTitle, userNickname, runningCategoryMedium, userLuxColor,
+   	  select runningNum, runningTitle, runningContent ,userNickname, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
    ]]>
