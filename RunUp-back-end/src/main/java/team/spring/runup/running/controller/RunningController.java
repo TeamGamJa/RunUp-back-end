@@ -216,21 +216,21 @@ Logger log = LogManager.getLogger("case3");
 		//int mypoint = runningservice.getRunningPoint(run);
 		//if (mypoint >= 30) {
 			
-		int registerresult=runningservice.createRegister(run);
+		// int registerresult=runningservice.createRegister(run);
 		int result = runningservice.updateRunningAble(run);
 		//}
 		return ResponseEntity.ok(result);
 	}
 	
-	@PutMapping(value="cancellation")
-	public ResponseEntity<Integer> participateCancel(@RequestBody Running run) {
-		
-		log.debug(run);
-		int registerresult=runningservice.deleteRegister(run);
-		int result = runningservice.updateRunningAble(run);
-				
-		return ResponseEntity.ok(result);
-	}
+//	@PutMapping(value="cancellation")
+//	public ResponseEntity<Integer> participateCancel(@RequestBody Running run) {
+//		
+//		log.debug(run);
+////		int registerresult=runningservice.deleteRegister(run);
+////		int result = runningservice.updateRunningAble(run);
+//				
+//		return ResponseEntity.ok(result);
+//	}
 	
 	@PutMapping(value="salt")
 	public ResponseEntity<Integer> saltRunning(@RequestBody Map<Object,Object> salt) {
