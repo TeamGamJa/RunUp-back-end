@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Runup {
 	private int runningNum;
 	private String runningTitle;
+	private String runningContent;
 	private String userNickname;
 	private String runningCategoryMedium;
 	private String userLuxColor;
