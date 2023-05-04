@@ -39,6 +39,8 @@
             <value>classpath:mappers/QuestionMapper.xml</value>
             <value>classpath:mappers/ReportMapper.xml</value>
             <value>classpath:mappers/ChatMapper.xml</value>
+            <value>classpath:mappers/FountainMapper.xml</value>
+            <value>classpath:mappers/DonationMapper.xml</value>
          </list>
       </property>
    </bean>

@@ -19,6 +19,8 @@
 	 	<typeAlias type="team.spring.runup.running.vo.Runup" alias="Runup"/>
 	 	<typeAlias type="team.spring.runup.running.vo.RunCalender" alias="RunCalender"/>
 	 	<typeAlias type="team.spring.runup.running.vo.RunningPieOne" alias="RunningPieOne"/>
+	 	<typeAlias type="team.spring.runup.running.vo.RunningLineOne" alias="RunningLineOne"/>
+	 	<typeAlias type="team.spring.runup.running.vo.Point" alias="Point"/>
 	 	<typeAlias type="team.spring.runup.message.vo.Message" alias="Message"/>
 	 	<typeAlias type="team.spring.runup.running.vo.Category" alias="Category"/>
 		<typeAlias type="team.spring.runup.question.vo.Question" alias="Question"/>
@@ -27,6 +29,8 @@
 		<typeAlias type="team.spring.runup.question.vo.QuestionLike" alias="QuestionLike"/>
 
 		<typeAlias type="team.spring.runup.report.vo.Report" alias="Report"/>
+		<typeAlias type="team.spring.runup.fountain.vo.Fountain" alias="Fountain"/>
+		<typeAlias type="team.spring.runup.donation.vo.Donation" alias="Donation"/>
 		<typeAlias type="team.spring.runup.chatMessage.vo.ChatMessage" alias="ChatMessage"/>
 
 

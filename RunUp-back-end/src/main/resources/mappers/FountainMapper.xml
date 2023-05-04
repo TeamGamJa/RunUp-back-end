@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="fountain">
+   
+   <select id="getFountainList" resultType="Fountain">
+   <![CDATA[
+   	  select *
+   	  from fountain 
+   ]]>
+   </select>
+   
+   <select id="getFountain" parameterType="Fountain" resultType="Fountain">
+   <![CDATA[
+   	  select * 
+   	  from fountain where fountainNum = #{fountainNum}
+   ]]>
+   </select>
+   
+   <insert id="createFountain" parameterType="Fountain">
+   <![CDATA[
+     insert into fountain(fountainContent,fountainCategoryBig,fountainCategoryMedium,
+     fountainAuthor, fountainPoint,userNum) 
+     values (#{fountainContent}, #{fountainCategoryBig}, #{fountainCategoryMedium}, #{fountainAuthor}, #{fountainPoint}, #{userNum})
+   ]]>
+   </insert>
+   
+   <delete id="deleteFountain" parameterType="Fountain">
+   <![CDATA[
+     delete from fountain where userNum = #{userNum} and fountainNum = #{fountainNum}
+   ]]>
+   </delete>
+   
+   <update id="updateFountain" parameterType="Fountain" >
+   <![CDATA[
+     update fountain set fountainContent = #{fountainContent}, 
+     fountainCategoryBig = #{fountainCategoryBig}, fountainCategoryMedium = #{fountainCategoryMedium},
+     fountainAuthor = #{fountainAuthor}, fountainPoint = #{fountainPoint}
+     where userNum = #{userNum} and fountainNum = #{fountainNum}
+   ]]>
+   </update>
+   
+</mapper>

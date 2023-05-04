@@ -3,8 +3,10 @@ package team.spring.runup.running.dao;
 import java.util.List;
 
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 
@@ -15,6 +17,8 @@ public interface RunningDao {
 	List<String> getCategoryMediumAll();
 	
 	List<String> getCategoryMediumList(String categoryBig);
+	
+	List<Runup> getRunningByRunningTitle(String runningTitle);
 	
 	List<Runup> getRunningList();
 	
@@ -33,6 +37,8 @@ public interface RunningDao {
 	List<RunCalender> getRunningByParticipateNum(int participateNum);
 	
 	List<RunningPieOne> getPieByParticipateNum(int participateNum);
+	
+	List<RunningLineOne> getLineOneByParticipateNum(int participateNum);
 	
 	Running getRunning(Running run);
 	
