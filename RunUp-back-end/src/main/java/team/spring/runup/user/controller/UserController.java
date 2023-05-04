@@ -136,4 +136,14 @@ public class UserController {
 		
 		return result;
 	}
+	
+	@GetMapping(value="user")
+	public User getUserInfo(@RequestParam(value="userId", 
+			required=false) String userId) {
+		
+		User user = userService.getUserById(userId);
+		
+		return user;
+	}
+	
 }
