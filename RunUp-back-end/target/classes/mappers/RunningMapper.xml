@@ -48,10 +48,10 @@
    ]]>
    </select>
    
-   <select id="getRunningByKeyword" parameterType="String" resultType="Running">
+   <select id="getRunningByRunningTitle" parameterType="String" resultType="Runup">
    <![CDATA[
       select *
-      from running where runningShow = 1 and runningTitle Like CONCAT('%', #{keyword},'%')
+      from running where runningShow = 1 and runningTitle Like CONCAT('%', #{runningTitle},'%')
    ]]>
    </select>
    
@@ -106,6 +106,15 @@
    	  select runningCategoryBig, count(runningCategoryBig)*50 as runningValue
    	  from running where participateNum = #{participateNum}
    	  group by runningCategoryBig;
+   ]]>
+   </select>
+   
+   <select id="getLineOneByParticipateNum" parameterType="int" resultType="RunningLineOne">
+   <![CDATA[
+   	  SELECT c.ColorMovement, DATE_FORMAT(c.Date,'%Y-%m-%d') as date, c.ParticipateNum,p.PointMovement, p.ParticipateNum
+    FROM color c
+    LEFT JOIN point p ON DATE_FORMAT(c.Date,'%Y-%m-%d') = DATE_FORMAT(p.Date,'%Y-%m-%d')
+      WHERE c.ParticipateNum=#{participateNum} AND p.ParticipateNum=#{participateNum};
    ]]>
    </select>
    

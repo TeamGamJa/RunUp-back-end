@@ -25,8 +25,10 @@ import team.spring.runup.question.service.QuestionService;
 import team.spring.runup.question.vo.Question;
 import team.spring.runup.running.service.RunningService;
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 import team.spring.runup.user.service.UserService;
@@ -58,6 +60,16 @@ Logger log = LogManager.getLogger("case3");
 		log.debug(pieList);
 		
 		return ResponseEntity.ok(pieList);
+	}
+	
+	@GetMapping(value="lchart")
+	public ResponseEntity<List<RunningLineOne>> lineChart(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+		
+		log.debug(participateNum);
+		List<RunningLineOne> lineList = runningservice.getLineOneByParticipateNum(participateNum);
+		log.debug(lineList);
+		
+		return ResponseEntity.ok(lineList);
 	}
 	
 	@GetMapping(value="category")
@@ -146,12 +158,22 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(runningList);
 	}
 	
+	@GetMapping(value="searchbar")
+	public ResponseEntity<List<Runup>> searchBar(@RequestParam(value="runningTitle", required=false) String runningTitle) throws JsonProcessingException {
+		
+		log.debug(runningTitle);
+		List<Runup> keyList = runningservice.getRunningByRunningTitle(runningTitle);
+		log.debug(keyList);
+		
+		return ResponseEntity.ok(keyList);
+	}
+	
 	@GetMapping(value="all")
 	public ResponseEntity<List<Runup>> searchRunningAll() throws JsonProcessingException {
 		
 		List<Runup> runningList = runningservice.getRunningList(); 
 		log.debug(runningList);
-		return ResponseEntity.ok(runningList);
+		return ResponseEntity.ok(runningList); 
 	}
 	
 	@GetMapping(value="alltake")

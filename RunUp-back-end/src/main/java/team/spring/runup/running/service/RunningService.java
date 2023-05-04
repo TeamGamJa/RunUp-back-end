@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import team.spring.runup.running.dao.RunningDao;
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 import team.spring.runup.user.dao.UserDao;
@@ -91,6 +93,18 @@ public class RunningService {
 	
 	public List<RunningPieOne> getPieByParticipateNum(int participateNum) {
 		List<RunningPieOne> list = dao.getPieByParticipateNum(participateNum);
+		return list;
+	}
+	
+	public List<RunningLineOne> getLineOneByParticipateNum(int participateNum) {
+		
+		List<RunningLineOne> list = dao.getLineOneByParticipateNum(participateNum);
+		
+		return list;
+	}
+	
+	public List<Runup> getRunningByRunningTitle(String runningTitle) {
+		List<Runup> list = dao.getRunningByRunningTitle(runningTitle);
 		return list;
 	}
 	

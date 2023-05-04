@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import team.spring.runup.running.vo.Category;
+import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
 
@@ -33,6 +35,12 @@ public class RunningDaoImpl implements RunningDao {
 	@Override
 	public List<String> getCategoryMediumList(String categoryBig) {
 		List<String> list = session.selectList("running.getCategoryMediumListByCategoryBig", categoryBig);
+		return list;
+	}
+	
+	@Override
+	public List<Runup> getRunningByRunningTitle(String runningTitle) {
+		List<Runup> list = session.selectList("running.getRunningByRunningTitle", runningTitle);
 		return list;
 	}
 	
@@ -63,6 +71,12 @@ public class RunningDaoImpl implements RunningDao {
 	@Override
 	public List<RunningPieOne> getPieByParticipateNum(int participateNum) {
 		List<RunningPieOne> list = session.selectList("running.getPieByParticipateNum",participateNum);
+		return list;
+	}
+	
+	@Override
+	public List<RunningLineOne> getLineOneByParticipateNum(int participateNum) {
+		List<RunningLineOne> list = session.selectList("running.getLineOneByParticipateNum", participateNum);
 		return list;
 	}
 	
