@@ -3,17 +3,22 @@ package team.spring.runup.question.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import team.spring.runup.question.vo.Question;
 import team.spring.runup.question.vo.QuestionComment;
+import team.spring.runup.question.vo.QuestionLike;
 
 @Repository
 public class QuestionDaoImpl implements QuestionDao {
 	
 	@Autowired
 	private SqlSession session;
+	
+	Logger log = LogManager.getLogger("case3");
 	
 	// 상단바 검색 - 고민상담 게시판 결과
 	@Override
@@ -66,9 +71,34 @@ public class QuestionDaoImpl implements QuestionDao {
 	}
 
 	// 댓글 삭제
+	@Override
 	public int deleteQuestionComment(int qCommentNum) {
 		return session.delete("question.deleteQuestionComment", qCommentNum);
 	}
 
+	// 고민상담 공감 삭제
+	@Override
+	public int deleteQuestionLike(QuestionLike questionlike) {
+		return session.delete("question.deleteQuestionLike", questionlike);
+	}
+
+	// 고민상담 공감 생성
+	@Override
+	public int createQuestionLike(QuestionLike questionlike) {
+		return session.insert("question.createQuestionLike", questionlike);
+	}
+
+	// 고민상담 공감 1 감소
+	@Override
+	public int decreaseLike(QuestionLike questionlike) {
+		return session.update("question.decreaseLike", questionlike);
+	}
+
+	// 고민상담 공감 1 증가
+	@Override
+	public int increaseLike(QuestionLike questionlike) {
+		return session.update("question.increaseLike", questionlike);
+	}
+	
 	
 }

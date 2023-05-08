@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import team.spring.runup.question.service.QuestionService;
 import team.spring.runup.question.vo.QuestionComment;
+import team.spring.runup.question.vo.QuestionLike;
 import team.spring.runup.question.vo.Question;
 
 @RestController
@@ -167,7 +168,33 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 고민상담 글 공감
+	// 고민상담 공감 삭제 요청
+	// result = 1 -> '삭제' -> 공감 1 감소
+	// result = 0 -> '삭제 실패' = 기존에 공감이 없었던 것 -> 곰감 1 증가 
+	@PostMapping(value="like")
+	private ResponseEntity<Integer> updateQuestionLike(@RequestBody QuestionLike questionlike) throws Exception {
 		
-	// 공감 취소
+		log.debug("deleteQuestionLike 실행 = {}", questionlike);
+		
+		int result = service.deleteQuestionLike(questionlike);
+		
+		if (result ==1) {
+			log.debug("고민상담 좋아요 삭제");
+			service.decreaseLike(questionlike);
+			log.debug("고민상담 좋아요 1 감소");
+		} if (result ==0) {
+			service.createQuestionLike(questionlike); 
+			log.debug("고민상담 좋아요 생성");
+			service.increaseLike(questionlike);
+			log.debug("고민상담 좋아요 1 증가");
+		} else {
+			log.debug("이상이 있어요");
+		}
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
+		
+
 }
