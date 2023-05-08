@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,28 +70,30 @@ public class UserController {
 		return result;
 	}
 	
+	@GetMapping(value="nickname")
+	public int checkExistNickname(@RequestParam String userNickname) throws JsonProcessingException {
+		log.debug(userNickname);
+		int result = userService.checkUserNickName(userNickname);
+		
+		return result;
+	}
+	
 	@PostMapping
-	public int registUser(@RequestParam(value="user",
-			required=false) JsonParser inputUser) throws IOException {
+	public int registUser(@RequestBody User user) throws IOException {
 		
-		int result = 0;
-		ObjectMapper mapper = new ObjectMapper();
-		User user = mapper.readValue(inputUser, User.class);
-		
-		result = userService.registUser(user);
+		int result = userService.registUser(user);
 		
 		return result;
 	}
 
 	@PutMapping
-	public int updateUser(@RequestParam(value="user",
-		required=false) JsonParser inputUser) throws IOException {
-
-		int result = 0;
-		ObjectMapper mapper = new ObjectMapper();
-		User user = mapper.readValue(inputUser, User.class);
+	public int updateUser(@RequestBody User user) throws IOException {
+		log.debug(user);
+//		int result = 0;
+//		ObjectMapper mapper = new ObjectMapper();
+//		User user = mapper.readValue(inputUser, User.class);
 		
-		result = userService.updateUser(user);
+		int result = userService.updateUser(user);
 		
 		return result;
 	}
@@ -144,6 +147,18 @@ public class UserController {
 		User user = userService.getUserById(userId);
 		
 		return user;
+	}
+	
+	@PutMapping(value="ability")
+	public int updateCategory(@RequestBody User user) throws IOException {
+		log.debug(user);
+//		int result = 0;
+//		ObjectMapper mapper = new ObjectMapper();
+//		User user = mapper.readValue(inputUser, User.class);
+		
+		int result = userService.updateUserCategory(user);
+		
+		return result;
 	}
 	
 }

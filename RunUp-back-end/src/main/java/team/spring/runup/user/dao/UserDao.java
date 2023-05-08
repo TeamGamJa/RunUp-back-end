@@ -26,4 +26,8 @@ public interface UserDao {
 
 	int changePw(User user);
 
+	int checkUserNickName(String userNickname);
+
+	int updateUserCategory(User user);
+
 }

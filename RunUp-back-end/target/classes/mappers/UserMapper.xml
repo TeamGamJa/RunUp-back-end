@@ -27,10 +27,9 @@
    </insert>
 
 	<update id="updateUser" parameterType="User">
-   	  update user set userName=#{userName}, userNickname=#{userNickname},
-   	  		 userAddr=#{userAddr}, userPhone=#{userPhone}, userInfo=#{userInfo}, userCategoryBig=#{userCategoryBig},
-   	  		 userCategoryMedium=#{userCategoryMedium}, userAbility=#{userAbility}, userUrl=#{userUrl}, user=#[userWant]
-   	  where userId=#{userId}
+   	  update user set userNickname=#{userNickname}, userPw=#{userPw},
+   	  		 userAddr=#{userAddr}, userPhone=#{userPhone}
+   	  where userNum=#{userNum}
    </update>
    
    <update id="updateUserLuxColor" parameterType="User">
@@ -54,5 +53,14 @@
    <update id="changePw" parameterType="User">
    	  update user set userPw=#{userPw} where userId=#{userId}
    </update>
-
+   
+   <select id="checkUserNicknameExist" parameterType="String" resultType="int">
+      select COUNT(*) from user where userNickname=#{userNickname};
+   </select>
+   
+   <update id="updateCategory" parameterType="User">
+   	  update user set userCategoryBig=#{userCategoryBig}, userCategoryMedium=#{userCategoryMedium}
+   	  where userNum=#{userNum}
+   </update>
+   
 </mapper>

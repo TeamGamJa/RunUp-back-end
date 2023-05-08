@@ -74,4 +74,16 @@ public class UserDaoImpl implements UserDao{
 		return result;
 	}
 
+	@Override
+	public int checkUserNickName(String userNickname) {
+		int result = session.selectOne("user.checkUserNicknameExist", userNickname);
+		return result;
+	}
+
+	@Override
+	public int updateUserCategory(User user) {
+		int result = session.update("user.updateCategory", user);
+		return result;
+	}
+
 }

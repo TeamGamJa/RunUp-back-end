@@ -91,4 +91,14 @@ public class UserService {
 		}
 	}
 
+	public int checkUserNickName(String userNickname) {
+		int result = dao.checkUserNickName(userNickname);
+		return result;
+	}
+
+	public int updateUserCategory(User user) {
+		int result = dao.updateUserCategory(user);
+		return result;
+	}
+
 }
