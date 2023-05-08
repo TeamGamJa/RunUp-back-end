@@ -196,5 +196,5 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 공감 취소
+
 }
