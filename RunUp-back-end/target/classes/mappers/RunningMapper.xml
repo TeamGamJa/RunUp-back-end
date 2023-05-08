@@ -101,20 +101,20 @@
    ]]>
    </select>
    
-   <select id="getPieByParticipateNum" parameterType="int" resultType="RunningPieOne">
+   <select id="getPieByUserNum" parameterType="int" resultType="RunningPieOne">
    <![CDATA[
-   	  select runningCategoryBig, count(runningCategoryBig)*50 as runningValue
-   	  from running where participateNum = #{participateNum}
+   	  select runningCategoryBig, count(runningCategoryBig) as runningValue
+   	  from running where participateNum = #{userNum}
    	  group by runningCategoryBig;
    ]]>
    </select>
    
-   <select id="getLineOneByParticipateNum" parameterType="int" resultType="RunningLineOne">
+   <select id="getLineByUserNum" parameterType="int" resultType="RunningLineOne">
    <![CDATA[
-   	  SELECT c.ColorMovement, DATE_FORMAT(c.Date,'%Y-%m-%d') as date, c.ParticipateNum,p.PointMovement, p.ParticipateNum
+   	  SELECT c.ColorMovement, DATE_FORMAT(c.Date,'%Y-%m-%d') as date, c.UserNum,p.PointMovement, p.UserNum
     FROM color c
     LEFT JOIN point p ON DATE_FORMAT(c.Date,'%Y-%m-%d') = DATE_FORMAT(p.Date,'%Y-%m-%d')
-      WHERE c.ParticipateNum=#{participateNum} AND p.ParticipateNum=#{participateNum};
+      WHERE c.UserNum=#{UserNum} AND p.UserNum=#{UserNum};
    ]]>
    </select>
    
@@ -153,6 +153,12 @@
    ]]>
    </delete>
    
+   <delete id="cancelRunning" parameterType="Running">
+   <![CDATA[
+     delete from running where userNum = #{userNum} and runningNum = #{runningNum}
+   ]]>
+   </delete>
+   
    <update id="updateRunning" parameterType="Running" >
    <![CDATA[
      update running set runningTitle = #{runningTitle}, runningContent = #{runningContent}, 
@@ -168,6 +174,13 @@
    <![CDATA[
    	 update running set runningAble = False, participateNum = #{participateNum}
    	 where runningNum = #{runningNum}
+   ]]>
+   </update>
+   
+   <update id="updateCancelByParticipateNum" parameterType="Running">
+   <![CDATA[
+   	 update running set runningAble = True, participateNum = 0
+   	 where runningNum = #{runningNum} and participateNum = #{participateNum}
    ]]>
    </update>
    

@@ -91,14 +91,14 @@ public class RunningService {
 //		return resultList;
 //	}
 	
-	public List<RunningPieOne> getPieByParticipateNum(int participateNum) {
-		List<RunningPieOne> list = dao.getPieByParticipateNum(participateNum);
+	public List<RunningPieOne> getPieByUserNum(int userNum) {
+		List<RunningPieOne> list = dao.getPieByUserNum(userNum);
 		return list;
 	}
 	
-	public List<RunningLineOne> getLineOneByParticipateNum(int participateNum) {
+	public List<RunningLineOne> getLineByUserNum(int userNum) {
 		
-		List<RunningLineOne> list = dao.getLineOneByParticipateNum(participateNum);
+		List<RunningLineOne> list = dao.getLineByUserNum(userNum);
 		
 		return list;
 	}
@@ -300,6 +300,11 @@ public class RunningService {
 		return result;
 	}
 	
+	public int cancelRunning(Running run) {
+		int result = dao.cancelRunning(run);
+		return result;
+	}
+	
 	public int updateRunning(Running run) {
 		int result = dao.updateRunning(run);
 		return result;
@@ -307,6 +312,11 @@ public class RunningService {
 	
 	public int updateRunningAble(Running run) {
 		int result = dao.updateRunningAble(run);
+		return result;
+	}
+	
+	public int updateCancelByParticipateNum(Running run) {
+		int result = dao.updateCancelByParticipateNum(run);
 		return result;
 	}
 	

@@ -69,14 +69,14 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public List<RunningPieOne> getPieByParticipateNum(int participateNum) {
-		List<RunningPieOne> list = session.selectList("running.getPieByParticipateNum",participateNum);
+	public List<RunningPieOne> getPieByUserNum(int userNum) {
+		List<RunningPieOne> list = session.selectList("running.getPieByUserNum",userNum);
 		return list;
 	}
 	
 	@Override
-	public List<RunningLineOne> getLineOneByParticipateNum(int participateNum) {
-		List<RunningLineOne> list = session.selectList("running.getLineOneByParticipateNum", participateNum);
+	public List<RunningLineOne> getLineByUserNum(int userNum) {
+		List<RunningLineOne> list = session.selectList("running.getLineByUserNum", userNum);
 		return list;
 	}
 	
@@ -147,6 +147,12 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
+	public int cancelRunning(Running run) {
+		int result = session.delete("running.cancelRunning",run);
+		return result;
+	}
+	
+	@Override
 	public int updateRunning(Running run) {
 		int result = session.update("running.updateRunning",run);
 		return result;
@@ -155,6 +161,12 @@ public class RunningDaoImpl implements RunningDao {
 	@Override
 	public int updateRunningAble(Running run) {
 		int result = session.update("running.updateRunningAble",run);
+		return result;
+	}
+	
+	@Override
+	public int updateCancelByParticipateNum(Running run) {
+		int result = session.update("running.updateCancelByParticipateNum",run);
 		return result;
 	}
 	

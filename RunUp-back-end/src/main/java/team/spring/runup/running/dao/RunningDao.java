@@ -36,9 +36,9 @@ public interface RunningDao {
 	
 	List<RunCalender> getRunningByParticipateNum(int participateNum);
 	
-	List<RunningPieOne> getPieByParticipateNum(int participateNum);
+	List<RunningPieOne> getPieByUserNum(int userNum);
 	
-	List<RunningLineOne> getLineOneByParticipateNum(int participateNum);
+	List<RunningLineOne> getLineByUserNum(int userNum);
 	
 	Running getRunning(Running run);
 	
@@ -48,9 +48,13 @@ public interface RunningDao {
 	
 	int updateRunningView(Running run);
 	
+	int updateCancelByParticipateNum(Running run);
+	
 	int createRunning(Running run);
 	
 	int deleteRunning(Running run);
+	
+	int cancelRunning(Running run);
 	
 	int updateRunning(Running run);
 	
