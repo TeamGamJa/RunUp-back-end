@@ -4,6 +4,7 @@ import java.util.List;
 
 import team.spring.runup.question.vo.Question;
 import team.spring.runup.question.vo.QuestionComment;
+import team.spring.runup.question.vo.QuestionLike;
 
 public interface QuestionDao {
 
@@ -34,7 +35,15 @@ public interface QuestionDao {
 	// 댓글 삭제
 	public int deleteQuestionComment(int qCommentNum);
 	
-	// 고민상담 글 공감
+	// 고민상담 공감 삭제
+	public int deleteQuestionLike(QuestionLike questionlike);
 	
-	// 공감 취소
+	// 고민상담 공감 생성
+	public int createQuestionLike(QuestionLike questionlike);
+	
+	// 고민상담 공감 1 감소
+	public int decreaseLike(QuestionLike questionlike);
+	
+	// 고민상담 공감 1 증가
+	public int increaseLike(QuestionLike questionlike);
 }

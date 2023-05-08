@@ -54,5 +54,25 @@
    		DELETE FROM questioncomment
    		WHERE QcommentNum = #{qCommentNum}
    </delete>
+   
+   <delete id="deleteQuestionLike" parameterType="QuestionLike">
+   		DELETE FROM questionlike
+   		WHERE UserNum = #{userNum} AND QuestionNum = #{questionNum}
+   </delete>
+   
+   <insert id="createQuestionLike" parameterType="QuestionLike">
+   		INSERT INTO questionlike (QlikeNum, UserNum, QuestionNum)
+   		VALUES(#{qlikeNum}, #{userNum}, #{questionNum})
+   </insert>
+   
+   <update id="decreaseLike" parameterType="QuestionLike">
+   		UPDATE question SET QuestionLike = QuestionLike -1
+   		WHERE QuestionNum = #{questionNum}
+   </update>
+   
+   <update id="increaseLike" parameterType="QuestionLike">
+   		UPDATE question SET QuestionLike = QuestionLike +1
+   		WHERE QuestionNum = #{questionNum}
+   </update>
 
 </mapper>

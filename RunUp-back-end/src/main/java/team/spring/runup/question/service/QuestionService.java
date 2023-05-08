@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import team.spring.runup.question.dao.QuestionDaoImpl;
 import team.spring.runup.question.vo.Question;
 import team.spring.runup.question.vo.QuestionComment;
+import team.spring.runup.question.vo.QuestionLike;
 
 
 @Service
@@ -165,8 +166,81 @@ public class QuestionService {
 		return result;
 	}
 
-	
-	
+	// 고민상담 공감 삭제
+	public int deleteQuestionLike(QuestionLike questionlike) {
+		int result = 0;
+
+		try {
+			result = dao.deleteQuestionLike(questionlike);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				log.debug("service => 삭제할게 없음");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민상담 공감 삭제 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
+	// 고민상담 공감 생성
+	public int createQuestionLike(QuestionLike questionlike) {
+		int result = 0;
+
+		try {
+			result = dao.createQuestionLike(questionlike);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("고민상담 공감 생성 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+		
+	}
+
+	// 고민상담 공감 1 감소
+	public int decreaseLike(QuestionLike questionlike) {
+		int result = 0;
+
+		try {
+			result = dao.decreaseLike(questionlike);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("공감 1 감소 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+		
+	}
+
+	// 고민상담 공감 1 증가
+	public int increaseLike(QuestionLike questionlike) {
+		int result = 0;
+
+		try {
+			result = dao.increaseLike(questionlike);
+			if (result == 1) {
+				log.debug("service => 잘실행되었어요");
+			} else {
+				throw new Exception("error");
+			}
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("공감 1 증가 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+		
+	}
+
 	
 	
 }
