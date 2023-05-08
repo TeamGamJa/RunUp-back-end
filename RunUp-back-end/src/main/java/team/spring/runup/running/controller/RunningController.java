@@ -53,20 +53,20 @@ Logger log = LogManager.getLogger("case3");
 	private QuestionService questionservice;
 	
 	@GetMapping(value="pchart")
-	public ResponseEntity<List<RunningPieOne>> pieChart(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+	public ResponseEntity<List<RunningPieOne>> pieChart(@RequestParam(value="userNum", required=false) int userNum) throws JsonProcessingException {
 		
-		log.debug(participateNum);
-		List<RunningPieOne> pieList = runningservice.getPieByParticipateNum(participateNum);
+		log.debug(userNum);
+		List<RunningPieOne> pieList = runningservice.getPieByUserNum(userNum);
 		log.debug(pieList);
 		
 		return ResponseEntity.ok(pieList);
 	}
 	
 	@GetMapping(value="lchart")
-	public ResponseEntity<List<RunningLineOne>> lineChart(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+	public ResponseEntity<List<RunningLineOne>> lineChart(@RequestParam(value="userNum", required=false) int userNum) throws JsonProcessingException {
 		
-		log.debug(participateNum);
-		List<RunningLineOne> lineList = runningservice.getLineOneByParticipateNum(participateNum);
+		log.debug(userNum);
+		List<RunningLineOne> lineList = runningservice.getLineByUserNum(userNum);
 		log.debug(lineList);
 		
 		return ResponseEntity.ok(lineList);
@@ -84,7 +84,6 @@ Logger log = LogManager.getLogger("case3");
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
 		hashmap.put("categoryBig", categoryBig);
 		hashmap.put("categoryMedium", categoryMedium);
-		
 		
 		return hashmap;
 	}
@@ -223,15 +222,6 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(result);
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<Integer> deleteRunning(@RequestBody Running run) {
-		
-		log.debug(run);
-		int result = runningservice.deleteRunning(run);
-		log.debug(result);
-		return ResponseEntity.ok(result);
-	}
-	
 	@PutMapping
 	public ResponseEntity<Integer> updateRunning(@RequestBody Running run) {
 		
@@ -255,16 +245,16 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(result);
 	}
 	
-//	@PutMapping(value="cancellation")
-//	public ResponseEntity<Integer> participateCancel(@RequestBody Running run) {
-//		
-//		log.debug(run);
-////		int registerresult=runningservice.deleteRegister(run);
-////		int result = runningservice.updateRunningAble(run);
-//				
-//		return ResponseEntity.ok(result);
-//	}
-	
+	@PutMapping(value="cancellearning")
+	public ResponseEntity<Integer> cancelLearning(@RequestBody Running run) {
+		
+		log.debug(run);
+
+		int result = runningservice.updateCancelByParticipateNum(run);
+				
+		return ResponseEntity.ok(result);
+	}
+		
 	@PutMapping(value="salt")
 	public ResponseEntity<Integer> saltRunning(@RequestBody Map<Object,Object> salt) {
 		
@@ -277,6 +267,24 @@ Logger log = LogManager.getLogger("case3");
 		int result = runningservice.updateSalt(user);
 		log.debug(result);
 		
+		return ResponseEntity.ok(result);
+	}
+	
+	@DeleteMapping
+	public ResponseEntity<Integer> deleteRunning(@RequestBody Running run) {
+		
+		log.debug(run);
+		int result = runningservice.deleteRunning(run);
+		log.debug(result);
+		return ResponseEntity.ok(result);
+	}
+	
+	@DeleteMapping(value="cancelrunning")
+	public ResponseEntity<Integer> cancelRunning(@RequestBody Running run) {
+		
+		log.debug(run);
+		int result = runningservice.cancelRunning(run);
+		log.debug(result);
 		return ResponseEntity.ok(result);
 	}
 }
