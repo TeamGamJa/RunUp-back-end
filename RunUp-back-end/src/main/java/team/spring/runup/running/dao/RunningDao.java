@@ -6,6 +6,7 @@ import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningBarOne;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
@@ -39,6 +40,10 @@ public interface RunningDao {
 	List<RunningPieOne> getPieByUserNum(int userNum);
 	
 	List<RunningLineOne> getLineByUserNum(int userNum);
+	
+	List<RunningBarOne> getBarByUserNum();
+	
+	List<RunningBarOne> getBarByDate();
 	
 	Running getRunning(Running run);
 	

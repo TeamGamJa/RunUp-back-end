@@ -32,6 +32,11 @@
    	  where userNum=#{userNum}
    </update>
    
+   <update id="updateProfile" parameterType="User">
+   	  update user set userUrl=#{userUrl}
+   	  where userNum=#{userNum}
+   </update>
+   
    <update id="updateUserLuxColor" parameterType="User">
    	  update user set userLuxColor = userLuxColor + #{userLuxColor}
    	  where userNum=#{userNum}

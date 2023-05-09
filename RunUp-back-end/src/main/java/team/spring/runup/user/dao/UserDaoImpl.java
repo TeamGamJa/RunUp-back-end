@@ -51,6 +51,12 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
+	public int updateProfile(User user) {
+		int result = session.update("user.updateProfile", user);
+		return result;
+	}
+	
+	@Override
 	public int updateUserLuxColor(User user) {
 		int result = session.update("user.updateUserLuxColor", user);
 		return result;

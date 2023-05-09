@@ -18,6 +18,8 @@ public interface UserDao {
 
 	int updateUser(User user);
 	
+	int updateProfile(User user);
+	
 	int updateUserLuxColor(User user);
 
 	int deleteUser(String userId);

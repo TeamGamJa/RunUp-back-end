@@ -28,6 +28,7 @@ import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningBarOne;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
@@ -51,6 +52,26 @@ Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	private QuestionService questionservice;
+	
+	@GetMapping(value="allchart")
+	public ResponseEntity<List<RunningBarOne>> barChartOne() throws JsonProcessingException {
+		
+		//log.debug(userNum);
+		List<RunningBarOne> barList = runningservice.getBarByUserNum();
+		log.debug(barList);
+		
+		return ResponseEntity.ok(barList);
+	}
+	
+	@GetMapping(value="weekchart")
+	public ResponseEntity<List<RunningBarOne>> barCharttwo() throws JsonProcessingException {
+		
+		//log.debug(userNum);
+		List<RunningBarOne> barList2 = runningservice.getBarByDate();
+		log.debug(barList2);
+		
+		return ResponseEntity.ok(barList2);
+	}
 	
 	@GetMapping(value="pchart")
 	public ResponseEntity<List<RunningPieOne>> pieChart(@RequestParam(value="userNum", required=false) int userNum) throws JsonProcessingException {
