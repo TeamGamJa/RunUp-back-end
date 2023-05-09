@@ -285,7 +285,7 @@ public class RunningService {
 		
 		User user = udao.getUserByNum(run.getUserNum());
 		run.setUserNickname(user.getUserNickname());
-		run.setRunningColor(user.getUserLuxColor());
+		run.setRunningColor(user.getUserColor());
 		run.setUserMentorCnt(run.getUserMentorCnt());
 		
 		

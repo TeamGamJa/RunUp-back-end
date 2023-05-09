@@ -284,7 +284,7 @@ Logger log = LogManager.getLogger("case3");
 		int usernum = runningservice.getUserNumByRunningNum(runningnum);
 		User user = new User();
 		user.setUserNum(usernum);
-		user.setUserLuxColor(usercolor);
+		user.setUserColor(usercolor);
 		int result = runningservice.updateSalt(user);
 		log.debug(result);
 		

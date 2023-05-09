@@ -26,7 +26,8 @@ public class User {
 	private int userPoint;
 	private Boolean isOut;
 	private String userUrl;
-	private int userLuxColor;
+	private String userLuxColor;
+	private int userColor;
 	private int userReportCnt;
 	private Boolean AdminBoolean;
 	private int userMentorCnt;

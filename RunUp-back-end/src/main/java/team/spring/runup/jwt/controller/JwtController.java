@@ -73,6 +73,10 @@ public class JwtController {
 				map.put("userId", user.getUserId());
 				map.put("userNickname", user.getUserNickname());
 				map.put("userNum", Integer.toString(user.getUserNum()));
+				map.put("userUrl", user.getUserUrl());
+				map.put("userPoint", Integer.toString(user.getUserPoint()));
+				map.put("userLuxColor", user.getUserLuxColor());
+				map.put("userColor", Integer.toString(user.getUserColor()));
 				response.setHeader("jwt-auth-token", token);
 				return new ResponseEntity<Object>(map, HttpStatus.OK);
 			} else

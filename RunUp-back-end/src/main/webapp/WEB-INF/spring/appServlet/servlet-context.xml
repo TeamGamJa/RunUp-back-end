@@ -39,6 +39,15 @@
 	        allowed-methods="GET, PUT"/>
 	</mvc:cors>
 	
+	<mvc:interceptors>
+	   <mvc:interceptor>
+	      <mvc:mapping path="/**"/>
+	      <mvc:exclude-mapping path="/jwt/login"/>
+	      <beans:bean class="team.spring.runup.jwt.interceptor.JwtInterceptor" />
+	   </mvc:interceptor>
+	</mvc:interceptors>
+		
+	
 	<beans:bean id="webSocketConfig" class="team.spring.runup.chatMessage.WebSocketConfig" />
 <!-- 	<websocket:handlers>
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>
