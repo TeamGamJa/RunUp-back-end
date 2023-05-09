@@ -96,13 +96,15 @@ public class UserController {
 		
 		return result;
 	}
-	
-	@PostMapping(value="profile")
-	public ResponseEntity<Integer> createReport(
-	        @RequestParam int userNum,
-	        @RequestPart(required = false) MultipartFile img) throws Exception {
 		
-		User user = new User();
+	@PostMapping(value="profile")
+	public ResponseEntity<String> createReport(
+	        @RequestParam int userNum,
+	        @RequestParam(required = false) MultipartFile file) throws Exception {
+
+		log.debug(file);
+		
+	    User user = new User();
 
 	    File credentialsPath = new File("C:/Users/LG/Desktop/bigdata11/data/data-gearbox-383608-78089e7acd65.json");
 
@@ -111,19 +113,30 @@ public class UserController {
 	                    .build()
 	                    .getService();
 
-	    BlobInfo blobInfo = BlobInfo.newBuilder(BlobId.of("runup", "profile/" + img.getOriginalFilename()))
-	            .setContentType(img.getContentType())
+	    String fileName = file.getOriginalFilename();
+	    String contentType = file.getContentType();
+	    if (fileName.endsWith(".png")) {
+	        contentType = "image/png";
+	    } else if (fileName.endsWith(".jpg")) {
+	        contentType = "image/jpeg";
+	    } else if (fileName.endsWith(".gif")) {
+	        contentType = "image/gif";
+	    }
+
+	    BlobInfo blobInfo = BlobInfo.newBuilder(BlobId.of("runup", "profile/" + fileName))
+	            .setContentType(contentType)
 	            .build();
 
-	    Blob blob = storage.create(blobInfo, img.getBytes()); 
+	    Blob blob = storage.create(blobInfo, file.getBytes()); 
 
-	    String fileName = blob.getName();
 	    String fileUrl = "https://storage.googleapis.com/runup/profile/" + fileName;
 	    user.setUserUrl(fileUrl);
 	    user.setUserNum(userNum);
-	    int result = userService.updateProfile(user);
+	    userService.updateProfile(user);
+	    String url = userService.getUserUrlByUserNum(userNum);
+	    log.debug(url);
 
-	    return ResponseEntity.ok(result);
+	    return ResponseEntity.ok(url);
 	}
 
 	@PutMapping

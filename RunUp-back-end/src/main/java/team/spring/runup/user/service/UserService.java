@@ -23,7 +23,13 @@ public class UserService {
 		User user = dao.getUser(insertUser);
 		return user;
 	}
-
+	
+	public String getUserUrlByUserNum(int userNum) {
+		
+		String result = dao.getUserUrlByUserNum(userNum);
+		return result;
+	}
+	
 	public User getUserById(String userId) {
 		User user = dao.getUserById(userId);
 		return user;
@@ -54,7 +60,7 @@ public class UserService {
 	}
 	
 	public int updateProfile(User user) {
-		int result = dao.updateUser(user);
+		int result = dao.updateProfile(user);
 		return result;
 	}
 
