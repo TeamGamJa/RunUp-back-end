@@ -52,6 +52,11 @@ public class UserService {
 		int result = dao.updateUser(user);
 		return result;
 	}
+	
+	public int updateProfile(User user) {
+		int result = dao.updateUser(user);
+		return result;
+	}
 
 	public int deleteUser(String userId) {
 		int result = dao.deleteUser(userId);

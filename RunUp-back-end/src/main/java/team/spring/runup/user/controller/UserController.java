@@ -1,10 +1,13 @@
 package team.spring.runup.user.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +16,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 
 import team.spring.runup.email.service.EmailService;
 import team.spring.runup.email.vo.Email;
@@ -84,6 +95,35 @@ public class UserController {
 		int result = userService.registUser(user);
 		
 		return result;
+	}
+	
+	@PostMapping(value="profile")
+	public ResponseEntity<Integer> createReport(
+	        @RequestParam int userNum,
+	        @RequestPart(required = false) MultipartFile img) throws Exception {
+		
+		User user = new User();
+
+	    File credentialsPath = new File("C:/Users/LG/Desktop/bigdata11/data/data-gearbox-383608-78089e7acd65.json");
+
+	    Storage storage = StorageOptions.newBuilder()
+	                    .setCredentials(GoogleCredentials.fromStream(new FileInputStream(credentialsPath)))
+	                    .build()
+	                    .getService();
+
+	    BlobInfo blobInfo = BlobInfo.newBuilder(BlobId.of("runup", "profile/" + img.getOriginalFilename()))
+	            .setContentType(img.getContentType())
+	            .build();
+
+	    Blob blob = storage.create(blobInfo, img.getBytes()); 
+
+	    String fileName = blob.getName();
+	    String fileUrl = "https://storage.googleapis.com/runup/profile/" + fileName;
+	    user.setUserUrl(fileUrl);
+	    user.setUserNum(userNum);
+	    int result = userService.updateProfile(user);
+
+	    return ResponseEntity.ok(result);
 	}
 
 	@PutMapping

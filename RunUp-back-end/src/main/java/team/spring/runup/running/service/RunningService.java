@@ -14,6 +14,7 @@ import team.spring.runup.running.vo.Category;
 import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.running.vo.RunningBarOne;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
@@ -99,6 +100,18 @@ public class RunningService {
 	public List<RunningLineOne> getLineByUserNum(int userNum) {
 		
 		List<RunningLineOne> list = dao.getLineByUserNum(userNum);
+		
+		return list;
+	}
+	
+	public List<RunningBarOne> getBarByUserNum() {
+		List<RunningBarOne> list = dao.getBarByUserNum();
+		
+		return list;
+	}
+	
+	public List<RunningBarOne> getBarByDate() {
+		List<RunningBarOne> list = dao.getBarByDate();
 		
 		return list;
 	}

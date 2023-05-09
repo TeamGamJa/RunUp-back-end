@@ -118,6 +118,28 @@
    ]]>
    </select>
    
+   <select id="getBarByUserNum" resultType="RunningBarOne">
+   <![CDATA[
+   	  SELECT UserNickname, COUNT(*) as FalseCount
+		FROM running
+		WHERE RunningShow = false
+		GROUP BY UserNickname
+		ORDER BY FalseCount DESC
+		LIMIT 5;
+   ]]>
+   </select>
+   
+   <select id="getBarByDate" resultType="RunningBarOne">
+   <![CDATA[
+   	  SELECT UserNickname, COUNT(*) as FalseCount
+		FROM running
+		WHERE RunningShow = false AND RunningDate >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
+		GROUP BY UserNickname
+		ORDER BY FalseCount DESC
+		LIMIT 5;
+   ]]>
+   </select>
+   
    <select id="countMentor" parameterType="int" resultType="int">
    <![CDATA[
    	  select count(*) 

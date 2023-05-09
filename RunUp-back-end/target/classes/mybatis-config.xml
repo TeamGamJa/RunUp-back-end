@@ -20,6 +20,7 @@
 	 	<typeAlias type="team.spring.runup.running.vo.RunCalender" alias="RunCalender"/>
 	 	<typeAlias type="team.spring.runup.running.vo.RunningPieOne" alias="RunningPieOne"/>
 	 	<typeAlias type="team.spring.runup.running.vo.RunningLineOne" alias="RunningLineOne"/>
+	 	<typeAlias type="team.spring.runup.running.vo.RunningBarOne" alias="RunningBarOne"/>
 	 	<typeAlias type="team.spring.runup.running.vo.Point" alias="Point"/>
 	 	<typeAlias type="team.spring.runup.message.vo.Message" alias="Message"/>
 	 	<typeAlias type="team.spring.runup.running.vo.Category" alias="Category"/>
