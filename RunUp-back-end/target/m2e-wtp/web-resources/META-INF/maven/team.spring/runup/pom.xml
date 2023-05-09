@@ -40,7 +40,6 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
-		
 
 		<!-- @Inject -->
 		<dependency>

@@ -27,6 +27,12 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
+	public String getUserUrlByUserNum(int userNum) {
+		String result = session.selectOne("user.getUserUrlByUserNum", userNum);
+		return result;
+	}
+	
+	@Override
 	public List<User> getUserByNickname(String userNickname) {
 		List<User> user = session.selectList("user.getUserByNickname", userNickname);
 		return user;

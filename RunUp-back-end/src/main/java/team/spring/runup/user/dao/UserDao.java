@@ -12,6 +12,8 @@ public interface UserDao {
 	
 	User getUserByNum(int userNum);
 	
+	String getUserUrlByUserNum(int userNum);
+	
 	List<User> getUserByNickname(String userNickname);
 
 	int registUser(User user);
