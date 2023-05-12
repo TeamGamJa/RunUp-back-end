@@ -23,6 +23,8 @@ public interface RunningDao {
 	
 	List<Runup> getRunningList();
 	
+	List<Runup> getEndRunningList(int participateNum);
+	
 	List<Runup> getRunningBycategoryBig(String categoryBig);
 	
 	List<Runup> getRunningBycategoryMedium(String categoryMedium);

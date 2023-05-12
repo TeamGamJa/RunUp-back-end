@@ -127,6 +127,13 @@ public class RunningService {
 		
 		return list;
 	}
+	
+	public List<Runup> getEndRunningList(int participateNum) {
+		
+		List<Runup> list = dao.getEndRunningList(participateNum);
+		
+		return list;
+	}
 
 	public Running getRunning(Running run) {
 		Running running = dao.getRunning(run);

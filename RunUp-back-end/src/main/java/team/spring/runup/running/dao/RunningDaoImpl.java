@@ -52,6 +52,12 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
+	public List<Runup> getEndRunningList(int participateNum) {
+		List<Runup> list = session.selectList("running.getEndRunningList",participateNum);
+		return list;
+	}
+	
+	@Override
 	public List<Runup> getRunningBycategoryBig(String categoryBig) {
 		List<Runup> list = session.selectList("running.getRunningBycategorybig", categoryBig);
 		return list;
