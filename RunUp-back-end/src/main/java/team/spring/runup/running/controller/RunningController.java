@@ -188,6 +188,14 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(keyList);
 	}
 	
+	@GetMapping(value="end")
+	public ResponseEntity<List<Runup>> endRunningList(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+		
+		List<Runup> endList = runningservice.getEndRunningList(participateNum); 
+		log.debug(endList);
+		return ResponseEntity.ok(endList); 
+	} 
+	
 	@GetMapping(value="all")
 	public ResponseEntity<List<Runup>> searchRunningAll() throws JsonProcessingException {
 		

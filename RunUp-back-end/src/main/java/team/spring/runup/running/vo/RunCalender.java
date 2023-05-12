@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RunCalender {
 	
+	private int runningNum;
 	private String runningTitle;
 	private String runningCategoryBig;
 	private String runningCategoryMedium;

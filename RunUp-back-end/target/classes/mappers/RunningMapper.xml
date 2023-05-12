@@ -29,6 +29,7 @@
    	  select runningNum, runningTitle, runningContent, userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1
+   	  order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
    ]]>
    </select>
    
@@ -37,6 +38,7 @@
    	  select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
+   	  order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
    ]]>
    </select>
    
@@ -45,13 +47,25 @@
    	  select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
+   	  order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
    ]]>
    </select>
    
    <select id="getRunningByRunningTitle" parameterType="String" resultType="Runup">
    <![CDATA[
-      select *
+      select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
       from running where runningShow = 1 and runningTitle Like CONCAT('%', #{runningTitle},'%')
+      order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
+   ]]>
+   </select>
+   
+   <select id="getEndRunningList" parameterType="int" resultType="Runup">
+   <![CDATA[
+      select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
+   	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
+      from running where runningShow = 0 and participateNum = #{participateNum}
+      order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
    ]]>
    </select>
    
@@ -71,7 +85,7 @@
    
    <select id="getRunningByRunningAble" parameterType="int" resultType="RunCalender">
    <![CDATA[
-   	  select runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
+   	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
    	  chatRoomId
    	  from running where userNum = #{userNum} and runningAble = false and runningShow = True
    ]]>
@@ -79,7 +93,7 @@
    
    <select id="getRunningByRunningAbleTrue" parameterType="int" resultType="RunCalender">
    <![CDATA[
-   	  select runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
+   	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
    	  chatRoomId
    	  from running where userNum = #{userNum} and runningAble = True and runningShow = True
    ]]>
@@ -87,7 +101,7 @@
    
    <select id="getRunningByRunningShow" parameterType="int" resultType="RunCalender">
    <![CDATA[
-   	  select runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
+   	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
    	  chatRoomId
    	  from running where userNum = #{userNum} and runningShow = False
    ]]>
@@ -95,7 +109,7 @@
    
    <select id="getRunningByParticipateNum" parameterType="int" resultType="RunCalender">
    <![CDATA[
-   	  select runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
+   	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
    	  chatRoomId
    	  from running where participateNum = #{participateNum} and runningShow = True
    ]]>
