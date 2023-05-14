@@ -205,11 +205,17 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@GetMapping(value="alltake")
-	public ResponseEntity<List<RunCalender>> takeRunningAll(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+	public HashMap<Object, Object> takeRunningAll(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
 		
-		List<RunCalender> runningGreen = runningservice.getRunningByParticipateNum(participateNum); 
+		List<RunCalender> runningGreen = runningservice.getRunningByParticipateNum(participateNum);
+		List<RunCalender> runningGray = runningservice.getRunningByRunningShow(participateNum); 
+		log.debug(runningGray);
 		log.debug(runningGreen);
-		return ResponseEntity.ok(runningGreen);
+		
+		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
+		hashmap.put("runningGreen", runningGreen);
+		hashmap.put("runningGray", runningGray);
+		return hashmap;
 	}
 	
 	@GetMapping(value="allgive")
@@ -218,15 +224,14 @@ Logger log = LogManager.getLogger("case3");
 		
 		List<RunCalender> runningOrange = runningservice.getRunningByRunningAble(userNum); 
 		List<RunCalender> runningBlue = runningservice.getRunningByRunningAbleTrue(userNum);  
-		List<RunCalender> runningGray = runningservice.getRunningByRunningShow(userNum); 
+		
 		
 		log.debug(runningOrange);
 		log.debug(runningBlue);
-		log.debug(runningGray);
+		
 		HashMap<Object, Object> hashmap = new HashMap<Object, Object>();
 		hashmap.put("runningOrange", runningOrange);
 		hashmap.put("runningBlue", runningBlue);
-		hashmap.put("runningGray", runningGray);
 		return hashmap;
 	}
 	
