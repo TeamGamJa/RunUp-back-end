@@ -35,7 +35,7 @@ public interface RunningDao {
 	
 	List<RunCalender> getRunningByRunningAbleTrue(int userNum);
 	
-	List<RunCalender> getRunningByRunningShow(int userNum);
+	List<RunCalender> getRunningByRunningShow(int participateNum);
 	
 	List<RunCalender> getRunningByParticipateNum(int participateNum);
 	

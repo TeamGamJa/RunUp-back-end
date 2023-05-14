@@ -130,8 +130,8 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public List<RunCalender> getRunningByRunningShow(int userNum) {
-		List<RunCalender> list = session.selectList("running.getRunningByRunningShow", userNum);
+	public List<RunCalender> getRunningByRunningShow(int participateNum) {
+		List<RunCalender> list = session.selectList("running.getRunningByRunningShow", participateNum);
 		return list;
 	}
 	

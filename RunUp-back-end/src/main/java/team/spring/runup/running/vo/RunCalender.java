@@ -19,5 +19,6 @@ public class RunCalender {
 	private String runningEndSmall;
 	private String runningContent;
 	private String chatRoomId;
+	private int runningShow;
 	
 }

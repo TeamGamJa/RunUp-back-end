@@ -263,8 +263,8 @@ public class RunningService {
 		return list;
 	}
 	
-	public List<RunCalender> getRunningByRunningShow(int userNum) {
-		List<RunCalender> list = dao.getRunningByRunningShow(userNum);
+	public List<RunCalender> getRunningByRunningShow(int participateNum) {
+		List<RunCalender> list = dao.getRunningByRunningShow(participateNum);
 		return list;
 	}
 	

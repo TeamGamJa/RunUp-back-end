@@ -86,7 +86,7 @@
    <select id="getRunningByRunningAble" parameterType="int" resultType="RunCalender">
    <![CDATA[
    	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
-   	  chatRoomId
+   	  chatRoomId, runningShow
    	  from running where userNum = #{userNum} and runningAble = false and runningShow = True
    ]]>
    </select>
@@ -94,7 +94,7 @@
    <select id="getRunningByRunningAbleTrue" parameterType="int" resultType="RunCalender">
    <![CDATA[
    	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
-   	  chatRoomId
+   	  chatRoomId, runningShow
    	  from running where userNum = #{userNum} and runningAble = True and runningShow = True
    ]]>
    </select>
@@ -102,24 +102,26 @@
    <select id="getRunningByRunningShow" parameterType="int" resultType="RunCalender">
    <![CDATA[
    	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
-   	  chatRoomId
-   	  from running where userNum = #{userNum} and runningShow = False
+   	  chatRoomId, runningShow
+   	  from running where participateNum = #{participateNum} and runningShow = False
    ]]>
    </select>
    
    <select id="getRunningByParticipateNum" parameterType="int" resultType="RunCalender">
    <![CDATA[
    	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
-   	  chatRoomId
+   	  chatRoomId, runningShow
    	  from running where participateNum = #{participateNum} and runningShow = True
    ]]>
    </select>
    
    <select id="getPieByUserNum" parameterType="int" resultType="RunningPieOne">
    <![CDATA[
-   	  select runningCategoryBig, count(runningCategoryBig) as runningValue
+   	  select runningCategoryMedium as runningCategoryBig, count(runningCategoryMedium) as runningValue
    	  from running where participateNum = #{userNum}
-   	  group by runningCategoryBig;
+   	  group by runningCategoryMedium
+      order by runningValue
+      limit 5;
    ]]>
    </select>
    
