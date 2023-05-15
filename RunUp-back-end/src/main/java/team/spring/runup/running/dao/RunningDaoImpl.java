@@ -11,6 +11,7 @@ import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.RunningBarOne;
+import team.spring.runup.running.vo.RunningBarTwo;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
@@ -52,8 +53,8 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public List<Runup> getEndRunningList(int participateNum) {
-		List<Runup> list = session.selectList("running.getEndRunningList",participateNum);
+	public List<Runup> getFinishRunningList(int participateNum) {
+		List<Runup> list = session.selectList("running.getFinishRunningList",participateNum);
 		return list;
 	}
 	
@@ -100,6 +101,18 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
+	public List<RunningBarTwo> getPointByUserNum() {
+		List<RunningBarTwo> list = session.selectList("running.getPointByUserNum");
+		return list;
+	}
+	
+	@Override
+	public List<RunningBarTwo> getColorByUserNum() {
+		List<RunningBarTwo> list = session.selectList("running.getColorByUserNum");
+		return list;
+	}
+	
+	@Override
 	public Running getRunning(Running run) {
 		Running runningone = session.selectOne("running.getRunning",run);
 		return runningone;
@@ -139,6 +152,12 @@ public class RunningDaoImpl implements RunningDao {
 	public List<RunCalender> getRunningByParticipateNum(int participateNum) {
 		List<RunCalender> list = session.selectList("running.getRunningByParticipateNum", participateNum);
 		return list;
+	}
+	
+	@Override
+	public int getRunningPoint(Running run) {
+		int result = session.selectOne("running.getRunningPoint", run);
+		return result;
 	}
 	
 	@Override
@@ -186,6 +205,30 @@ public class RunningDaoImpl implements RunningDao {
 	@Override
 	public int updateCancelByParticipateNum(Running run) {
 		int result = session.update("running.updateCancelByParticipateNum",run);
+		return result;
+	}
+	
+	@Override
+	public int updateUserPointPlus(Running run) {
+		int result = session.update("running.updateUserPointPlus",run);
+		return result;
+	}
+	
+	@Override
+	public int updateUserPointMinus(Running run) {
+		int result = session.update("running.updateUserPointMinus",run);
+		return result;
+	}
+	
+	@Override
+	public int updateFinishLearning(Running run) {
+		int result = session.update("running.updateFinishLearning",run);
+		return result;
+	}
+	
+	@Override
+	public int updateFinishRunning(Running run) {
+		int result = session.update("running.updateFinishRunning",run);
 		return result;
 	}
 	
