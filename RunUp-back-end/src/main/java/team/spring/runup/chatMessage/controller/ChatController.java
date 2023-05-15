@@ -42,6 +42,7 @@ public class ChatController {
 	@PostMapping
 	public ResponseEntity<Integer> makeChatRoomDb(@RequestBody ChatMessage chatMessage) {
 		
+		log.debug(chatMessage);
 		int result = service.insertChat(chatMessage);
 		log.debug("test" + result);
 		return ResponseEntity.ok(result);

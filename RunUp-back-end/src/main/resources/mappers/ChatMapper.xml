@@ -8,7 +8,7 @@
 
 	<insert id="insertChat" parameterType="ChatMessage">
 	    INSERT INTO chat
-	    (roomId, content) VALUES (#{roomId}, CONCAT('대화주제:', #{title}))
+	    (roomId, content) VALUES (#{roomId}, CONCAT('대화주제:', #{title}, '\n'))
 	</insert>
 
 	<update id="updateChat" parameterType="ChatMessage">
