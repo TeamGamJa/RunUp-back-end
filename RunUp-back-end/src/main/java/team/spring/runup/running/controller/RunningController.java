@@ -29,6 +29,7 @@ import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.RunningBarOne;
+import team.spring.runup.running.vo.RunningBarTwo;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
@@ -52,6 +53,26 @@ Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	private QuestionService questionservice;
+	
+	@GetMapping(value="allpointchart")
+	public ResponseEntity<List<RunningBarTwo>> allPointChart() throws JsonProcessingException {
+		
+		//log.debug(userNum);
+		List<RunningBarTwo> pointList = runningservice.getPointByUserNum();
+		log.debug(pointList);
+		
+		return ResponseEntity.ok(pointList);
+	}
+	
+	@GetMapping(value="allcolorchart")
+	public ResponseEntity<List<RunningBarTwo>> allColorChart() throws JsonProcessingException {
+		
+		//log.debug(userNum);
+		List<RunningBarTwo> colorList = runningservice.getColorByUserNum();
+		log.debug(colorList);
+		
+		return ResponseEntity.ok(colorList);
+	}
 	
 	@GetMapping(value="allchart")
 	public ResponseEntity<List<RunningBarOne>> barChartOne() throws JsonProcessingException {
@@ -188,12 +209,12 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(keyList);
 	}
 	
-	@GetMapping(value="end")
-	public ResponseEntity<List<Runup>> endRunningList(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
+	@GetMapping(value="finishlist")
+	public ResponseEntity<List<Runup>> finishRunningList(@RequestParam(value="participateNum", required=false) int participateNum) throws JsonProcessingException {
 		
-		List<Runup> endList = runningservice.getEndRunningList(participateNum); 
-		log.debug(endList);
-		return ResponseEntity.ok(endList); 
+		List<Runup> finishList = runningservice.getFinishRunningList(participateNum); 
+		log.debug(finishList);
+		return ResponseEntity.ok(finishList); 
 	} 
 	
 	@GetMapping(value="all")
@@ -268,14 +289,31 @@ Logger log = LogManager.getLogger("case3");
 	
 	@PutMapping(value="participation")
 	public ResponseEntity<Integer> participateRunning(@RequestBody Running run) {
+		int result = 0;
+		log.debug(run);
+		int mypoint = runningservice.getRunningPoint(run);
+		if (mypoint >= 30) {
+		result = runningservice.updateRunningAble(run);
+		runningservice.updateUserPointMinus(run);
+		}
+		return ResponseEntity.ok(result);
+	}
+	
+	@PutMapping(value="finishlearning")
+	public ResponseEntity<Integer> finishlearning(@RequestBody Running run) {
 		
 		log.debug(run);
-		//int mypoint = runningservice.getRunningPoint(run);
-		//if (mypoint >= 30) {
-			
-		// int registerresult=runningservice.createRegister(run);
-		int result = runningservice.updateRunningAble(run);
-		//}
+		int result = runningservice.updateFinishLearning(run);
+		
+		return ResponseEntity.ok(result);
+	}
+	
+	@PutMapping(value="finishrunning")
+	public ResponseEntity<Integer> finishRunning(@RequestBody Running run) {
+		
+		log.debug(run);
+		int result = runningservice.updateFinishRunning(run);
+		
 		return ResponseEntity.ok(result);
 	}
 	
@@ -285,6 +323,7 @@ Logger log = LogManager.getLogger("case3");
 		log.debug(run);
 
 		int result = runningservice.updateCancelByParticipateNum(run);
+		runningservice.updateUserPointPlus(run);
 				
 		return ResponseEntity.ok(result);
 	}

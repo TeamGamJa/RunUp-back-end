@@ -15,6 +15,7 @@ import team.spring.runup.running.vo.Point;
 import team.spring.runup.running.vo.RunCalender;
 import team.spring.runup.running.vo.Running;
 import team.spring.runup.running.vo.RunningBarOne;
+import team.spring.runup.running.vo.RunningBarTwo;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
@@ -45,53 +46,6 @@ public class RunningService {
 		return list;
 	}
 	
-//	public List<Runup> getRunningList() {
-//		int i=0 ;
-//		List<Running> list = dao.getRunningList();
-//		List<Runup> resultList = new ArrayList<>();
-//		while (i<list.size()) {
-//			Running running = list.get(i);
-//			User user = udao.getUserByNum(running.getUserNum());
-//			int num = running.getUserNum();
-//			int cnt = dao.getMentorByUserNum(num);
-//			Runup runup = new Runup();
-//			runup.setRunningNum(running.getRunningNum());
-//			runup.setRunningTitle(running.getRunningTitle());
-//			runup.setUserNickname(user.getUserNickname()); //이거
-//			runup.setRunningCategoryMedium(running.getRunningCategoryMedium());
-//			
-//			String luxcolor = new String();
-//			int luxnum = user.getUserLuxColor(); // 이거
-//			if (luxnum<100) {
-//				luxcolor = "red";
-//			} else if (luxnum>=100 & luxnum<200) {
-//				luxcolor = "orange";
-//			} else if (luxnum>=200 & luxnum<300) {
-//				luxcolor = "yellow";
-//			} else if (luxnum>=300 & luxnum<400) {
-//				luxcolor = "green";
-//			} else if (luxnum>=400 & luxnum<500) {
-//				luxcolor = "blue";
-//			} else if (luxnum>=500 & luxnum<600) {
-//				luxcolor = "navy";
-//			} else if (luxnum>=600 & luxnum<700) {
-//				luxcolor = "purple";
-//			} else if (luxnum>=700) {
-//				luxcolor = "white";
-//			}
-//			
-//			runup.setUserLuxColor(luxcolor);
-//			runup.setUserMentorCnt(cnt);
-//			SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
-//			String newrunningdate = newDtFormat.format(running.getRunningDate());
-//			runup.setRunningDate(newrunningdate);
-//			runup.setRunningAble(running.isRunningAble());
-//			resultList.add(runup);
-//			i++;
-//		}
-//		return resultList;
-//	}
-	
 	public List<RunningPieOne> getPieByUserNum(int userNum) {
 		List<RunningPieOne> list = dao.getPieByUserNum(userNum);
 		return list;
@@ -116,6 +70,18 @@ public class RunningService {
 		return list;
 	}
 	
+	public List<RunningBarTwo> getPointByUserNum() {
+		List<RunningBarTwo> list = dao.getPointByUserNum();
+		
+		return list;
+	}
+	
+	public List<RunningBarTwo> getColorByUserNum() {
+		List<RunningBarTwo> list = dao.getColorByUserNum();
+		
+		return list;
+	}
+	
 	public List<Runup> getRunningByRunningTitle(String runningTitle) {
 		List<Runup> list = dao.getRunningByRunningTitle(runningTitle);
 		return list;
@@ -128,9 +94,9 @@ public class RunningService {
 		return list;
 	}
 	
-	public List<Runup> getEndRunningList(int participateNum) {
+	public List<Runup> getFinishRunningList(int participateNum) {
 		
-		List<Runup> list = dao.getEndRunningList(participateNum);
+		List<Runup> list = dao.getFinishRunningList(participateNum);
 		
 		return list;
 	}
@@ -273,6 +239,11 @@ public class RunningService {
 		return list;
 	}
 	
+	public int getRunningPoint(Running run) {
+		int num = dao.getRunningPoint(run);
+		return num;
+	}
+	
 	public int getUserNumByRunningNum(int runningnum) {
 		int num = dao.getUserNumByRunningNum(runningnum);
 		return num;
@@ -345,8 +316,28 @@ public class RunningService {
 		return result;
 	}
 	
+	public int updateFinishLearning(Running run) {
+		int result = dao.updateFinishLearning(run);
+		return result;
+	}
+	
+	public int updateFinishRunning(Running run) {
+		int result = dao.updateFinishRunning(run);
+		return result;
+	}
+	
 	public int updateSalt(User user) {
 		int result = udao.updateUserLuxColor(user);
+		return result;
+	}
+	
+	public int updateUserPointPlus(Running run) {
+		int result = dao.updateUserPointPlus(run);
+		return result;
+	}
+	
+	public int updateUserPointMinus(Running run) {
+		int result = dao.updateUserPointMinus(run);
 		return result;
 	}
 
