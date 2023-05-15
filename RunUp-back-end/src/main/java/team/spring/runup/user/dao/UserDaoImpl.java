@@ -98,4 +98,10 @@ public class UserDaoImpl implements UserDao{
 		return result;
 	}
 
+	@Override
+	public int checkUserById(String userId) {
+		int result = session.selectOne("user.checkUserIdExist", userId);
+		return result;
+	}
+
 }

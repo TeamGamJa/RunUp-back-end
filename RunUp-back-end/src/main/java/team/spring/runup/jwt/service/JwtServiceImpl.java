@@ -17,7 +17,7 @@ import team.spring.runup.user.vo.User;
 public class JwtServiceImpl {
 
 	private String secretKey = "myKey";
-	private long exp = 1000L * 60 * 60; // 토큰사용시간 1시간
+	private long exp = 1000L * 180 * 60; // 토큰사용시간 1시간
 	
 	// 토큰생성
 	public String createToken(User user) {

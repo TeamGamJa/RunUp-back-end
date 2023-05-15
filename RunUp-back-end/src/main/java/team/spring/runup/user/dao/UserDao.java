@@ -34,4 +34,6 @@ public interface UserDao {
 
 	int updateUserCategory(User user);
 
+	int checkUserById(String userId);
+
 }

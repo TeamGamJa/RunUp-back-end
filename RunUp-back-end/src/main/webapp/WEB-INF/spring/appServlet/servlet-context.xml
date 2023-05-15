@@ -43,6 +43,13 @@
 	   <mvc:interceptor>
 	      <mvc:mapping path="/**"/>
 	      <mvc:exclude-mapping path="/jwt/login"/>
+	      <mvc:exclude-mapping path="/**/chat/**"/>
+	      <mvc:exclude-mapping path="/**/websocket-chat/**"/>
+	      <mvc:exclude-mapping path="/user/nickname"/>
+	      <mvc:exclude-mapping path="/user/id"/>
+	      <mvc:exclude-mapping path="/running/categorymedium"/>
+	      <mvc:exclude-mapping path="/user/regist"/>
+	      <mvc:exclude-mapping path="/user/kakao"/>
 	      <beans:bean class="team.spring.runup.jwt.interceptor.JwtInterceptor" />
 	   </mvc:interceptor>
 	</mvc:interceptors>

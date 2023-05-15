@@ -42,8 +42,8 @@ public class UserService {
 
 	public int checkUserId(String userId) {
 		
-		User user = dao.getUserById(userId);
-		if (user.equals(null))
+		int result = dao.checkUserById(userId);
+		if (result == 0)
 			return 0; // 입력아이디 없음
 		else
 			return 1; // 입력아이디 존재함

@@ -27,7 +27,11 @@
    </select>
 
 	<insert id="registUser" parameterType="User">
-      INSERT INTO user(userEmail,userName,userProfile) VALUES(#{userEmail},#{userName},#{userProfile})
+      INSERT INTO user(userId, userPw, userName, userNickname, userAbility,
+      				   userAddr, userPhone, userCategoryBig, userCategoryMedium) 
+     		 VALUES(#{userId},#{userPw},#{userName},
+     		 		#{userNickname},#{userAbility},#{userAddr},
+     		 		#{userPhone},#{userCategoryBig},#{userCategoryMedium})
    </insert>
 
 	<update id="updateUser" parameterType="User">
@@ -65,6 +69,10 @@
    
    <select id="checkUserNicknameExist" parameterType="String" resultType="int">
       select COUNT(*) from user where userNickname=#{userNickname};
+   </select>
+   
+   <select id="checkUserIdExist" parameterType="String" resultType="int">
+      select COUNT(*) from user where userId=#{userId};
    </select>
    
    <update id="updateCategory" parameterType="User">

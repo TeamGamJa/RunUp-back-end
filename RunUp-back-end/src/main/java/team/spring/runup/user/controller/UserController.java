@@ -89,9 +89,10 @@ public class UserController {
 		return result;
 	}
 	
-	@PostMapping
+	@PostMapping(value="regist")
 	public int registUser(@RequestBody User user) throws IOException {
 		
+		log.debug(user);
 		int result = userService.registUser(user);
 		
 		return result;
