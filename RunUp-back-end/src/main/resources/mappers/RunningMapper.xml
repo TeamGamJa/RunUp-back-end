@@ -85,7 +85,7 @@
    <select id="getRunningByRunningAble" parameterType="int" resultType="RunCalender">
    <![CDATA[
    	  select runningNum, runningTitle, runningCategoryBig, runningCategoryMedium, userNickname, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningContent,
-   	  chatRoomId, runningShow
+   	  chatRoomId, runningShow, participateNum
    	  from running where userNum = #{userNum} and runningAble = false and runningShow = True
    ]]>
    </select>
