@@ -140,5 +140,13 @@ public class MessageController {
 		
 		return ResponseEntity.ok(result);
 	}
+	
+	// 쪽지 열람여부
+//	@GetMapping(value="status")
+//	public ResponseEntity<Integer> checkMessage(int messageNum) throws Exception {
+//		log.debug("messageNum 조회 = {}", messageNum);
+//		int result = service.openMessage(messageNum);
+//		return ResponseEntity.ok(result);
+//	}
 
 }

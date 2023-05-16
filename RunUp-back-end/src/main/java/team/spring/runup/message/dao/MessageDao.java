@@ -27,4 +27,7 @@ public interface MessageDao {
 	// 쪽지 삭제
 	int deleteMessage(int messageNum) throws Exception;
 	
+	// 쪽지 열람여부 확인
+	int checkMessage(int messageNum);
+	
 }
