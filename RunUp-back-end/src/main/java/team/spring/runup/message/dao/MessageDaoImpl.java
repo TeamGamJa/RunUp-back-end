@@ -55,6 +55,12 @@ public class MessageDaoImpl implements MessageDao {
 	public int deleteMessage(int messageNum) throws Exception {
 		return session.delete("message.deleteMessage", messageNum);
 	}
+
+	// 쪽지 열람여부 확인
+	public int checkMessage(int messageNum) {
+		return session.update("message.checkMessage", messageNum);
+		
+	}
 	
 	
 

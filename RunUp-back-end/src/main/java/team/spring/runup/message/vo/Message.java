@@ -12,9 +12,10 @@ public class Message {
 
 	private int messageNum;
 	private String messageSender;
-	private int SenderNum;
+	private int senderNum;
 	private String messageReceiver;
-	private int ReceiverNum;
+	private int receiverNum;
+	private int messageOpenStatus;
 	private String messageTitle;
 	private String messageContent;
 	private String messageDate;

@@ -75,6 +75,8 @@ public class MessageService {
 		try {
 			result = dao.openMessage(messageNum); 
 			log.debug("service => 잘실행되었어요");
+			dao.checkMessage(messageNum);
+			log.debug("service => 열람여부 잘실행되었어요");
 		} catch (Exception e) {
 			log.debug("service => 이상해요 사유 = {}", e);
 			throw new RuntimeException("쪽지 상세 조회 중 오류가 발생하였습니다.", e);
