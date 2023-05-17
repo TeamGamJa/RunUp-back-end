@@ -252,21 +252,6 @@
    ]]>
    </update>
    
-   <update id="updateFinishLearning" parameterType="Running" >
-   <![CDATA[
-   	 update user set userPoint = userPoint + #{userPoint},
-   	 userColor = userColor + #{runningColor} 
-   	 where userNum = #{userNum}
-   ]]>
-   </update>
-   
-   <update id="updateFinishRunning" parameterType="Running" >
-   <![CDATA[
-   	 update user set userColor = userColor + #{runningColor} 
-   	 where userNum = #{participateNum}
-   ]]>
-   </update>
-   
    <update id="updateUserPointPlus" parameterType="Running" >
    <![CDATA[
    	 update user set userPoint = userPoint + 30 

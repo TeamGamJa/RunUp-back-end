@@ -300,19 +300,19 @@ Logger log = LogManager.getLogger("case3");
 	}
 	
 	@PutMapping(value="finishlearning")
-	public ResponseEntity<Integer> finishlearning(@RequestBody Running run) {
+	public ResponseEntity<Integer> finishlearning(@RequestBody User user) {
 		
-		log.debug(run);
-		int result = runningservice.updateFinishLearning(run);
+		log.debug(user);
+		int result = runningservice.updateFinishLearning(user);
 		
 		return ResponseEntity.ok(result);
 	}
 	
 	@PutMapping(value="finishrunning")
-	public ResponseEntity<Integer> finishRunning(@RequestBody Running run) {
+	public ResponseEntity<Integer> finishRunning(@RequestBody User user) {
 		
-		log.debug(run);
-		int result = runningservice.updateFinishRunning(run);
+		log.debug(user);
+		int result = runningservice.updateFinishRunning(user);
 		
 		return ResponseEntity.ok(result);
 	}

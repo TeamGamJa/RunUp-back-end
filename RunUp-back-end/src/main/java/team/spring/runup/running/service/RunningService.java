@@ -316,13 +316,13 @@ public class RunningService {
 		return result;
 	}
 	
-	public int updateFinishLearning(Running run) {
-		int result = dao.updateFinishLearning(run);
+	public int updateFinishLearning(User user) {
+		int result = udao.updateFinishLearning(user);
 		return result;
 	}
 	
-	public int updateFinishRunning(Running run) {
-		int result = dao.updateFinishRunning(run);
+	public int updateFinishRunning(User user) {
+		int result = udao.updateFinishRunning(user);
 		return result;
 	}
 	

@@ -23,6 +23,10 @@ public interface UserDao {
 	int updateProfile(User user);
 	
 	int updateUserLuxColor(User user);
+	
+	int updateFinishLearning(User user);
+	
+	int updateFinishRunning(User user);
 
 	int deleteUser(String userId);
 
