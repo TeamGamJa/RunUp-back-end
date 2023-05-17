@@ -11,6 +11,7 @@ import team.spring.runup.running.vo.RunningBarTwo;
 import team.spring.runup.running.vo.RunningLineOne;
 import team.spring.runup.running.vo.RunningPieOne;
 import team.spring.runup.running.vo.Runup;
+import team.spring.runup.user.vo.User;
 
 public interface RunningDao {
 
@@ -73,10 +74,6 @@ public interface RunningDao {
 	int updateRunning(Running run);
 	
 	int updateRunningAble(Running run);
-	
-	int updateFinishLearning(Running run);
-	
-	int updateFinishRunning(Running run);
 	
 	int updateUserPointPlus(Running run);
 	

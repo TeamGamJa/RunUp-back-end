@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import team.spring.runup.running.vo.Running;
 import team.spring.runup.user.vo.User;
 
 @Repository
@@ -95,6 +96,18 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public int updateUserCategory(User user) {
 		int result = session.update("user.updateCategory", user);
+		return result;
+	}
+	
+	@Override
+	public int updateFinishLearning(User user) {
+		int result = session.update("user.updateFinishLearning",user);
+		return result;
+	}
+	
+	@Override
+	public int updateFinishRunning(User user) {
+		int result = session.update("user.updateFinishRunning",user);
 		return result;
 	}
 

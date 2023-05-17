@@ -221,18 +221,6 @@ public class RunningDaoImpl implements RunningDao {
 	}
 	
 	@Override
-	public int updateFinishLearning(Running run) {
-		int result = session.update("running.updateFinishLearning",run);
-		return result;
-	}
-	
-	@Override
-	public int updateFinishRunning(Running run) {
-		int result = session.update("running.updateFinishRunning",run);
-		return result;
-	}
-	
-	@Override
 	public int updateRunningView(Running run) {
 		int result = session.update("running.updateViewNum",run);
 		return result;

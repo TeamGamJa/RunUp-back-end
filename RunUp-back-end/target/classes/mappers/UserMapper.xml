@@ -50,6 +50,21 @@
    	  where userNum=#{userNum}
    </update>
    
+   <update id="updateFinishLearning" parameterType="User" >
+   <![CDATA[
+   	 update user set userColor = userColor + #{userColor} 
+   	 where userNum = #{userNum}
+   ]]>
+   </update>
+   
+   <update id="updateFinishRunning" parameterType="User" >
+   <![CDATA[
+   	 update user set userPoint = userPoint + #{userPoint},
+   	 userColor = userColor + #{userColor} 
+   	 where userNum = #{userNum}
+   ]]>
+   </update>
+   
    <update id="deleteUser" parameterType="String">
    	  update user set isOut='Y',userPw="탈퇴회원", userName="탈퇴회원", userNickname="탈퇴회원",
    	  		 userAddr="탈퇴회원", userPhone="탈퇴회원", userInfo="탈퇴회원", 
