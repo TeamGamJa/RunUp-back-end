@@ -59,8 +59,7 @@
    
    <update id="updateFinishRunning" parameterType="User" >
    <![CDATA[
-   	 update user set userPoint = userPoint + #{userPoint},
-   	 userColor = userColor + #{userColor} 
+   	 update user set userColor = userColor + #{userColor} 
    	 where userNum = #{userNum}
    ]]>
    </update>
