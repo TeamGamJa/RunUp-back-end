@@ -13,7 +13,7 @@
 	</insert>
 
 	<select id="inboxList" parameterType="Integer" resultType="Message">
-		SELECT * FROM message WHERE ReceiverNum = #{receiverNum}
+		SELECT * FROM message WHERE ReceiverNum = #{receiverNum} and messageTrash = 1
 	</select>
 	
 	<select id="sentboxList" parameterType="Integer" resultType="Message">
@@ -26,18 +26,18 @@
 	
 	<update id="trashMessage" parameterType="Integer">
 		UPDATE message
-		SET messageTrash = 1
+		SET messageTrash = 0
 		WHERE messageNum = #{messageNum}
 	</update>
 	
 	<select id="trashcanList" parameterType="Integer" resultType="Message">
 		SELECT * FROM message 
-		WHERE messageTrash = 1 AND (ReceiverNum = #{userNum} OR SenderNum = #{userNum})
+		WHERE messageTrash = 0 AND (ReceiverNum = #{userNum} OR SenderNum = #{userNum})
 	</select>
 	
 	<delete id="deleteMessage" parameterType="Integer">
 		DELETE FROM message
-		WHERE messageTrash = 1 AND MessageNum = #{messageNum}
+		WHERE messageTrash = 0 AND MessageNum = #{messageNum}
 	</delete>
 	
 	<update id="checkMessage" parameterType="Integer">
