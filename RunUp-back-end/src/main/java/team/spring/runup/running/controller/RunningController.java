@@ -313,6 +313,9 @@ Logger log = LogManager.getLogger("case3");
 		
 		log.debug(user);
 		int result = runningservice.updateFinishRunning(user);
+		Running run = new Running();
+		run.setParticipateNum(user.getUserPoint());
+		runningservice.updateUserPointPlus(run);
 		
 		return ResponseEntity.ok(result);
 	}
