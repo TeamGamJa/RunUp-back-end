@@ -22,7 +22,7 @@
    
    <insert id="createDonation" parameterType="Donation">
    <![CDATA[
-     insert into donation(donationSender,donationReceiver,donationComment,
+     insert into donation(donationSender,donationReceiver,
      donationPoint) 
      values (#{donationSender}, #{donationReceiver}, #{donationComment}, #{donationPoint})
    ]]>

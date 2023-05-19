@@ -15,5 +15,9 @@ public interface DonationDao {
 	int deleteDonation(Donation donation);
 	
 	int updateDonation(Donation donation);
+	
+	int updateDonationPointPlus(int userNum);
+	
+	int updateDonationPointMinus(int userNum);
 
 }

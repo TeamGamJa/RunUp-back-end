@@ -43,5 +43,15 @@ public class DonationService {
 		int result = dao.updateDonation(donation);
 		return result;
 	}
+	
+	public int updateDonationPointPlus(int userNum) {
+		int result = dao.updateDonationPointPlus(userNum);
+		return result;
+	}
+	
+	public int updateDonationPointMinus(int userNum) {
+		int result = dao.updateDonationPointMinus(userNum);
+		return result;
+	}
 
 }

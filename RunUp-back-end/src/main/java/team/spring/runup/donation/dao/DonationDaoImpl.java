@@ -45,4 +45,16 @@ public class DonationDaoImpl implements DonationDao {
 		return result;
 	}
 	
+	@Override
+	public int updateDonationPointPlus(int userNum) {
+		int result = session.update("donation.updateDonationPointPlus",userNum);
+		return result;
+	}
+	
+	@Override
+	public int updateDonationPointMinus(int userNum) {
+		int result = session.update("donation.updateDonationPointMinus",userNum);
+		return result;
+	}
+	
 }

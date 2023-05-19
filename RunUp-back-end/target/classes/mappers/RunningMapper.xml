@@ -29,7 +29,7 @@
    	  select runningNum, runningTitle, runningContent, userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1
-   	  order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
+   	  order by runningAble DESC, DATE_FORMAT(runningDate,'%Y-%m-%d') DESC;
    ]]>
    </select>
    
@@ -38,7 +38,7 @@
    	  select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryBig = #{runningCategoryBig}
-   	  order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
+   	  order by runningAble DESC, DATE_FORMAT(runningDate,'%Y-%m-%d') DESC;
    ]]>
    </select>
    
@@ -47,7 +47,7 @@
    	  select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
    	  from running where runningShow = 1 and runningCategoryMedium = #{runningCategoryMedium}
-   	  order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
+   	  order by runningAble DESC, DATE_FORMAT(runningDate,'%Y-%m-%d') DESC;
    ]]>
    </select>
    
@@ -56,7 +56,7 @@
       select runningNum, runningTitle, runningContent ,userNickname, runningCategoryBig, runningCategoryMedium, userLuxColor,
    	  userMentorCnt, DATE_FORMAT(runningDate,'%Y-%m-%d') AS runningDate, runningStartSmall, runningEndSmall, runningAble
       from running where runningShow = 1 and runningTitle Like CONCAT('%', #{runningTitle},'%')
-      order by DATE_FORMAT(runningDate,'%Y-%m-%d') DESC
+      order by runningAble DESC, DATE_FORMAT(runningDate,'%Y-%m-%d') DESC;
    ]]>
    </select>
    
