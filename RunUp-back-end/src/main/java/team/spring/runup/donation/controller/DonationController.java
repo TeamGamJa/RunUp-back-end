@@ -20,6 +20,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import team.spring.runup.donation.service.DonationService;
 import team.spring.runup.donation.vo.Donation;
+import team.spring.runup.fountain.service.FountainService;
+import team.spring.runup.fountain.vo.Fountain;
+import team.spring.runup.running.service.RunningService;
+import team.spring.runup.running.vo.Running;
 
 
 @RestController
@@ -31,6 +35,12 @@ Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	private DonationService donationservice;
+	
+	@Autowired
+	private RunningService runningservice;
+	
+	@Autowired
+	private FountainService fountainservice;
 	
 	@GetMapping(value="all")
 	public ResponseEntity<List<Donation>> searchDonationAll() throws JsonProcessingException {
@@ -53,10 +63,22 @@ Logger log = LogManager.getLogger("case3");
 	
 	@PostMapping
 	public ResponseEntity<Integer> createDonation(@RequestBody Donation donation)  {
-
+		int result = 0;
+		
 		log.debug(donation);
-		//log.debug(okay);
-		int result = donationservice.createDonation(donation);
+		Running run = new Running();
+		run.setUserNum(donation.getUserNum());
+		Fountain fountain = new Fountain();
+		fountain.setFountainNum(donation.getFountainNum());
+		Fountain fountainOne = fountainservice.getFountain(fountain);
+		
+		int mypoint = runningservice.getRunningPoint(run);
+		if (mypoint >= 10) {
+		result = donationservice.createDonation(donation);
+		donationservice.updateDonationPointMinus(donation.getUserNum());
+		donationservice.updateDonationPointPlus(fountainOne.getUserNum());
+		//fountainservice.updateFountainCount(donation.getFountainNum());
+		}
 		log.debug(result);
 		return ResponseEntity.ok(result);
 	}
