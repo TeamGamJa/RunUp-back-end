@@ -49,11 +49,11 @@ public class QuestionService {
 	}
 
 	// 묻고답하기 글 전체 목록 
-	public List<Question> searchAllQuestion(int questionChoice) {
+	public List<Question> searchAllQuestion() {
 		List<Question> result = null;
 			
 		try {
-			result = dao.searchAllQuestion(questionChoice);
+			result = dao.searchAllQuestion();
 			log.debug("service => 잘실행되었어요");
 		} catch (Exception e) {
 			log.debug("service => 이상해요 사유 = {}", e);

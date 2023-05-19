@@ -15,7 +15,7 @@ public interface QuestionDao {
 	int createQuestion(Question question) throws Exception;
 	
 	// 고민상담 글 전체 목록 
-	public List<Question> searchAllQuestion(int questionChoice);
+	public List<Question> searchAllQuestion();
 	
 	// 고민상담 글 상세
 	public Question openQuestion(int questionNum);

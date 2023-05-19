@@ -18,10 +18,8 @@
    </insert>
    
    <select id="searchAllQuestion" parameterType="Integer" resultType="Question">
-   		SELECT QuestionNum, QuestionCategoryMedium, QuestionChoice, QuestionTitle,
-   		QuestionWriter, QuestionDate, QuestionLike 
-   		FROM question 
-   		WHERE #{questionChoice} = 0 or #{questionChoice} = 1 
+   		SELECT *
+   		FROM question
    		ORDER BY QuestionDate DESC;
    </select>
    
