@@ -56,10 +56,10 @@ public class QuestionController {
 	// questionChoice = 0 -> 도움요청
 	// questionChoice = 1 -> 고민상담
 	@GetMapping(value="all")
-	public ResponseEntity<List<Question>> searchAllQuestion(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
-		log.debug("questionChoice 조회 = {}", questionChoice);
+	public ResponseEntity<List<Question>> searchAllQuestion() throws Exception {
+		log.debug("questionChoice 조회 = {}");
 		
-		List<Question> result = service.searchAllQuestion(questionChoice);
+		List<Question> result = service.searchAllQuestion();
 		
 		log.debug("결과 = {}", result);
 		

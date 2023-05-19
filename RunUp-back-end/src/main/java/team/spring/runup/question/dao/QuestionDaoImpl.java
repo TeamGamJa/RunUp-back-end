@@ -35,8 +35,8 @@ public class QuestionDaoImpl implements QuestionDao {
 
 	// 묻고답하기 글 전체 목록 
 	@Override
-	public List<Question> searchAllQuestion(int questionChoice) {
-		List<Question> question = session.selectList("question.searchAllQuestion", questionChoice);
+	public List<Question> searchAllQuestion() {
+		List<Question> question = session.selectList("question.searchAllQuestion");
 		return question;
 	}
 	
