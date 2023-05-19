@@ -6,25 +6,26 @@
 
 <mapper namespace="fountain">
    
+   
    <select id="getFountainList" resultType="Fountain">
    <![CDATA[
-   	  select *
-   	  from fountain 
+   	  select fountainNum, fountainContent, fountainWriter, fountainPoint, DATE_FORMAT(fountainDate,'%Y-%m-%d') as fountainDate
+   	  from fountain
+   	  order by fountainNum DESC 
    ]]>
    </select>
    
    <select id="getFountain" parameterType="Fountain" resultType="Fountain">
    <![CDATA[
-   	  select * 
+   	  select fountainNum, fountainContent, fountainWriter, fountainPoint, DATE_FORMAT(fountainDate,'%Y-%m-%d') as fountainDate 
    	  from fountain where fountainNum = #{fountainNum}
    ]]>
    </select>
    
    <insert id="createFountain" parameterType="Fountain">
    <![CDATA[
-     insert into fountain(fountainContent,fountainCategoryBig,fountainCategoryMedium,
-     fountainAuthor, fountainPoint,userNum) 
-     values (#{fountainContent}, #{fountainCategoryBig}, #{fountainCategoryMedium}, #{fountainAuthor}, #{fountainPoint}, #{userNum})
+     insert into fountain(fountainContent, fountainWriter, userNum) 
+     values (#{fountainContent}, #{fountainWriter}, #{userNum})
    ]]>
    </insert>
    
