@@ -24,13 +24,13 @@ public class QuestionService {
 	@Autowired
 	QuestionDaoImpl dao;
 	
-	// 상단바 검색 - 고민상담 게시판 결과
+	// 상단바 검색 - 묻고답하기 게시판 결과
 	public List<Question> getQuestionByKeyword(String keyword) {
 		List<Question> list = dao.getQuestionByKeyword(keyword);
 		return list;
 	}
 
-	// 고민상담 글 작성(생성)
+	// 묻고답하기 글 작성(생성)
 	public int createQuestion(Question question) {
 		int result = 0;
 
@@ -48,7 +48,7 @@ public class QuestionService {
 		return result;
 	}
 
-	// 고민상담 글 전체 목록 
+	// 묻고답하기 글 전체 목록 
 	public List<Question> searchAllQuestion(int questionChoice) {
 		List<Question> result = null;
 			
@@ -61,8 +61,36 @@ public class QuestionService {
 		}
 			return result;
 		}
+	
+	// 도움요청 글 전체 목록
+	public List<Question> searchRequest(int questionChoice) {
+		List<Question> result = null;
 		
-	// 고민상담 글 상세
+		try {
+			result = dao.searchRequest(questionChoice);
+			log.debug("service => 잘실행되었어요");
+		} catch (Exception e) {
+			log.debug("service => 이상해요 사유 = {}", e);
+			throw new RuntimeException("도움요청 글 목록 전체 조회 중 오류가 발생하였습니다.", e);
+		}
+			return result;
+		}
+	
+	// 고민상담 글 전체 목록
+	public List<Question> searchCounsel(int questionChoice) {
+		List<Question> result = null;
+		
+		try {
+			result = dao.searchCounsel(questionChoice);
+			log.debug("service => 잘실행되었어요");
+		} catch (Exception e) {
+			log.debug("service => 이상해요 사유 = {}", e);
+			throw new RuntimeException("도움요청 글 목록 전체 조회 중 오류가 발생하였습니다.", e);
+		}
+			return result;
+		}
+		
+	// 묻고답하기 글 상세
 	public Question openQuestion(int questionNum) {
 		Question result = null;
 		
@@ -76,7 +104,7 @@ public class QuestionService {
 		return result;
 	}
 
-	// 고민상담 글 수정
+	// 묻고답하기 글 수정
 	public int updateQuestion(Question question) {
 		int result = 0;
 
@@ -94,7 +122,7 @@ public class QuestionService {
 		return result;
 	}
 
-	// 고민상담 글 삭제
+	// 묻고답하기 글 삭제
 	public int deleteQuestion(int questionNum) {
 		int result = 0;
 
@@ -166,7 +194,7 @@ public class QuestionService {
 		return result;
 	}
 
-	// 고민상담 공감 삭제
+	// 묻고답하기 공감 삭제
 	public int deleteQuestionLike(QuestionLike questionlike) {
 		int result = 0;
 
@@ -184,7 +212,7 @@ public class QuestionService {
 		return result;
 	}
 
-	// 고민상담 공감 생성
+	// 묻고답하기 공감 생성
 	public int createQuestionLike(QuestionLike questionlike) {
 		int result = 0;
 
@@ -203,7 +231,7 @@ public class QuestionService {
 		
 	}
 
-	// 고민상담 공감 1 감소
+	// 묻고답하기 공감 1 감소
 	public int decreaseLike(QuestionLike questionlike) {
 		int result = 0;
 
@@ -222,7 +250,7 @@ public class QuestionService {
 		
 	}
 
-	// 고민상담 공감 1 증가
+	// 묻고답하기 공감 1 증가
 	public int increaseLike(QuestionLike questionlike) {
 		int result = 0;
 

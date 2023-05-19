@@ -33,7 +33,7 @@ public class QuestionController {
 	@Autowired
 	private QuestionService service;
 
-	// 고민상담 글 작성(생성)
+	// 묻고답하기 글 작성(생성)
 	@PostMapping
 	private ResponseEntity<Integer> createQuestion(@RequestBody Question question) throws Exception {
 		
@@ -52,7 +52,9 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 고민상담 글 전체 목록 
+	// 묻고답하기 글 전체 목록 
+	// questionChoice = 0 -> 도움요청
+	// questionChoice = 1 -> 고민상담
 	@GetMapping(value="all")
 	public ResponseEntity<List<Question>> searchAllQuestion(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
 		log.debug("questionChoice 조회 = {}", questionChoice);
@@ -63,8 +65,34 @@ public class QuestionController {
 		
 		return ResponseEntity.ok(result);
 	}
+	
+	// 도움요청 글 전체 목록
+	@GetMapping(value="all")
+	public ResponseEntity<List<Question>> searchRequest(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
+		log.debug("questionChoice 조회 = {}", questionChoice);
 		
-	// 고민상담 글 상세
+		List<Question> result = service.searchRequest(questionChoice);
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
+	
+	
+	// 고민상담 글 전체 목록
+	@GetMapping(value="all")
+	public ResponseEntity<List<Question>> searchCounsel(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
+		log.debug("questionChoice 조회 = {}", questionChoice);
+		
+		List<Question> result = service.searchCounsel(questionChoice);
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
+	
+		
+	// 묻고답하기 글 상세
 	@GetMapping(value="content")
 	public ResponseEntity<Question> openQuestion(int questionNum) throws Exception {
 		log.debug("questionNum 조회 = {}", questionNum);
@@ -76,7 +104,7 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 고민상담 글 수정
+	// 묻고답하기 글 수정
 	@PutMapping
 	public ResponseEntity<Integer> updateQuestion(@RequestBody Question question) throws Exception {
 		log.debug("updateQuestion 실행 = {}", question);
@@ -94,7 +122,7 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 고민상담 글 삭제
+	// 묻고답하기 글 삭제
 	@DeleteMapping
 	public ResponseEntity<Integer> deleteQuestion(int questionNum) throws Exception {
 		log.debug("questionNum 조회 = {}", questionNum);
@@ -168,7 +196,7 @@ public class QuestionController {
 		return ResponseEntity.ok(result);
 	}
 		
-	// 고민상담 공감 삭제 요청
+	// 묻고답하기 공감 삭제 요청
 	// result = 1 -> '삭제' -> 공감 1 감소
 	// result = 0 -> '삭제 실패' = 기존에 공감이 없었던 것 -> 곰감 1 증가 
 	@PostMapping(value="like")
