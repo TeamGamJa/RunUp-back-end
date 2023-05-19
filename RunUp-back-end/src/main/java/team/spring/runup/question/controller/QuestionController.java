@@ -67,7 +67,7 @@ public class QuestionController {
 	}
 	
 	// 도움요청 글 전체 목록
-	@GetMapping(value="all")
+	@GetMapping(value="request")
 	public ResponseEntity<List<Question>> searchRequest(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
 		log.debug("questionChoice 조회 = {}", questionChoice);
 		
@@ -80,7 +80,7 @@ public class QuestionController {
 	
 	
 	// 고민상담 글 전체 목록
-	@GetMapping(value="all")
+	@GetMapping(value="counsel")
 	public ResponseEntity<List<Question>> searchCounsel(@RequestParam(value="questionChoice", required=false) int questionChoice) throws Exception {
 		log.debug("questionChoice 조회 = {}", questionChoice);
 		
