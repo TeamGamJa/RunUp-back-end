@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Fountain {
+public class FountainList {
 	private int fountainNum;
 	private String fountainContent;
 	private String fountainCategoryBig;
 	private String fountainCategoryMedium;
 	private String fountainDate;
 	private String fountainWriter;
-	private int fountainPoint;
+	private String fountainPoint;
 	private int userNum;
-	private int fountainCount;
 }
