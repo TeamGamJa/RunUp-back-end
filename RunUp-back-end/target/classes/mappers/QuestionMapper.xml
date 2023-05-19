@@ -22,7 +22,23 @@
    		QuestionWriter, QuestionDate, QuestionLike 
    		FROM question 
    		WHERE #{questionChoice} = 0 or #{questionChoice} = 1 
-   		ORDER BY QuestionDate ASC;
+   		ORDER BY QuestionDate DESC;
+   </select>
+   
+   <select id="searchRequest" parameterType="Integer" resultType="Question">
+   		SELECT QuestionNum, QuestionCategoryMedium, QuestionChoice, QuestionTitle,
+   		QuestionWriter, QuestionDate, QuestionLike 
+   		FROM question 
+   		WHERE #{questionChoice} = 0 
+   		ORDER BY QuestionDate DESC;
+   </select>
+   
+   <select id="searchCounsel" parameterType="Integer" resultType="Question">
+   		SELECT QuestionNum, QuestionCategoryMedium, QuestionChoice, QuestionTitle,
+   		QuestionWriter, QuestionDate, QuestionLike 
+   		FROM question 
+   		WHERE #{questionChoice} = 1 
+   		ORDER BY QuestionDate DESC;
    </select>
    
    <select id="openQuestion" parameterType="Integer" resultType="Question">

@@ -27,32 +27,44 @@ public class QuestionDaoImpl implements QuestionDao {
 		return list;
 	}
 	
-	// 고민상담 글 작성(생성)
+	// 묻고답하기 글 작성(생성)
 	@Override
 	public int createQuestion(Question question) throws Exception {
 		return session.insert("question.createQuestion", question);
 	}
 
-	// 고민상담 글 전체 목록 
+	// 묻고답하기 글 전체 목록 
 	@Override
 	public List<Question> searchAllQuestion(int questionChoice) {
 		List<Question> question = session.selectList("question.searchAllQuestion", questionChoice);
 		return question;
 	}
 	
-	// 고민상담 글 상세
+	// 도움요청 글 전체 목록
+	public List<Question> searchRequest(int questionChoice) {
+		List<Question> question = session.selectList("question.searchRequest", questionChoice);
+		return question;
+	}
+	
+	// 고민상담 글 전체 목록
+	public List<Question> searchCounsel(int questionChoice) {
+		List<Question> question = session.selectList("question.searchCounsel", questionChoice);
+		return question;
+	}
+	
+	// 묻고답하기 글 상세
 	@Override
 	public Question openQuestion(int questionNum) {
 		return session.selectOne("question.openQuestion", questionNum);
 	}
 
-	// 고민상담 글 수정
+	// 묻고답하기 글 수정
 	@Override
 	public int updateQuestion(Question question) {
 		return session.update("question.updateQuestion", question);
 	}
 
-	// 고민상담 글 삭제
+	// 묻고답하기 글 삭제
 	@Override
 	public int deleteMessage(int questionNum) {
 		return session.delete("question.deleteQuestion", questionNum);
@@ -76,29 +88,31 @@ public class QuestionDaoImpl implements QuestionDao {
 		return session.delete("question.deleteQuestionComment", qCommentNum);
 	}
 
-	// 고민상담 공감 삭제
+	// 묻고답하기 공감 삭제
 	@Override
 	public int deleteQuestionLike(QuestionLike questionlike) {
 		return session.delete("question.deleteQuestionLike", questionlike);
 	}
 
-	// 고민상담 공감 생성
+	// 묻고답하기 공감 생성
 	@Override
 	public int createQuestionLike(QuestionLike questionlike) {
 		return session.insert("question.createQuestionLike", questionlike);
 	}
 
-	// 고민상담 공감 1 감소
+	// 묻고답하기 공감 1 감소
 	@Override
 	public int decreaseLike(QuestionLike questionlike) {
 		return session.update("question.decreaseLike", questionlike);
 	}
 
-	// 고민상담 공감 1 증가
+	// 묻고답하기 공감 1 증가
 	@Override
 	public int increaseLike(QuestionLike questionlike) {
 		return session.update("question.increaseLike", questionlike);
 	}
+
+	
 	
 	
 }
