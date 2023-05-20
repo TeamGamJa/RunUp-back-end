@@ -9,7 +9,8 @@
 	<insert id="sendMessage" parameterType="Message">
 		INSERT INTO message (MessageNum, MessageSender, SenderNum, MessageReceiver, ReceiverNum, 
 		MessageOpenStatus, MessageTitle, MessageContent, MessageDate, MessageTrash)
-		VALUES (#{messageNum}, #{messageSender}, #{senderNum}, #{messageReceiver}, #{receiverNum},#{messageOpenStatus} #{messageTitle}, #{messageContent}, Now(), #{messageTrash})
+		VALUES (null, #{messageSender}, #{senderNum}, #{messageReceiver}, #{receiverNum},
+		#{messageOpenStatus}, #{messageTitle}, #{messageContent},now(),#{messageTrash})
 	</insert>
 
 	<select id="inboxList" parameterType="Integer" resultType="Message">
