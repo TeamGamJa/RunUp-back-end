@@ -35,7 +35,7 @@ public class MessageController {
 	@PostMapping
 	public ResponseEntity<Integer> sendMessage(@RequestBody Message message) throws Exception {
 	
-//		log.debug("sendMessage 실행 = {}", message);
+		log.debug("sendMessage 실행 = {}", message);
 		
 		int result = service.sendMessage(message);
 		
