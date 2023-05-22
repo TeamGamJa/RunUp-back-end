@@ -74,12 +74,12 @@
    			q.QcommentContent,
    			q.QcommentWriter,
    			q.QuestionNum,
-   			q.QcommentDate
+   			q.QcommentDate,
    			u.UserUrl
    		FROM questioncomment q
    		JOIN user u ON u.UserNickname = q.QcommentWriter
    		WHERE QuestionNum = #{questionNum}
-   		ORDER BY QcommentNum DESC;
+   		ORDER BY QcommentDate ASC;
    </select>
    
    <delete id="deleteQuestionLike" parameterType="QuestionLike">
