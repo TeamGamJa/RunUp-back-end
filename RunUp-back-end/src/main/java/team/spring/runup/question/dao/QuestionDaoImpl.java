@@ -87,6 +87,12 @@ public class QuestionDaoImpl implements QuestionDao {
 	public int deleteQuestionComment(int qCommentNum) {
 		return session.delete("question.deleteQuestionComment", qCommentNum);
 	}
+	
+	// 댓글 목록 가져오기
+	public List<QuestionComment> searchQuestionComment(int questionNum) {
+		List<QuestionComment> questionComment = session.selectList("question.searchQuestionComment", questionNum);
+		return questionComment;
+	}
 
 	// 묻고답하기 공감 삭제
 	@Override
@@ -113,6 +119,5 @@ public class QuestionDaoImpl implements QuestionDao {
 	}
 
 	
-	
-	
+
 }

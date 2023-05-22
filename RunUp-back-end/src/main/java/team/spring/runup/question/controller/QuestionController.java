@@ -195,6 +195,19 @@ public class QuestionController {
 		
 		return ResponseEntity.ok(result);
 	}
+	
+	// 댓글 목록 가져오기
+	@GetMapping(value="comment")
+	public ResponseEntity<List<QuestionComment>> searchQuestionComment(@RequestParam(value="questionNum", required=false) int questionNum) throws Exception {
+		log.debug("questionNum 조회 = {}", questionNum);
+		
+		List<QuestionComment> result = service.searchQuestionComment(questionNum);
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
+	
 		
 	// 묻고답하기 공감 삭제 요청
 	// result = 1 -> '삭제' -> 공감 1 감소
