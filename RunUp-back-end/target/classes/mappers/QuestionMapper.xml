@@ -60,7 +60,7 @@
    
    <update id="updateQuestionComment" parameterType="QuestionComment">
    		UPDATE questioncomment SET QcommentContent = #{qCommentContent}
-   		WHERE QuestionNum = #{questionNum} 
+   		WHERE QuestionNum = #{questionNum} AND QcommentNum = #{qCommentNum}
    </update>
    
    <delete id="deleteQuestionComment" parameterType="Integer">
