@@ -236,6 +236,10 @@ public class QuestionController {
 		
 		return ResponseEntity.ok(result);
 	}
+	
+	
+	// 묻고답하기 공감 수 가져오기
+	
 		
 
 }
