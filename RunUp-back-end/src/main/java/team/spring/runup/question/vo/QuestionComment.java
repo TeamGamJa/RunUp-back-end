@@ -4,22 +4,30 @@ package team.spring.runup.question.vo;
 public class QuestionComment {
 
 	
-	public QuestionComment(int qCommentNum, String qCommentContent, String qCommentWriter, int questionNum) {
-		super();
-		this.qCommentNum = qCommentNum;
-		this.qCommentContent = qCommentContent;
-		this.qCommentWriter = qCommentWriter;
-		this.questionNum = questionNum;
-	}
 	
 	public QuestionComment() {
 		
 	}
 	
+	
+	
+	public QuestionComment(int qCommentNum, String qCommentContent, String qCommentWriter, int questionNum,
+			String userUrl) {
+		super();
+		this.qCommentNum = qCommentNum;
+		this.qCommentContent = qCommentContent;
+		this.qCommentWriter = qCommentWriter;
+		this.questionNum = questionNum;
+		this.userUrl = userUrl;
+	}
+
+	
+
 	private int qCommentNum;
 	private String qCommentContent;
 	private String qCommentWriter;
 	private int questionNum;
+	private String userUrl;
 	
 	
 	
@@ -48,6 +56,15 @@ public class QuestionComment {
 	public void setQuestionNum(int questionNum) {
 		this.questionNum = questionNum;
 	}
+	public String getUserUrl() {
+		return userUrl;
+	}
+	public void setUserUrl(String userUrl) {
+		this.userUrl = userUrl;
+	}
+	
+	
+	
 	
 	
 }
