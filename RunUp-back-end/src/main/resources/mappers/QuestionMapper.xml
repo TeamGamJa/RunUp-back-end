@@ -11,9 +11,9 @@
    </select>
    
    <insert id="createQuestion" parameterType="Question">
-		INSERT INTO question (QuestionNum, QuestionCategoryBig, QuestionCategoryMedium, QuestionChoice, 
+		INSERT INTO question (QuestionCategoryBig, QuestionCategoryMedium, QuestionChoice, 
 		QuestionTitle, QuestionContent, QuestionWriter, UserNum, QuestionDate)
-		VALUES (#{questionNum}, #{questionCategoryBig}, #{questionCategoryMedium}, #{questionChoice}, 
+		VALUES ( #{questionCategoryBig}, #{questionCategoryMedium}, #{questionChoice}, 
 			#{questionTitle}, #{questionContent}, #{questionWriter}, #{userNum}, Now())
    </insert>
    
@@ -27,7 +27,7 @@
    		SELECT QuestionNum, QuestionCategoryMedium, QuestionChoice, QuestionTitle,
    		QuestionWriter, QuestionDate, QuestionLike 
    		FROM question 
-   		WHERE #{questionChoice} = 0 
+   		WHERE QuestionChoice = #{questionChoice}
    		ORDER BY QuestionDate DESC;
    </select>
    
@@ -35,7 +35,7 @@
    		SELECT QuestionNum, QuestionCategoryMedium, QuestionChoice, QuestionTitle,
    		QuestionWriter, QuestionDate, QuestionLike 
    		FROM question 
-   		WHERE #{questionChoice} = 1 
+   		WHERE QuestionChoice = #{questionChoice} 
    		ORDER BY QuestionDate DESC;
    </select>
    
@@ -44,8 +44,7 @@
    </select>
    
    <update id="updateQuestion" parameterType="Question">
-   		UPDATE question SET QuestionCategoryBig = #{questionCategoryBig}, QuestionCategoryMedium = #{questionCategoryMedium},
-   		QuestionChoice = #{questionChoice}, QuestionTitle = #{questionTitle}, QuestionContent = #{questionContent}
+   		UPDATE question SET QuestionChoice = #{questionChoice}, QuestionTitle = #{questionTitle}, QuestionContent = #{questionContent}
    		WHERE userNum = #{userNum} and QuestionNum = #{questionNum}
    </update>
    
@@ -56,7 +55,7 @@
    
    <insert id="createQuestionComment" parameterType="QuestionComment">
    		INSERT INTO questioncomment(QcommentNum, QcommentContent, QcommentWriter, QuestionNum)
-   		VALUES (#{qCommentNum}, #{qCommentContent}, #{qCommentWriter}, #{questionNum})
+   		VALUES (#{qCommentContent}, #{qCommentWriter}, #{questionNum})
    </insert>
    
    <update id="updateQuestionComment" parameterType="QuestionComment">
