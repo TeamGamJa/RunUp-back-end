@@ -69,8 +69,14 @@
    </delete>
    
    <select id="searchQuestionComment" parameterType="Integer" resultType="QuestionComment">
-   		SELECT *
-   		FROM questioncomment
+   		SELECT 
+   			q.QcommentNum,
+   			q.QcommentContent,
+   			q.QcommentWriter,
+   			q.QuestionNum,
+   			u.UserUrl
+   		FROM questioncomment q
+   		JOIN user u ON u.UserNickname = q.QcommentWriter
    		WHERE QuestionNum = #{questionNum}
    		ORDER BY QcommentNum DESC;
    </select>
