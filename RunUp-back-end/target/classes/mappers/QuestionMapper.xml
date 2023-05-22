@@ -74,6 +74,7 @@
    			q.QcommentContent,
    			q.QcommentWriter,
    			q.QuestionNum,
+   			q.QcommentDate
    			u.UserUrl
    		FROM questioncomment q
    		JOIN user u ON u.UserNickname = q.QcommentWriter

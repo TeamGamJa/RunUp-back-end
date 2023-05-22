@@ -180,10 +180,10 @@ public class QuestionController {
 		
 	// 댓글 삭제
 	@DeleteMapping(value="comment")
-	public ResponseEntity<Integer> deleteQuestionComment(int qCommentNum) throws Exception {
+	public ResponseEntity<Integer> deleteQuestionComment(@RequestBody QuestionComment qCommentNum) throws Exception {
 		log.debug("qCommentNum 조회 = {}", qCommentNum);
 		
-		int result = service.deleteQuestionComment(qCommentNum);
+		int result = service.deleteQuestionComment(qCommentNum.getqCommentNum());
 		
 		if (result ==1) {
 			log.debug("고민상담 댓글 삭제 성공");
