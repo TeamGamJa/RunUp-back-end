@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.service.QuestionService;
 import team.spring.runup.question.vo.QuestionComment;
 import team.spring.runup.question.vo.QuestionLike;
@@ -208,6 +207,19 @@ public class QuestionController {
 		
 		return ResponseEntity.ok(result);
 	}
+	
+	// 댓글 하나 가져오기
+	@GetMapping(value="oneComment")
+	public ResponseEntity<QuestionComment> searchOneQuestionComment(@RequestParam(value="qCommentNum", required=false) int qCommentNum) throws Exception {
+		log.debug("questionNum 조회 = {}", qCommentNum);
+		
+		QuestionComment result = service.searchOneQuestionComment(qCommentNum);
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
+	
 	
 		
 	// 묻고답하기 공감 삭제 요청

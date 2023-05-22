@@ -93,6 +93,11 @@ public class QuestionDaoImpl implements QuestionDao {
 		List<QuestionComment> questionComment = session.selectList("question.searchQuestionComment", questionNum);
 		return questionComment;
 	}
+	
+	// 댓글 하나 가져오기
+	public QuestionComment searchOneQuestionComment(int qCommentNum) {
+		return session.selectOne("question.searchOneQuestionComment", qCommentNum);
+	}
 
 	// 묻고답하기 공감 삭제
 	@Override
@@ -122,6 +127,8 @@ public class QuestionDaoImpl implements QuestionDao {
 	public int searchQuestionLike(int questionNum) {
 		return session.selectOne("question.searchQuestionLike", questionNum);
 	}
+
+	
 
 	
 

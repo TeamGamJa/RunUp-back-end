@@ -82,6 +82,19 @@
    		ORDER BY QcommentDate ASC;
    </select>
    
+   <select id="searchOneQuestionComment" parameterType="Integer" resultType="QuestionComment">
+   		SELECT 
+   			q.QcommentNum,
+   			q.QcommentContent,
+   			q.QcommentWriter,
+   			q.QuestionNum,
+   			q.QcommentDate,
+   			u.UserUrl
+   		FROM questioncomment q
+   		JOIN user u ON u.UserNickname = q.QcommentWriter
+   		WHERE QcommentNum = #{qCommentNum}
+   </select>
+   
    <delete id="deleteQuestionLike" parameterType="QuestionLike">
    		DELETE FROM questionlike
    		WHERE UserNum = #{userNum} AND QuestionNum = #{questionNum}
