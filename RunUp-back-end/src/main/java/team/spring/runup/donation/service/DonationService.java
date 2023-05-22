@@ -27,6 +27,11 @@ public class DonationService {
 		return getdonation;
 	}
 	
+	public int getDonationNum(Donation donation) {
+		int result = dao.getDonationNum(donation);
+		return result;
+	}
+	
 	public int createDonation(Donation donation) {
 		
 		int result = dao.createDonation(donation);
@@ -44,13 +49,13 @@ public class DonationService {
 		return result;
 	}
 	
-	public int updateDonationPointPlus(int userNum) {
-		int result = dao.updateDonationPointPlus(userNum);
+	public int updateDonationPointPlus(Donation donation) {
+		int result = dao.updateDonationPointPlus(donation);
 		return result;
 	}
 	
-	public int updateDonationPointMinus(int userNum) {
-		int result = dao.updateDonationPointMinus(userNum);
+	public int updateDonationPointMinus(Donation donation) {
+		int result = dao.updateDonationPointMinus(donation);
 		return result;
 	}
 

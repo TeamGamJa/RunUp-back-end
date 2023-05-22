@@ -10,14 +10,16 @@ public interface DonationDao {
 	
 	Donation getDonation(Donation donation);
 	
+	int getDonationNum(Donation donation);
+	
 	int createDonation(Donation donation);
 	
 	int deleteDonation(Donation donation);
 	
 	int updateDonation(Donation donation);
 	
-	int updateDonationPointPlus(int userNum);
+	int updateDonationPointPlus(Donation donation);
 	
-	int updateDonationPointMinus(int userNum);
+	int updateDonationPointMinus(Donation donation);
 
 }

@@ -24,6 +24,8 @@ import team.spring.runup.fountain.service.FountainService;
 import team.spring.runup.fountain.vo.Fountain;
 import team.spring.runup.running.service.RunningService;
 import team.spring.runup.running.vo.Running;
+import team.spring.runup.user.service.UserService;
+import team.spring.runup.user.vo.User;
 
 
 @RestController
@@ -40,65 +42,71 @@ Logger log = LogManager.getLogger("case3");
 	private RunningService runningservice;
 	
 	@Autowired
+	private UserService userservice;
+	
+	@Autowired
 	private FountainService fountainservice;
 	
-	@GetMapping(value="all")
-	public ResponseEntity<List<Donation>> searchDonationAll() throws JsonProcessingException {
-		
-		List<Donation> donationList = donationservice.getDonationList(); 
-		log.debug(donationList);
-		return ResponseEntity.ok(donationList);
-	}
-	
-	@GetMapping
-	public ResponseEntity<Donation> searchDonation(@RequestParam(value="donationNum", required=false) int donationNum) throws JsonProcessingException {
-		
-		Donation donation = new Donation();
-		donation.setDonationNum(donationNum);
-		
-		Donation donationOne = donationservice.getDonation(donation); 
-		log.debug(donationOne);
-		return ResponseEntity.ok(donationOne);
-	}
+//	@GetMapping(value="all")
+//	public ResponseEntity<List<Donation>> searchDonationAll() throws JsonProcessingException {
+//		
+//		List<Donation> donationList = donationservice.getDonationList(); 
+//		log.debug(donationList);
+//		return ResponseEntity.ok(donationList);
+//	}
+//	
+//	@GetMapping
+//	public ResponseEntity<Donation> searchDonation(@RequestParam(value="donationNum", required=false) int donationNum) throws JsonProcessingException {
+//		
+//		Donation donation = new Donation();
+//		donation.setDonationNum(donationNum);
+//		
+//		Donation donationOne = donationservice.getDonation(donation); 
+//		log.debug(donationOne);
+//		return ResponseEntity.ok(donationOne);
+//	}
 	
 	@PostMapping
 	public ResponseEntity<Integer> createDonation(@RequestBody Donation donation)  {
 		int result = 0;
+		int fountainResult = 0;
 		
 		log.debug(donation);
-		Running run = new Running();
-		run.setUserNum(donation.getUserNum());
+		User user = new User();
+		user.setUserNickname(donation.getDonationSender());
 		Fountain fountain = new Fountain();
 		fountain.setFountainNum(donation.getFountainNum());
 		Fountain fountainOne = fountainservice.getFountain(fountain);
+		int donationNum = donationservice.getDonationNum(donation);
+		int mypoint = userservice.getPointByUserNickname(user);
 		
-		int mypoint = runningservice.getRunningPoint(run);
-		if (mypoint >= 10) {
-		result = donationservice.createDonation(donation);
-		donationservice.updateDonationPointMinus(donation.getUserNum());
-		donationservice.updateDonationPointPlus(fountainOne.getUserNum());
-		//fountainservice.updateFountainCount(donation.getFountainNum());
+		if(donation.getDonationSender().equals(donation.getDonationReceiver())) {
+			log.debug("donation possible");
+		} else {
+			fountainResult = 1;
 		}
-		log.debug(result);
-		return ResponseEntity.ok(result);
+		
+		if(donationNum == 0) {
+			log.debug("donation possible");
+		} else {
+			fountainResult = 2;
+		}
+		
+		if (mypoint >= donation.getDonationPoint()) {
+			log.debug("donation possible");
+		} else {
+			fountainResult = 3;
+		}
+		
+		
+		result = donationservice.createDonation(donation);
+		donationservice.updateDonationPointMinus(donation);
+		donationservice.updateDonationPointPlus(donation);
+		//fountainservice.updateFountainCount(donation.getFountainNum());
+		
+		
+		log.debug(fountainResult);
+		return ResponseEntity.ok(fountainResult);
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<Integer> deleteDonation(@RequestBody Donation donation) {
-		
-		log.debug(donation);
-		int result = donationservice.deleteDonation(donation);
-		log.debug(result);
-		return ResponseEntity.ok(result);
-	}
-	
-	@PutMapping
-	public ResponseEntity<Integer> updateDonation(@RequestBody Donation donation) {
-		
-		log.debug(donation);
-		int result = donationservice.updateDonation(donation);
-		log.debug(result);
-		
-		return ResponseEntity.ok(result);
-	}
 }
