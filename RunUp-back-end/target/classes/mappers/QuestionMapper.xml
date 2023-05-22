@@ -54,7 +54,7 @@
    </delete>
    
    <insert id="createQuestionComment" parameterType="QuestionComment">
-   		INSERT INTO questioncomment(QcommentNum, QcommentContent, QcommentWriter, QuestionNum)
+   		INSERT INTO questioncomment(QcommentContent, QcommentWriter, QuestionNum)
    		VALUES (#{qCommentContent}, #{qCommentWriter}, #{questionNum})
    </insert>
    
