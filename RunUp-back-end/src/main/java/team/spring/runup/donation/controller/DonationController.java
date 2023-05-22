@@ -74,9 +74,9 @@ Logger log = LogManager.getLogger("case3");
 		log.debug(donation);
 		User user = new User();
 		user.setUserNickname(donation.getDonationSender());
-		Fountain fountain = new Fountain();
-		fountain.setFountainNum(donation.getFountainNum());
-		Fountain fountainOne = fountainservice.getFountain(fountain);
+		//Fountain fountain = new Fountain();
+		//fountain.setFountainNum(donation.getFountainNum());
+		//Fountain fountainOne = fountainservice.getFountain(fountain);
 		int donationNum = donationservice.getDonationNum(donation);
 		int mypoint = userservice.getPointByUserNickname(user);
 		

@@ -30,8 +30,8 @@
    <insert id="createDonation" parameterType="Donation">
    <![CDATA[
      insert into donation(donationSender,donationReceiver,
-     donationPoint,fountainPoint) 
-     values (#{donationSender}, #{donationReceiver}, #{donationPoint},#{fountainPoint})
+     donationPoint,fountainNum) 
+     values (#{donationSender}, #{donationReceiver}, #{donationPoint},#{fountainNum})
    ]]>
    </insert>
    

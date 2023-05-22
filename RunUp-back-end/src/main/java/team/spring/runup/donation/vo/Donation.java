@@ -14,6 +14,5 @@ public class Donation {
 	private String donationComment;
 	private int donationPoint;
 	private String donationDate;
-	private int userNum;
 	private int fountainNum;
 }
