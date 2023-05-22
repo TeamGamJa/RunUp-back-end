@@ -101,5 +101,9 @@
    		UPDATE question SET QuestionLike = QuestionLike +1
    		WHERE QuestionNum = #{questionNum}
    </update>
+   
+   <select id="searchQuestionLike" parameterType="Integer" resultType="Integer">
+		SELECT QuestionLike FROM question WHERE QuestionNum = #{questionNum}
+   </select>
 
 </mapper>

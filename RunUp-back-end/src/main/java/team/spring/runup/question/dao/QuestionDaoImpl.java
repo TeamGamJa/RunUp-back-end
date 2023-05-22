@@ -118,6 +118,11 @@ public class QuestionDaoImpl implements QuestionDao {
 		return session.update("question.increaseLike", questionlike);
 	}
 
+	// 묻고답하기 공감 수 가져오기
+	public int searchQuestionLike(int questionNum) {
+		return session.selectOne("question.searchQuestionLike", questionNum);
+	}
+
 	
 
 }

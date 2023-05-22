@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import team.spring.runup.message.vo.Message;
 import team.spring.runup.question.service.QuestionService;
 import team.spring.runup.question.vo.QuestionComment;
 import team.spring.runup.question.vo.QuestionLike;
@@ -239,6 +240,16 @@ public class QuestionController {
 	
 	
 	// 묻고답하기 공감 수 가져오기
+	@GetMapping(value="like")
+	public ResponseEntity<Integer> searchQuestionLike(Question QuestionNum) throws Exception {
+		log.debug("QuestionNum 조회 = {}", QuestionNum);
+		
+		int result = service.searchQuestionLike(QuestionNum.getQuestionNum());
+		
+		log.debug("결과 = {}", result);
+		
+		return ResponseEntity.ok(result);
+	}
 	
 		
 
