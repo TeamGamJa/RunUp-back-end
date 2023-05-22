@@ -193,6 +193,20 @@ public class QuestionService {
 		}
 		return result;
 	}
+	
+	// 댓글 목록 가져오기
+	public List<QuestionComment> searchQuestionComment(int questionNum) {
+		List<QuestionComment> result = null;
+		
+		try {
+			result = dao.searchQuestionComment(questionNum);
+			log.debug("service => 잘실행되었어요");
+		} catch (Exception e) {
+			log.debug("service => 이상해요 사유 = {}", e);
+			throw new RuntimeException("댓글 목록 전체 조회 중 오류가 발생하였습니다.", e);
+		}
+			return result;
+	}
 
 	// 묻고답하기 공감 삭제
 	public int deleteQuestionLike(QuestionLike questionlike) {
@@ -268,6 +282,8 @@ public class QuestionService {
 		return result;
 		
 	}
+
+	
 
 	
 	

@@ -68,6 +68,13 @@
    		WHERE QcommentNum = #{qCommentNum}
    </delete>
    
+   <select id="searchQuestionComment" parameterType="Integer" resultType="QuestionComment">
+   		SELECT *
+   		FROM questioncomment
+   		WHERE QuestionNum = #{questionNum}
+   		ORDER BY QcommentNum DESC;
+   </select>
+   
    <delete id="deleteQuestionLike" parameterType="QuestionLike">
    		DELETE FROM questionlike
    		WHERE UserNum = #{userNum} AND QuestionNum = #{questionNum}
