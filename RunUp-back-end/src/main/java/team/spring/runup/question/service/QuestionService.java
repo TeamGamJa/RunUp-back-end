@@ -283,6 +283,20 @@ public class QuestionService {
 		
 	}
 
+	// 묻고답하기 공감 수 가져오기
+	public int searchQuestionLike(int questionNum) {
+		int result = 0;
+
+		try {
+			result = dao.searchQuestionLike(questionNum);
+			
+		} catch (Exception e) {
+			log.debug("service => 뭔가 이상해요 사유 = {}", e);
+			throw new RuntimeException("공감 수 가져오는 중 오류가 발생하였습니다.", e);
+		}
+		return result;
+	}
+
 	
 
 	
