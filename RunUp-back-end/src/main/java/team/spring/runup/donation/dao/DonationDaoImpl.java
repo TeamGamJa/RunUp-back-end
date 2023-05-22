@@ -28,6 +28,12 @@ public class DonationDaoImpl implements DonationDao {
 	}
 	
 	@Override
+	public int getDonationNum(Donation donation) {
+		int result = session.selectOne("donation.getDonationNum",donation);
+		return result;
+	}
+	
+	@Override
 	public int createDonation(Donation donation) {
 		int result = session.insert("donation.createDonation",donation);
 		return result;
@@ -46,14 +52,14 @@ public class DonationDaoImpl implements DonationDao {
 	}
 	
 	@Override
-	public int updateDonationPointPlus(int userNum) {
-		int result = session.update("donation.updateDonationPointPlus",userNum);
+	public int updateDonationPointPlus(Donation donation) {
+		int result = session.update("donation.updateDonationPointPlus",donation);
 		return result;
 	}
 	
 	@Override
-	public int updateDonationPointMinus(int userNum) {
-		int result = session.update("donation.updateDonationPointMinus",userNum);
+	public int updateDonationPointMinus(Donation donation) {
+		int result = session.update("donation.updateDonationPointMinus",donation);
 		return result;
 	}
 	

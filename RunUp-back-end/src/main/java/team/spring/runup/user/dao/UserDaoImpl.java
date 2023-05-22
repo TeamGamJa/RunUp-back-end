@@ -46,6 +46,12 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
+	public int getPointByUserNickname(User user) {
+		int result = session.selectOne("user.getPointByUserNickname",user);
+		return result;
+	}
+	
+	@Override
 	public int registUser(User user) {
 		int result = session.insert("user.registUser", user);
 		return result;

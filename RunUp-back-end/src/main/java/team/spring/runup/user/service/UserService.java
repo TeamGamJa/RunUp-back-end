@@ -39,6 +39,11 @@ public class UserService {
 		List<User> list = dao.getUserByNickname(userNickname);
 		return list;
 	}
+	
+	public int getPointByUserNickname(User user) {
+		int result = dao.getPointByUserNickname(user);
+		return result;
+	}
 
 	public int checkUserId(String userId) {
 		

@@ -20,11 +20,18 @@
    ]]>
    </select>
    
+   <select id="getDonationNum" parameterType="Donation" resultType="int">
+   <![CDATA[
+   	  select count(*) 
+   	  from donation where fountainNum = #{fountainNum} and donationSender = #{donationSender}
+   ]]>
+   </select>
+   
    <insert id="createDonation" parameterType="Donation">
    <![CDATA[
      insert into donation(donationSender,donationReceiver,
-     donationPoint) 
-     values (#{donationSender}, #{donationReceiver}, #{donationComment}, #{donationPoint})
+     donationPoint,fountainPoint) 
+     values (#{donationSender}, #{donationReceiver}, #{donationPoint},#{fountainPoint})
    ]]>
    </insert>
    
@@ -40,6 +47,20 @@
      donationReceiver = #{donationReceiver}, donationComment = #{donationComment},
      donationPoint = #{donationPoint}
      where donationNum = #{donationNum}
+   ]]>
+   </update>
+   
+   <update id="updateDonationPointPlus" parameterType="Donation" >
+   <![CDATA[
+     update user set userPoint = userPoint + #{donationPoint}
+     where userNickname = #{donationReceiver}
+   ]]>
+   </update>
+   
+   <update id="updateDonationPointMinus" parameterType="Donation" >
+   <![CDATA[
+     update user set userPoint = userPoint - #{donationPoint}
+     where userNickname = #{donationSender}
    ]]>
    </update>
    

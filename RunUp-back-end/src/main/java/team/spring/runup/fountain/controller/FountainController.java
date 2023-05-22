@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import team.spring.runup.donation.vo.Donation;
 import team.spring.runup.fountain.service.FountainService;
 import team.spring.runup.fountain.vo.Fountain;
+import team.spring.runup.running.vo.Running;
 
 
 @RestController
@@ -40,16 +42,16 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(fountainList);
 	}
 	
-	@GetMapping
-	public ResponseEntity<Fountain> searchFountain(@RequestParam(value="fountainNum", required=false) int fountainNum) throws JsonProcessingException {
-		
-		Fountain fountain = new Fountain();
-		fountain.setFountainNum(fountainNum);
-		
-		Fountain fountainOne = fountainservice.getFountain(fountain); 
-		log.debug(fountainOne);
-		return ResponseEntity.ok(fountainOne);
-	}
+//	@GetMapping
+//	public ResponseEntity<Fountain> searchFountain(@RequestParam(value="fountainNum", required=false) int fountainNum) throws JsonProcessingException {
+//		
+//		Fountain fountain = new Fountain();
+//		fountain.setFountainNum(fountainNum);
+//		
+//		Fountain fountainOne = fountainservice.getFountain(fountain); 
+//		log.debug(fountainOne);
+//		return ResponseEntity.ok(fountainOne);
+//	}
 	
 	@PostMapping
 	public ResponseEntity<Integer> createFountain(@RequestBody Fountain fountain)  {
@@ -61,23 +63,15 @@ Logger log = LogManager.getLogger("case3");
 		return ResponseEntity.ok(result);
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<Integer> deleteFountain(@RequestBody Fountain fountain) {
-		
-		log.debug(fountain);
-		int result = fountainservice.deleteFountain(fountain);
-		log.debug(result);
-		return ResponseEntity.ok(result);
-	}
+//	@DeleteMapping
+//	public ResponseEntity<Integer> deleteFountain(@RequestBody Fountain fountain) {
+//		
+//		log.debug(fountain);
+//		int result = fountainservice.deleteFountain(fountain);
+//		log.debug(result);
+//		return ResponseEntity.ok(result);
+//	}
+//	
 	
-	@PutMapping
-	public ResponseEntity<Integer> updateFountain(@RequestBody Fountain fountain) {
-		
-		log.debug(fountain);
-		int result = fountainservice.updateFountain(fountain);
-		log.debug(result);
-		
-		return ResponseEntity.ok(result);
-	}
 	
 }

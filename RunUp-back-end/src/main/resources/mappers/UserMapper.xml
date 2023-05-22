@@ -77,6 +77,10 @@
       select userId from user where userId=#{userId} and userPhone=#{userPhone}
    </select>
    
+   <select id="getPointByUserNickname" parameterType="User" resultType="int">
+      select userPoint from user where userNickname = #{userNickname}
+   </select>
+   
    <update id="changePw" parameterType="User">
    	  update user set userPw=#{userPw} where userId=#{userId}
    </update>
