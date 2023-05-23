@@ -23,7 +23,7 @@
    <select id="getDonationNum" parameterType="Donation" resultType="int">
    <![CDATA[
    	  select count(*) 
-   	  from donation where fountainNum = #{fountainNum} and donationSender = #{donationSender}
+   	  from donation where fountainNum = #{fountainNum} and donationReceiver = #{donationReceiver}
    ]]>
    </select>
    

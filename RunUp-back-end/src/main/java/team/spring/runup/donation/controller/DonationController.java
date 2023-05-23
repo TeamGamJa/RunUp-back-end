@@ -70,40 +70,37 @@ Logger log = LogManager.getLogger("case3");
 	public ResponseEntity<Integer> createDonation(@RequestBody Donation donation)  {
 		int result = 0;
 		int fountainResult = 0;
+		String sender = new String();
+		String receiver = new String();
 		
 		log.debug(donation);
 		User user = new User();
 		user.setUserNickname(donation.getDonationSender());
-		//Fountain fountain = new Fountain();
-		//fountain.setFountainNum(donation.getFountainNum());
-		//Fountain fountainOne = fountainservice.getFountain(fountain);
+
 		int donationNum = donationservice.getDonationNum(donation);
 		int mypoint = userservice.getPointByUserNickname(user);
+		sender = donation.getDonationSender();
+		receiver = donation.getDonationReceiver();
 		
-		if(donation.getDonationSender().equals(donation.getDonationReceiver())) {
-			log.debug("donation possible");
+		if (!sender.equals(receiver)) {
+		    
+		    if (donationNum == 0) {
+		       
+		        if (mypoint >= donation.getDonationPoint()) {
+		        	result = donationservice.createDonation(donation);
+		    		donationservice.updateDonationPointMinus(donation);
+		    		donationservice.updateDonationPointPlus(donation);
+		        } else {
+		            fountainResult = 3;
+		        }
+
+		    } else {
+		        fountainResult = 2;
+		    }
+
 		} else {
-			fountainResult = 1;
+		    fountainResult = 1;
 		}
-		
-		if(donationNum == 0) {
-			log.debug("donation possible");
-		} else {
-			fountainResult = 2;
-		}
-		
-		if (mypoint >= donation.getDonationPoint()) {
-			log.debug("donation possible");
-		} else {
-			fountainResult = 3;
-		}
-		
-		
-		result = donationservice.createDonation(donation);
-		donationservice.updateDonationPointMinus(donation);
-		donationservice.updateDonationPointPlus(donation);
-		//fountainservice.updateFountainCount(donation.getFountainNum());
-		
 		
 		log.debug(fountainResult);
 		return ResponseEntity.ok(fountainResult);
