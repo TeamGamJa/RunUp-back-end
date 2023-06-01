@@ -30,7 +30,7 @@ import team.spring.runup.user.vo.User;
 
 @RestController
 @RequestMapping(value="donation",produces="application/json; charset=UTF-8")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DonationController {
 
 Logger log = LogManager.getLogger("case3");

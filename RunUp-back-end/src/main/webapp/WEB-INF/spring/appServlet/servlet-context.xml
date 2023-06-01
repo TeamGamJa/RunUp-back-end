@@ -50,11 +50,16 @@
 	      <mvc:exclude-mapping path="/running/categorymedium"/>
 	      <mvc:exclude-mapping path="/user/regist"/>
 	      <mvc:exclude-mapping path="/user/kakao"/>
+	      <mvc:exclude-mapping path="/question/all"/>
+	      <mvc:exclude-mapping path="/fountain/all"/>
+	      <mvc:exclude-mapping path="/running/all"/>
+	      <mvc:exclude-mapping path="/running/categorybig"/>
+	      <mvc:exclude-mapping path="/running/bycategorymedium"/>
+	      <mvc:exclude-mapping path="/running/searchbar"/>
 	      <beans:bean class="team.spring.runup.jwt.interceptor.JwtInterceptor" />
 	   </mvc:interceptor>
 	</mvc:interceptors> 
-		
-	
+
 	<beans:bean id="webSocketConfig" class="team.spring.runup.chatMessage.WebSocketConfig" />
 <!-- 	<websocket:handlers>
 		<websocket:mapping handler="chattingHandler" path="/chatting"/>

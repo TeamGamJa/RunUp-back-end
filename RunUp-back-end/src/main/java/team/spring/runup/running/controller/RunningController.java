@@ -40,7 +40,7 @@ import team.spring.runup.user.vo.User;
 
 @RestController
 @RequestMapping(value="running",produces="application/json; charset=UTF-8")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RunningController {
 
 Logger log = LogManager.getLogger("case3");

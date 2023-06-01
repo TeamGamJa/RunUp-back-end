@@ -26,7 +26,7 @@ import team.spring.runup.user.vo.User;
 
 @RestController
 //@CrossOrigin("*")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value="jwt",produces="application/json")
 public class JwtController {
 

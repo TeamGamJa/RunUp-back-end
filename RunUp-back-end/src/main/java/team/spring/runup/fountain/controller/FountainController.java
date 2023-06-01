@@ -26,7 +26,7 @@ import team.spring.runup.running.vo.Running;
 
 @RestController
 @RequestMapping(value="fountain",produces="application/json; charset=UTF-8")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FountainController {
 
 Logger log = LogManager.getLogger("case3");

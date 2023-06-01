@@ -24,7 +24,7 @@ import team.spring.runup.chatMessage.vo.ChatMessage;
 
 @RestController
 @RequestMapping(value="chat",produces="application/json")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ChatController {
 
 	Logger log = LogManager.getLogger("case3");

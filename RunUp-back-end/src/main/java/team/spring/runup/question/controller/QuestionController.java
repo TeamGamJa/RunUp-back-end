@@ -23,7 +23,7 @@ import team.spring.runup.question.vo.Question;
 
 @RestController
 @RequestMapping(value="question", produces="application/json; charset=UTF-8")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class QuestionController {
 
 	// 로그 추가

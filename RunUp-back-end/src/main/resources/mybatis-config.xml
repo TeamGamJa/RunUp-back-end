@@ -35,8 +35,6 @@
 		<typeAlias type="team.spring.runup.fountain.vo.FountainList" alias="FountainList"/>
 		<typeAlias type="team.spring.runup.donation.vo.Donation" alias="Donation"/>
 		<typeAlias type="team.spring.runup.chatMessage.vo.ChatMessage" alias="ChatMessage"/>
-
-
 	 </typeAliases>
 
 

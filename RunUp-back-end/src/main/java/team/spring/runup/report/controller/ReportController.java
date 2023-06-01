@@ -40,7 +40,7 @@ import team.spring.runup.report.vo.Report;
 
 @RestController
 @RequestMapping(value="report",produces="application/json; charset=UTF-8")
-@CrossOrigin(origins="http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins="*", allowedHeaders = "*")
 public class ReportController {
 	
 	Logger log = LogManager.getLogger("case3");

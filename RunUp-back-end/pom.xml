@@ -178,11 +178,11 @@
 			<version>4.1.0.RELEASE</version>
 		</dependency>
 		
-		<dependency>
+<!-- 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-websocket</artifactId>
 		    <version>5.0.7.RELEASE</version>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 		   <groupId>io.jsonwebtoken</groupId>
@@ -190,11 +190,11 @@
 		   <version>0.9.1</version>
 		</dependency>
 		
-		<dependency>
+<!-- 		<dependency>
 	        <groupId>org.springframework</groupId>
 	        <artifactId>spring-webmvc</artifactId>
 	        <version>5.3.23</version>
-	    </dependency>
+	    </dependency> -->
 	    
 	    <dependency>
 	        <groupId>org.webjars</groupId>
@@ -223,41 +223,28 @@
 		
 	</dependencies>
     <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-                    </additionalProjectnatures>
-                    <additionalBuildcommands>
-                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-                    </additionalBuildcommands>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>org.test.int1.Main</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>${java-version}</source>
+                <target>${java-version}</target>
+                <compilerArgument>-Xlint:all</compilerArgument>
+                <showWarnings>true</showWarnings>
+                <showDeprecation>true</showDeprecation>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.1</version>
+            <configuration>
+                <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+	    </plugins>
+	</build>
 </project>

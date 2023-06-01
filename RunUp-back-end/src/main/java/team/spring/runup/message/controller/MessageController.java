@@ -20,7 +20,7 @@ import team.spring.runup.message.vo.Message;
 
 @RestController
 @RequestMapping(value="message", produces="application/json; charset=UTF-8")
-@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MessageController {
 
 	// 로그 추가
