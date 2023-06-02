@@ -32,6 +32,7 @@ import com.google.cloud.storage.StorageOptions;
 
 import team.spring.runup.email.service.EmailService;
 import team.spring.runup.email.vo.Email;
+import team.spring.runup.running.vo.Running;
 import team.spring.runup.user.service.UserService;
 import team.spring.runup.user.vo.User;
 
@@ -201,6 +202,15 @@ public class UserController {
 		User user = userService.getUserById(userId);
 		
 		return user;
+	}
+	
+	@GetMapping(value="userinfo")
+	public ResponseEntity<User> getUserByUserNum(@RequestParam(value="userNum", 
+			required=false) int userNum) {
+		
+		User user = userService.getUserByUserNum(userNum);
+		
+		return ResponseEntity.ok(user);
 	}
 	
 	@PutMapping(value="ability")
