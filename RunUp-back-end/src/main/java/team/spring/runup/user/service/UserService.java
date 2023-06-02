@@ -35,6 +35,11 @@ public class UserService {
 		return user;
 	}
 	
+	public User getUserByUserNum(int userNum) {
+		User user = dao.getUserByNum(userNum);
+		return user;
+	}
+	
 	public List<User> getUserByNickname(String userNickname) {
 		List<User> list = dao.getUserByNickname(userNickname);
 		return list;
